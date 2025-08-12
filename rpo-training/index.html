@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPO AI Acceleration Program - Full Training</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white site-header sticky top-0 z-10">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 id="header-title" class="google-sans text-2xl text-gray-700">RPO AI Acceleration Program</h1>
+            <a href="/" class="text-sm font-medium text-blue-600 hover:text-blue-800">&larr; Back to Hub</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6">
+
+        <!-- Main Page (Table of Contents) -->
+        <div id="main-page" class="page active">
+            <div class="content-section text-center">
+                <h2 class="google-sans text-4xl font-bold text-gray-800">Full Training Curriculum</h2>
+                <p class="mt-4 text-lg text-gray-600">Welcome to the complete training portal for the RPO AI Acceleration Program. The program is divided into three distinct phases. Select a session from any module below to begin.</p>
+            </div>
+
+            <!-- Phase 1 Section -->
+            <section class="phase-section">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="google-sans text-sm font-bold text-blue-600">PHASE 1: MANDATORY</span>
+                        <h3 class="google-sans text-3xl font-bold mt-2">AI Foundations</h3>
+                        <p class="mt-4 text-gray-600">This foundational phase is designed for all team members. In just two weeks, everyone will become comfortable and proficient with using AI for their core daily tasks, from writing emails to sourcing candidates.</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://placehold.co/600x400/e8f0fe/1967d2?text=Phase+1:%0AFoundations" alt="Phase 1: Foundations" class="rounded-lg shadow-md">
+                    </div>
+                </div>
+                <div class="mt-8 grid md:grid-cols-2 gap-6">
+                    <div class="module-card" onclick="navigateTo('session-1-1-page')">
+                        <p class="text-sm font-semibold text-blue-600">MODULE 1</p>
+                        <h3 class="google-sans text-xl font-bold mt-2">Prompting & Writing</h3>
+                        <p class="mt-2 text-gray-600">Learn the foundational R.C.T.F.E. framework for writing expert prompts.</p>
+                    </div>
+                    <div class="module-card" onclick="navigateTo('session-2-1-page')">
+                        <p class="text-sm font-semibold text-blue-600">MODULE 2</p>
+                        <h3 class="google-sans text-xl font-bold mt-2">Sourcing & Research</h3>
+                        <p class="mt-2 text-gray-600">Generate complex Boolean strings and perform rapid market analysis.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 2 Section -->
+            <section class="phase-section border-t border-gray-200">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                     <div class="flex justify-center md:order-2">
+                        <img src="https://placehold.co/600x400/e6f4ea/1e8e3e?text=Phase+2:%0AChampions" alt="Phase 2: AI Champions" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:order-1">
+                        <span class="google-sans text-sm font-bold text-green-600">PHASE 2: OPTIONAL</span>
+                        <h3 class="google-sans text-3xl font-bold mt-2">The AI Champions Track</h3>
+                        <p class="mt-4 text-gray-600">This track is for team members who want to go deeper. Champions will learn advanced skills like data analysis, workflow automation, and how to build custom AI tools, positioning them as mentors and subject matter experts.</p>
+                    </div>
+                </div>
+                <div class="mt-8 grid md:grid-cols-3 gap-6">
+                    <div class="module-card" onclick="navigateTo('session-3-1-page')">
+                        <p class="text-sm font-semibold text-green-600">MODULE 3</p>
+                        <h3 class="google-sans text-xl font-bold mt-2">Data & Knowledge</h3>
+                        <p class="mt-2 text-gray-600">Analyze data in Sheets and build a "CV Bot" to search documents.</p>
+                    </div>
+                    <div class="module-card" onclick="navigateTo('session-4-1-page')">
+                        <p class="text-sm font-semibold text-green-600">MODULE 4</p>
+                        <h3 class="google-sans text-xl font-bold mt-2">Automation</h3>
+                        <p class="mt-2 text-gray-600">Build hands-free workflows that connect Gmail, AI, and Sheets.</p>
+                    </div>
+                    <div class="module-card" onclick="navigateTo('session-5-1-page')">
+                        <p class="text-sm font-semibold text-green-600">MODULE 5</p>
+                        <h3 class="google-sans text-xl font-bold mt-2">Train the Trainer</h3>
+                        <p class="mt-2 text-gray-600">Learn to mentor colleagues and present your projects to leadership.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 3 Section -->
+            <section class="phase-section border-t border-gray-200">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="google-sans text-sm font-bold text-purple-600">PHASE 3: LEADERSHIP</span>
+                        <h3 class="google-sans text-3xl font-bold mt-2">AI for RPO Strategists</h3>
+                        <p class="mt-4 text-gray-600">This executive stream is for Department Heads and Team Leads. The focus shifts from hands-on skills to strategic planning, governance, and measuring the business value and ROI of AI initiatives.</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://placehold.co/600x400/f3e8fd/8e24aa?text=Phase+3:%0ALeadership" alt="Phase 3: Leadership" class="rounded-lg shadow-md">
+                    </div>
+                </div>
+                <div class="mt-8 grid md:grid-cols-2 gap-6">
+                    <div class="module-card" onclick="navigateTo('session-6-1-page')">
+                        <p class="text-sm font-semibold text-purple-600">MODULE 6</p>
+                        <h3 class="google-sans text-xl font-bold mt-2">Strategy & Governance</h3>
+                        <p class="mt-2 text-gray-600">Develop an RPO-specific AI roadmap and prioritize high-impact projects.</p>
+                    </div>
+                    <div class="module-card" onclick="navigateTo('session-7-1-page')">
+                        <p class="text-sm font-semibold text-purple-600">MODULE 7</p>
+                        <h3 class="google-sans text-xl font-bold mt-2">Measuring Impact</h3>
+                        <p class="mt-2 text-gray-600">Define success metrics and build a compelling business case for AI projects.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="session-container"></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 mt-8">
+        <div class="max-w-5xl mx-auto px-6 py-4 text-center text-gray-500 text-sm">
+            <p>&copy; <span id="copyright-year"></span> Randstad GBS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>

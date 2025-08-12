@@ -1,0 +1,63 @@
+body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .google-sans {
+            font-family: 'Google Sans', sans-serif;
+        }
+        .site-header {
+            border-bottom: 1px solid #dadce0;
+        }
+        .content-section {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .content-section:last-child {
+            border-bottom: none;
+        }
+        .prompt-box {
+            background-color: #f1f3f4;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9rem;
+        }
+        .step-box, .session-card, .module-card {
+            background-color: #ffffff;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .session-card, .module-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .session-card:hover, .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .quote-box {
+            background-color: #e8f0fe;
+            border-left: 4px solid #1967d2;
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .phase-section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }

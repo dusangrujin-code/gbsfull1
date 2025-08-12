@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randstad GBS - AI & Sourcing Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .google-sans {
+            font-family: 'Google Sans', sans-serif;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .hub-card {
+            border: 1px solid #dadce0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hub-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.07), 0 3px 6px rgba(0,0,0,0.05);
+        }
+        .hub-card h3 {
+            color: #1967d2; /* Google Blue */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto px-4 py-12 md:py-20">
+
+        <header class="text-center mb-12">
+            <h1 class="google-sans text-4xl md:text-5xl font-bold text-gray-900">Randstad GBS Learning Hub</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">A central portal for our AI training programs, sourcing tools, and interactive workshops.</p>
+        </header>
+
+        <main>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+                <a href="/rpo-training/" class="hub-card bg-white p-8 rounded-xl block">
+                    <h3 class="google-sans text-2xl font-bold mb-2">RPO AI Acceleration Program</h3>
+                    <p class="text-gray-600">The complete, multi-phase training curriculum for all RPO team members, from AI foundations to leadership strategy.</p>
+                </a>
+                
+                <a href="/gbs-ai-workshop/" class="hub-card bg-white p-8 rounded-xl block">
+                    <h3 class="google-sans text-2xl font-bold mb-2">GBS AI Workshop for Leaders</h3>
+                    <p class="text-gray-600">An interactive training SPA for GBS leaders, complete with prompt libraries, simulators, and case studies.</p>
+                </a>
+
+                <a href="/daily-focus/" class="hub-card bg-white p-8 rounded-xl block">
+                    <h3 class="google-sans text-2xl font-bold mb-2">Daily Sourcing Focus</h3>
+                    <p class="text-gray-600">A daily micro-coaching tool with actionable focus cards designed to sharpen the skills of our talent sourcers.</p>
+                </a>
+
+                <a href="/gbs-prompts/" class="hub-card bg-white p-8 rounded-xl block">
+                    <h3 class="google-sans text-2xl font-bold mb-2">GBS Prompt Library</h3>
+                    <p class="text-gray-600">A comprehensive and searchable library of expert prompts designed to accelerate daily tasks for GBS professionals.</p>
+                </a>
+
+                <a href="/sourcing-workshop/" class="hub-card bg-white p-8 rounded-xl block">
+                    <h3 class="google-sans text-2xl font-bold mb-2">Sourcing Workshop</h3>
+                    <p class="text-gray-600">An in-depth workshop dedicated to advanced sourcing techniques, market intelligence, and candidate engagement. (Coming Soon)</p>
+                </a>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
+

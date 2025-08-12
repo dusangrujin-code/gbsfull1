@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Training: Gemini for GBS Leaders</title>
+    <!-- Chosen Palette: Calm Neutrals -->
+    <!-- Application Structure Plan: An eleven-part thematic SPA is chosen. This non-linear design empowers busy managers to directly access the content most relevant to them. Key interactions include an interactive "4 R's" audit chart, a filterable "Prompt Explorer," a "Guided Prompt Builder", a "Reverse Prompt" generator, a personalized "My Prompt Library", a categorized "Scenario Simulator", a "My Day with AI" simulator, categorized "Case Studies", and a "Team Leadership" module. -->
+    <!-- Visualization & Content Choices: 1. Agenda -> App navigation. 2. "4 R's" Audit -> Interactive Doughnut Chart with sliders. 3. Case Study -> Categorized, step-by-step workflow examples. 4. Team Leadership -> Conversation starters, an interactive playbook for handling resistance, and a "Show and Tell" framework. 5. Gemini Prompts -> Filterable cards with favorite button. 6. Prompt Builder -> Step-by-step form to generate and save optimal prompts. 7. Reverse Prompt -> Analyzes text to generate a potential source prompt. 8. My Prompt Library -> User's saved/favorited prompts. 9. Scenario Simulator -> Categorized, interactive problem/solution module. 10. My Day with AI -> "Choose your own adventure" daily task simulator. 11. Framework Image -> HTML/CSS diagram. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #4A4A4A;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            border-bottom-color: #4A90E2;
+            color: #4A90E2;
+        }
+        .prompt-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .prompt-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hidden {
+            display: none;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-box {
+            border: 2px solid #E0E0E0;
+            background-color: #FFFFFF;
+        }
+        .flow-arrow {
+            position: relative;
+            width: 2px;
+            height: 30px;
+            background-color: #BDBDBD;
+            margin: 0 auto;
+        }
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #BDBDBD;
+        }
+        /* Custom slider styles */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #e0e7ff;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4A90E2;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #4A90E2;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        /* Custom select and textarea styles for builder */
+        .builder-select, .builder-textarea {
+            background-color: #fff;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .builder-select:focus, .builder-textarea:focus {
+            outline: none;
+            border-color: #4A90E2;
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5);
+        }
+        .favorite-btn {
+            cursor: pointer;
+            color: #d1d5db; /* gray-300 */
+            transition: color 0.2s;
+        }
+        .favorite-btn.favorited {
+            color: #facc15; /* yellow-400 */
+        }
+        .favorite-btn:hover {
+            color: #fde047; /* yellow-300 */
+        }
+        /* Simulator & Case Study Styles */
+        .scenario-option, .category-option {
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s ease-in-out;
+        }
+        .scenario-option:hover, .category-option:hover {
+            border-color: #4A90E2;
+            background-color: #eff6ff;
+        }
+        .scenario-option.selected {
+            border-color: #4A90E2;
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5);
+        }
+        .scenario-option.correct {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+        }
+        .scenario-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+         .code-block {
+             background-color: #f3f4f6;
+             border: 1px solid #e5e7eb;
+             padding: 1rem;
+             border-radius: 0.5rem;
+             font-family: 'Courier New', Courier, monospace;
+             font-size: 0.875rem;
+             overflow-x: auto;
+             white-space: pre-wrap;
+             color: #374151;
+        }
+        /* Accordion styles for Handling Resistance */
+        .resistance-item summary {
+            cursor: pointer;
+            padding: 1rem;
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+         .resistance-item summary:hover {
+            background-color: #f3f4f6;
+         }
+        .resistance-item[open] summary {
+            background-color: #eff6ff;
+            color: #4A90E2;
+        }
+        .resistance-item .answer {
+            padding: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #4A90E2;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Animated Subtitle */
+        .subtitle-animate-in {
+            animation: fadeInSmooth 0.5s ease-out forwards;
+        }
+        .subtitle-animate-out {
+            animation: fadeOutSmooth 0.5s ease-in forwards;
+        }
+        @keyframes fadeInSmooth {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeOutSmooth {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-[#4A90E2]">Randstad GBS</span>
+                    <span class="ml-2 text-xl font-light text-gray-600">| Gemini for Leaders</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-4">
+                        <a href="#why" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">The Why</a>
+                        <a href="#how" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">The How</a>
+			<a href="#best-practices" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">Best Practices</a>
+			<a href="#ai-glossary" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">AI Glossary</a>
+                        <a href="#case-studies" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">Case Studies</a>
+                        <a href="#team-leadership" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">Team Leadership</a>
+
+                        <!-- Tools Dropdown -->
+                        <div class="relative" id="tools-dropdown">
+                            <button id="tools-dropdown-btn" class="nav-link inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-700 focus:outline-none">
+                                <span>Tools</span>
+                                <svg class="ml-2 -mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div id="tools-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden transition ease-out duration-100 transform opacity-0 scale-95">
+                                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="tools-dropdown-btn">
+                                    <a href="#what" class="nav-dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Prompt Library</a>
+                                    <a href="#builder" class="nav-dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Prompt Builder</a>
+                                    <a href="#reverse-prompt" class="nav-dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Reverse Prompt</a>
+                                    <a href="#my-library" class="nav-dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Library</a>
+                                    <a href="#simulator" class="nav-dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Scenario Simulator</a>
+                                    <a href="#my-day" class="nav-dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Day with AI</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#now" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">The Now</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <section id="why" class="page-section text-center mb-16 md:mb-24 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Reclaim Your Team's Time. Work Smarter, Not Harder.</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-8">
+                Our goal is to shift your mindset from seeing AI as a complex tool to embracing it as an essential teammate. This training provides the framework and action plan to strategically integrate Gemini Pro into your team's daily workflows, unlocking new levels of productivity and value.
+            </p>
+            <div class="text-2xl text-gray-700 mt-8 mb-12 h-8">
+                With Gemini, you can instantly:
+                <span id="animated-subtitle" class="font-semibold text-[#4A90E2] inline-block"></span>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 text-left mb-16">
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="flex justify-center mb-4">
+                        <svg class="h-12 w-12 text-[#4A90E2]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-[#4A90E2]">1. The Mindset</h3>
+                    <p class="text-gray-600">View Gemini Pro not as a job replacement, but as a powerful partner that handles tedious work, freeing your team for higher-value strategic thinking.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="flex justify-center mb-4">
+                        <svg class="h-12 w-12 text-[#4A90E2]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2 1M4 7l2-1M4 7v2.5M12 21.5v-2.5M12 18.5l-2 1m2-1l2 1" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-[#4A90E2]">2. The Framework</h3>
+                    <p class="text-gray-600">Learn a simple but effective method to identify the best opportunities for AI within your team's existing processes and workflows.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="flex justify-center mb-4">
+                        <svg class="h-12 w-12 text-[#4A90E2]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-[#4A90E2]">3. The Action Plan</h3>
+                    <p class="text-gray-600">Leave with a concrete first step to immediately begin implementing Gemini Pro, driving quick wins and building momentum for change.</p>
+                </div>
+            </div>
+
+            <!-- Call to Action Button -->
+            <div class="mt-12">
+                <a href="#how" class="bg-[#4A90E2] text-white font-bold py-4 px-8 rounded-full hover:bg-blue-600 transition-colors shadow-lg text-lg">
+                    Start Learning: See The Framework
+                </a>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="mt-24 text-center">
+                <h2 class="text-3xl font-bold tracking-tight mb-4">Unlock Real Results</h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600 mb-10">Integrating AI isn't just about new technology; it's about tangible outcomes. Here are the results you can aim for.</p>
+                <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <p class="text-5xl font-bold text-[#4A90E2]">40%</p>
+                        <h4 class="mt-2 text-xl font-semibold">Less Time on Reports</h4>
+                        <p class="mt-1 text-gray-600">Automate first drafts of weekly and monthly reports, freeing up your team for analysis.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <p class="text-5xl font-bold text-[#4A90E2]">5x</p>
+                        <h4 class="mt-2 text-xl font-semibold">Faster Insights</h4>
+                        <p class="mt-1 text-gray-600">Summarize long documents, emails, and meeting transcripts in seconds, not hours.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <p class="text-5xl font-bold text-[#4A90E2]">1 Hr</p>
+                        <h4 class="mt-2 text-xl font-semibold">Saved Per Day</h4>
+                        <p class="mt-1 text-gray-600">By automating email drafts, meeting agendas, and follow-ups, you reclaim valuable time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">The GBS Opportunity Framework</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">This section introduces our core framework: Don't just use AI, build your workflows around it. We'll start by identifying where your team's time is spent and then connect those tasks directly to AI-powered solutions.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-8 items-start">
+                <div class="lg:col-span-2">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-semibold mb-2">My Team's "4 R's" Audit</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Adjust the sliders to estimate your team's time distribution. The chart will update instantly.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="opportunityChart"></canvas>
+                    </div>
+                    <div id="audit-controls" class="mt-6 space-y-4 px-4">
+                        <div>
+                            <label for="repetitiveSlider" class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                                <span>Repetitive</span>
+                                <span id="repetitiveValue" class="font-semibold">35%</span>
+                            </label>
+                            <input id="repetitiveSlider" type="range" min="0" max="100" value="35" class="w-full">
+                        </div>
+                        <div>
+                            <label for="researchSlider" class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                                <span>Research-heavy</span>
+                                <span id="researchValue" class="font-semibold">25%</span>
+                            </label>
+                            <input id="researchSlider" type="range" min="0" max="100" value="25" class="w-full">
+                        </div>
+                        <div>
+                            <label for="reactiveSlider" class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                                <span>Reactive</span>
+                                <span id="reactiveValue" class="font-semibold">20%</span>
+                            </label>
+                            <input id="reactiveSlider" type="range" min="0" max="100" value="20" class="w-full">
+                        </div>
+                        <div>
+                            <label for="reportingSlider" class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                                <span>Reporting</span>
+                                <span id="reportingValue" class="font-semibold">20%</span>
+                            </label>
+                            <input id="reportingSlider" type="range" min="0" max="100" value="20" class="w-full">
+                        </div>
+                        <div class="text-right pt-2">
+                            <p class="text-md font-bold">Total: <span id="totalPercentage" class="transition-colors">100%</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3">
+                    <div id="opportunity-intro" class="p-6 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                        <h4 class="font-bold text-xl mb-2 text-blue-800">Discover Your AI Opportunities</h4>
+                        <p class="text-blue-700">Use the sliders on the left to create a personalized model of your team's workload. Once the chart reflects your reality, click on its segments to reveal specific ways Gemini can streamline work, saving time and reducing manual effort.</p>
+                    </div>
+                    <div id="opportunity-details" class="mt-4 hidden">
+                        <h4 id="opportunity-title" class="font-bold text-xl mb-2"></h4>
+                        <p id="opportunity-description" class="mb-4"></p>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h5 class="font-semibold mb-2">Example Gemini Applications:</h5>
+                            <ul id="opportunity-examples" class="list-disc list-inside text-gray-600 space-y-1"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="best-practices" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Best Practices for Prompting</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Follow these golden rules to get the best possible results from Gemini. A well-crafted prompt is the key to unlocking high-quality, relevant, and actionable outputs.</p>
+            </div>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">1. Give Clear Context</h3>
+                    <p class="text-gray-600 mb-4">Tell Gemini what you're doing and set the scene clearly. The more background it has, the more relevant the response will be.</p>
+                    <div class="code-block text-sm">"I have a biology test in 2 days."</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">2. Be Specific About Output</h3>
+                    <p class="text-gray-600 mb-4">Say exactly what you want back. Include the desired type, format, length, or structure.</p>
+                    <div class="code-block text-sm">"Give 10 MCQs on the circulatory system."</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">3. Assign the AI a Role</h3>
+                    <p class="text-gray-600 mb-4">Define who Gemini should act as. This adds a specific tone, style, and level of expertise to the response.</p>
+                    <div class="code-block text-sm">"Act as a finance professor."</div>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">4. Break It Into Steps</h3>
+                    <p class="text-gray-600 mb-4">For complex requests, break your needs into logical steps. This helps the AI follow your train of thought.</p>
+                    <div class="code-block text-sm">"Explain in 3 steps using an analogy."</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">5. Provide Examples</h3>
+                    <p class="text-gray-600 mb-4">If you want a specific style or structure, give Gemini an example of what you're looking for.</p>
+                    <div class="code-block text-sm">"Give 3 ways photosynthesis helps humans."</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">6. Refine and Retry</h3>
+                    <p class="text-gray-600 mb-4">Your first try is a draft. If the output isn't quite right, tweak your prompt with more clarity and try again.</p>
+                    <div class="code-block text-sm">Better input → better output.</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">7. Avoid Vague Language</h3>
+                    <p class="text-gray-600 mb-4">Don't be general. Vague inputs lead to weak replies. Replace "help me study" with a specific request.</p>
+                    <div class="code-block text-sm">Skip "Help me study."</div>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">8. Treat It Like an Assistant</h3>
+                    <p class="text-gray-600 mb-4">Write like you're briefing a new team member. Be simple, clear, and direct in your instructions.</p>
+                    <div class="code-block text-sm">Like giving a task to an intern.</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">9. Choose a Format</h3>
+                    <p class="text-gray-600 mb-4">Explicitly tell the AI how to present the information, whether as bullets, a numbered list, a table, or prose.</p>
+                    <div class="code-block text-sm">"Summarize as a table."</div>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-3">10. Provide Negative Constraints</h3>
+                    <p class="text-gray-600 mb-4">Sometimes it's helpful to tell the AI what *not* to do. This helps narrow its focus and avoid unwanted information.</p>
+                    <div class="code-block text-sm">"Write an email to the team, but do not use overly corporate jargon."</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-glossary" class="page-section mb-16 md:mb-24 fade-in hidden">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">AI Glossary</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600">
+              Demystifying the language of AI. Use this searchable glossary to
+              quickly understand common terms and concepts.
+            </p>
+          </div>
+
+           <!-- cards -->
+          <div
+            id="glossary-grid"
+            class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+            <!-- Bias -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Bias</h3>
+              <p class="text-gray-600 text-sm">
+                When an AI unfairly prefers certain things over others, often because of
+                biases in the data it was trained on.
+              </p>
+            </div>
+
+            <!-- Label -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Label</h3>
+              <p class="text-gray-600 text-sm">
+                A tag or answer given to data so AI knows what it is.
+              </p>
+            </div>
+
+            <!-- Model -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Model</h3>
+              <p class="text-gray-600 text-sm">
+                The final program that can perform tasks after learning from data.
+              </p>
+            </div>
+
+            <!-- Training -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Training</h3>
+              <p class="text-gray-600 text-sm">
+                The process where AI learns from data to get better at its job.
+              </p>
+            </div>
+
+            <!-- Chatbot -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Chatbot</h3>
+              <p class="text-gray-600 text-sm">
+                A computer program that talks to people using text or voice.
+              </p>
+            </div>
+
+            <!-- Dataset -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Dataset</h3>
+              <p class="text-gray-600 text-sm">
+                A big collection of information that AI learns from.
+              </p>
+            </div>
+
+            <!-- Algorithm -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Algorithm</h3>
+              <p class="text-gray-600 text-sm">
+                Step‑by‑step instructions for solving a problem.
+              </p>
+            </div>
+
+            <!-- Token -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Token</h3>
+              <p class="text-gray-600 text-sm">
+                Words or pieces of words AI uses to read and write text.
+              </p>
+            </div>
+
+            <!-- Overfitting -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Overfitting</h3>
+              <p class="text-gray-600 text-sm">
+                When AI learns the training data too closely and can’t handle new,
+                different examples.
+              </p>
+            </div>
+
+            <!-- AI Agent -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">AI Agent</h3>
+              <p class="text-gray-600 text-sm">
+                Software that carries out tasks for you on its own.
+              </p>
+            </div>
+
+            <!-- AI Ethics -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">AI Ethics</h3>
+              <p class="text-gray-600 text-sm">
+                Making sure AI is used in ways that are right and fair to everyone.
+              </p>
+            </div>
+
+            <!-- Explainability -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Explainability</h3>
+              <p class="text-gray-600 text-sm">
+                How easily people can understand why an AI made a certain decision.
+              </p>
+            </div>
+
+            <!-- Inference -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Inference</h3>
+              <p class="text-gray-600 text-sm">
+                When an AI uses what it has learned to answer new questions.
+              </p>
+            </div>
+
+            <!-- Turing Test -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Turing Test</h3>
+              <p class="text-gray-600 text-sm">
+                A test to see if a computer can act so human that people can't tell
+                the difference.
+              </p>
+            </div>
+
+            <!-- Prompt -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Prompt</h3>
+              <p class="text-gray-600 text-sm">
+                The text or question you give an AI to get a response.
+              </p>
+            </div>
+
+            <!-- Fine‑Tuning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Fine‑Tuning</h3>
+              <p class="text-gray-600 text-sm">
+                Training an AI on a smaller set of special data to improve it at
+                specific tasks.
+              </p>
+            </div>
+
+            <!-- Generative AI -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Generative AI</h3>
+              <p class="text-gray-600 text-sm">
+                AI that can create new things such as pictures, writing, or music.
+              </p>
+            </div>
+
+            <!-- AI Automation -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">AI Automation</h3>
+              <p class="text-gray-600 text-sm">
+                Using AI to make processes run by themselves without people doing them.
+              </p>
+            </div>
+
+            <!-- Neural Network -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Neural Network</h3>
+              <p class="text-gray-600 text-sm">
+                A type of AI computer system built a little like the human brain.
+              </p>
+            </div>
+
+            <!-- Computer Vision -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Computer Vision</h3>
+              <p class="text-gray-600 text-sm">
+                AI that helps computers “see” and understand images or video.
+              </p>
+            </div>
+
+            <!-- Transfer Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Transfer Learning</h3>
+              <p class="text-gray-600 text-sm">
+                Using an AI already trained for one job to help with a new, different
+                job.
+              </p>
+            </div>
+
+            <!-- Guardrails -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Guardrails (in AI)</h3>
+              <p class="text-gray-600 text-sm">
+                Built‑in checks that stop an AI from making mistakes or causing harm.
+              </p>
+            </div>
+
+            <!-- Open Source AI -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Open Source AI</h3>
+              <p class="text-gray-600 text-sm">
+                AI whose design code is public, so anyone can use or change it.
+              </p>
+            </div>
+
+            <!-- Deep Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Deep Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI that learns through very large neural networks with many layers.
+              </p>
+            </div>
+
+            <!-- Reinforcement Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Reinforcement Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI learns by trying things and getting rewards for good actions.
+              </p>
+            </div>
+
+            <!-- Hallucination -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Hallucination (in AI)</h3>
+              <p class="text-gray-600 text-sm">
+                When AI makes up information that isn’t true or isn’t based on facts.
+              </p>
+            </div>
+
+            <!-- Zero‑Shot Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Zero‑Shot Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI completes a new task it wasn’t directly trained on just by reading
+                the task description.
+              </p>
+            </div>
+
+            <!-- Speech Recognition -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Speech Recognition</h3>
+              <p class="text-gray-600 text-sm">
+                AI that turns spoken words into written text.
+              </p>
+            </div>
+
+            <!-- Supervised Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Supervised Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI learns from data that’s already labeled with the right answers.
+              </p>
+            </div>
+
+            <!-- Model Context Protocol -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Model Context Protocol</h3>
+              <p class="text-gray-600 text-sm">
+                Rules for how AIs share and use the information they learn from.
+              </p>
+            </div>
+
+            <!-- Machine Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Machine Learning</h3>
+              <p class="text-gray-600 text-sm">
+                A way for computers to learn by seeing many examples.
+              </p>
+            </div>
+
+            <!-- AI (Artificial Intelligence) -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3 break-words whitespace-normal">AI (Artificial Intelligence)</h3>
+              <p class="text-gray-600 text-sm">
+                Technology that makes computers act like smart humans do.
+              </p>
+            </div>
+
+            <!-- Unsupervised Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3">Unsupervised Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI finds patterns in data that has no labels.
+              </p>
+            </div>
+
+            <!-- LLM -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3 break-words whitespace-normal">LLM (Large Language Model)</h3>
+              <p class="text-gray-600 text-sm">
+                An AI model that understands and writes text, trained on vast amounts
+                of data.
+              </p>
+            </div>
+
+            <!-- ASI -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3 break-words whitespace-normal">ASI (Artificial Superintelligence)</h3>
+              <p class="text-gray-600 text-sm">
+                An AI even smarter than the smartest human ever.
+              </p>
+            </div>
+
+            <!-- GPU -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3 break-words whitespace-normal">GPU (Graphics Processing Unit)</h3>
+              <p class="text-gray-600 text-sm">
+                Special computer chips that help train and run AI models faster.
+              </p>
+            </div>
+
+            <!-- NLP -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3 break-words whitespace-normal">NLP (Natural Language Processing)</h3>
+              <p class="text-gray-600 text-sm">
+                AI that understands and works with human language.
+              </p>
+            </div>
+
+            <!-- AGI -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3 break-words whitespace-normal">AGI (Artificial General Intelligence)</h3>
+              <p class="text-gray-600 text-sm">
+                A super‑smart AI that can learn and do any task a human can.
+              </p>
+            </div>
+
+            <!-- GPT -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3 break-words whitespace-normal">GPT (Generative Pre‑trained Transformer)</h3>
+              <p class="text-gray-600 text-sm">
+                A famous type of AI that writes text like a human.
+              </p>
+            </div>
+
+            <!-- API -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#4A90E2] mb-3 break-words whitespace-normal">API (Application Programming Interface)</h3>
+              <p class="text-gray-600 text-sm">
+                A way for different programs to talk to each other and access AI
+                features.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <section id="case-studies" class="page-section mb-16 md:mb-24 fade-in hidden">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">End-to-End Case Studies</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Walk through a complete GBS workflow from start to finish. These examples show how to chain prompts together to handle multi-step tasks in your functional area.</p>
+            </div>
+            <div id="case-study-container" class="max-w-5xl mx-auto">
+                 <!-- Case Studies will be injected here -->
+            </div>
+        </section>
+
+        <section id="team-leadership" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Leading Your Team Through Change</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Integrating AI is as much about people as it is about technology. Here are tools to help you lead the conversation, address concerns, and build a culture of curiosity and adoption.</p>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-12">
+                <!-- Conversation Starters -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-4">Conversation Starters</h3>
+                    <p class="text-gray-600 mb-6">Use these open-ended questions in team meetings or 1-on-1s to start a positive dialogue about AI.</p>
+                    <ul class="space-y-4 text-gray-700 list-disc list-inside">
+                        <li>"What's one task from last week that felt like a chore? Let's brainstorm for 10 minutes on how an AI could have helped."</li>
+                        <li>"If you had an expert assistant who could instantly answer any question, what would you ask it to help you with your work?"</li>
+                        <li>"What are you most curious about learning to do with AI? What are you most concerned about?"</li>
+                         <li>"Let's identify one repetitive report we create. How could we use Gemini to generate the first draft for us?"</li>
+                    </ul>
+                </div>
+                <!-- Handling Resistance -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-4">Handling Resistance Playbook</h3>
+                    <p class="text-gray-600 mb-6">Click on a concern to see constructive, empathetic talking points to help you address it.</p>
+                    <div class="space-y-4" id="resistance-accordion">
+                        <details class="resistance-item">
+                            <summary>"Is this going to take my job?"</summary>
+                            <div class="answer">
+                                <p class="text-gray-700">"That's a valid concern, and I want to be clear: our goal isn't to replace anyone. It's to get rid of the boring, repetitive parts of our jobs so we can focus on the more strategic, interesting work that requires our expertise. Think of this as a tool to make you more effective, not to replace you."</p>
+                            </div>
+                        </details>
+                         <details class="resistance-item">
+                            <summary>"I don't have time to learn a new tool."</summary>
+                            <div class="answer">
+                                <p class="text-gray-700">"I completely understand that everyone is busy. That's why we're starting small. Let's find just one task that takes you 30 minutes a week and see if we can use this tool to do it in 5 minutes. The goal is to invest a little time now to save a lot of time later."</p>
+                            </div>
+                        </details>
+                         <details class="resistance-item">
+                            <summary>"I'm not a 'tech person', this seems too complicated."</summary>
+                            <div class="answer">
+                                <p class="text-gray-700">"You don't need to be a tech expert to use this. It's designed to be a conversation. If you can write an email, you can use Gemini. We'll learn together, and the 'Simulator' in this training is a great, no-pressure place to start."</p>
+                            </div>
+                        </details>
+                         <details class="resistance-item">
+                            <summary>"How can we trust its answers?"</summary>
+                            <div class="answer">
+                                <p class="text-gray-700">"That's an excellent point. We should always treat the output as a 'first draft' from a talented but new assistant. It's our job as the experts to review, verify, and refine the output. It's here to assist our judgment, not replace it."</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- Show and Tell Framework -->
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold text-[#4A90E2] mb-4">"Show and Tell" Meeting Framework</h3>
+                    <p class="text-gray-600 mb-6">Encourage peer-to-peer learning and make success contagious with a short, informal "Show and Tell" meeting.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-lg">Purpose:</h4>
+                            <p class="text-gray-700">To create a safe space for team members to share what they've accomplished or learned with Gemini, no matter how small.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg">Sample Agenda (30 mins):</h4>
+                            <ul class="list-disc list-inside text-gray-700">
+                                <li><strong>5 min:</strong> Welcome & Introduction</li>
+                                <li><strong>15 min:</strong> 3 team members each get 5 minutes to "show and tell" one thing they did with Gemini.</li>
+                                <li><strong>10 min:</strong> Open Q&A and brainstorming.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg">Tips for Success:</h4>
+                            <ul class="list-disc list-inside text-gray-700">
+                                <li>Keep it informal and low-pressure.</li>
+                                <li>Celebrate all attempts, not just perfect results.</li>
+                                <li>Focus on the learning: "What did you try? What was the result? What would you do differently?"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="what" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">The Leader's Playbook & Prompt Library</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Here are the practical tools you need. Below is an interactive library of Gemini prompts tailored for GBS tasks. Use the filters to find proven prompts you and your team can use today to start saving time and improving output quality.</p>
+            </div>
+
+            <div class="flex justify-center space-x-2 md:space-x-4 mb-8">
+                <button class="prompt-filter-btn active bg-[#4A90E2] text-white px-4 py-2 rounded-full text-sm font-semibold shadow">All</button>
+                <button class="prompt-filter-btn bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold shadow">Email</button>
+                <button class="prompt-filter-btn bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold shadow">Meetings</button>
+                <button class="prompt-filter-btn bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold shadow">Analysis</button>
+                <button class="prompt-filter-btn bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold shadow">Team</button>
+            </div>
+
+            <div id="prompt-library" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+        </section>
+
+        <section id="builder" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Guided Prompt Builder</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Craft the perfect prompt by following these steps. This tool helps you structure your request for Gemini to get the best possible results, tailored to your specific needs.</p>
+            </div>
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                    <!-- Step 1: Goal -->
+                    <div>
+                        <label for="promptGoal" class="block text-sm font-semibold text-gray-800 mb-2">Step 1: What is your goal?</label>
+                        <select id="promptGoal" class="builder-select w-full">
+                            <option>Summarize a document</option>
+                            <option>Draft an email</option>
+                            <option>Brainstorm ideas</option>
+                            <option>Explain a complex topic</option>
+                            <option>Create a plan</option>
+                        </select>
+                    </div>
+                    <!-- Step 2: Audience -->
+                    <div>
+                        <label for="promptAudience" class="block text-sm font-semibold text-gray-800 mb-2">Step 2: Who is the audience?</label>
+                        <select id="promptAudience" class="builder-select w-full">
+                            <option>For a senior executive</option>
+                            <option>For my team</option>
+                            <option>For a new hire</option>
+                            <option>For an external stakeholder</option>
+                        </select>
+                    </div>
+                    <!-- Step 3: Tone -->
+                    <div>
+                        <label for="promptTone" class="block text-sm font-semibold text-gray-800 mb-2">Step 3: What is the desired tone?</label>
+                        <select id="promptTone" class="builder-select w-full">
+                            <option>Formal</option>
+                            <option>Professional</option>
+                            <option>Friendly</option>
+                            <option>Assertive</option>
+                        </select>
+                    </div>
+                    <!-- Step 4: Format -->
+                    <div>
+                        <label for="promptFormat" class="block text-sm font-semibold text-gray-800 mb-2">Step 4: What is the output format?</label>
+                        <select id="promptFormat" class="builder-select w-full">
+                            <option>Bullet points</option>
+                            <option>A paragraph</option>
+                            <option>An email</option>
+                            <option>A JSON object</option>
+                            <option>A checklist</option>
+                        </select>
+                    </div>
+                    <!-- Step 5: Context -->
+                    <div class="md:col-span-2">
+                        <label for="promptContext" class="block text-sm font-semibold text-gray-800 mb-2">Step 5: Provide context (e.g., paste text to summarize, describe the topic to brainstorm)</label>
+                        <textarea id="promptContext" rows="6" class="builder-textarea w-full" placeholder="Paste your text or describe your task here..."></textarea>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <button id="generatePromptBtn" class="bg-[#4A90E2] text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600 transition-colors shadow-lg">
+                        Generate My Prompt
+                    </button>
+                </div>
+                <div id="generatedPromptContainer" class="mt-8 hidden">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Your Generated Prompt:</h4>
+                    <div class="relative bg-gray-100 p-4 rounded-lg">
+                        <pre id="generatedPromptOutput" class="whitespace-pre-wrap text-gray-700 text-sm leading-relaxed"></pre>
+                        <div class="absolute top-2 right-2 flex space-x-2">
+                            <button id="saveToLibraryBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded text-xs">Save</button>
+                            <button id="copyPromptBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded text-xs">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reverse-prompt" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">"Reverse Prompt" Generator</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Learn by deconstruction. Paste in a piece of high-quality text you've written, and this tool will analyze it and generate the prompt that could have created it.</p>
+            </div>
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                <div>
+                    <label for="reversePromptInput" class="block text-sm font-semibold text-gray-800 mb-2">Paste your completed work here (e.g., a well-written email, a summary):</label>
+                    <textarea id="reversePromptInput" rows="8" class="builder-textarea w-full" placeholder="Paste your text here..."></textarea>
+                </div>
+                <div class="mt-6 text-center">
+                    <button id="generateReversePromptBtn" class="bg-[#4A90E2] text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600 transition-colors shadow-lg">
+                        Generate Reverse Prompt
+                    </button>
+                </div>
+                <div id="reverse-prompt-spinner" class="hidden mx-auto mt-8 spinner"></div>
+                <div id="reverse-prompt-output-container" class="mt-8 hidden">
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-4">Generated Prompt:</h4>
+                        <div class="relative code-block bg-gray-800 text-gray-200">
+                            <pre id="reverse-prompt-output" class="whitespace-pre-wrap"></pre>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-4">Why this prompt is effective:</h4>
+                        <div id="reverse-prompt-explanation" class="p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-800"></div>
+                    </div>
+                </div>
+                 <div id="reverse-prompt-error" class="hidden mt-8 p-4 bg-red-100 text-red-700 rounded-lg"></div>
+            </div>
+        </section>
+
+        <section id="my-library" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">My Prompt Library</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Your personal collection of powerful prompts. Here you'll find your saved custom prompts from the builder and your favorited prompts from the main library.</p>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold tracking-tight mb-4 text-gray-800">My Custom Prompts</h3>
+                <div id="my-custom-prompts-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Custom prompts will be rendered here -->
+                </div>
+                <div id="no-custom-prompts" class="text-center py-8 px-4 bg-white rounded-lg shadow-sm">
+                    <p class="text-gray-500">You haven't saved any custom prompts yet. Use the "Builder" to create and save your own!</p>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold tracking-tight mb-4 text-gray-800">My Favorite Prompts</h3>
+                <div id="my-favorite-prompts-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Favorite prompts will be rendered here -->
+                </div>
+                 <div id="no-favorite-prompts" class="text-center py-8 px-4 bg-white rounded-lg shadow-sm">
+                    <p class="text-gray-500">You haven't favorited any prompts yet. Click the star icon on prompts in "The What" section to add them here.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulator" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Scenario Simulator</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Test your prompt-crafting skills. For each real-world GBS scenario below, choose the best prompt to solve the problem and get immediate feedback on your choice.</p>
+            </div>
+            <div id="simulator-container" class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                <!-- Scenarios will be injected here -->
+            </div>
+        </section>
+
+        <section id="my-day" class="page-section mb-16 md:mb-24 fade-in hidden">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">My Day with AI</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Experience a day in the life of an AI-powered GBS leader. Make choices to tackle common tasks and see how Gemini can help you save time and be more effective.</p>
+            </div>
+            <div id="my-day-container" class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                <!-- "My Day" simulator will be injected here -->
+            </div>
+        </section>
+
+        <section id="now" class="page-section fade-in hidden">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Your Action Plan: The "One-Task" Challenge</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">Change starts with a single step. Don't try to revolutionize everything overnight. Your mission is to identify one small, high-impact area and apply what you've learned. This creates a quick win and builds the confidence your team needs to embrace AI.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#4A90E2] mb-4">Your Mission, Should You Choose to Accept It:</h3>
+                        <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                            <li><span class="font-semibold">Identify ONE Task:</span> Use the "4 R's" audit to pick one repetitive or time-consuming task your team handles.</li>
+                            <li><span class="font-semibold">Block One Hour:</span> Schedule a "Gemini Jam Session" in your team's calendar this week.</li>
+                            <li><span class="font-semibold">Tackle the Task:</span> As a group, use the prompts from the library to see how Gemini can help with that specific task.</li>
+                            <li><span class="font-semibold">Share Your Experience:</span> Come prepared to share what you learned—the successes and the challenges—in our follow-up Teams channel.</li>
+                        </ol>
+                    </div>
+                     <div class="p-4">
+                        <div class="text-center flow-box p-4 rounded-lg shadow-inner">
+                            <h4 class="font-bold">List Every Task</h4>
+                        </div>
+                        <div class="flow-arrow"></div>
+                        <div class="text-center flow-box p-4 rounded-lg shadow-inner">
+                            <h4 class="font-bold">Streamline What Remains</h4>
+                        </div>
+                        <div class="flow-arrow"></div>
+                        <div class="text-center flow-box p-4 rounded-lg shadow-inner">
+                            <h4 class="font-bold">Automate with AI</h4>
+                        </div>
+                        <div class="flow-arrow"></div>
+                        <div class="text-center flow-box p-4 rounded-lg bg-green-100 border-green-300">
+                            <h4 class="font-bold text-green-800">Scale Faster</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- GLOBAL STATE ---
+        let db, auth, userId, userPromptsUnsubscribe, appId;
+        let userLibrary = []; // Local cache of user's prompts
+        let currentScenarioCategory = null;
+        let currentScenarioIndex = 0;
+        let currentDayEventIndex = 0;
+
+        // --- STATIC DATA ---
+        const prompts = [
+            { id: 'prebuilt-1', category: 'Email', title: 'Summarize Email Thread', content: "Act as a GBS project manager. Below is a long email thread about the 'Q3 Financial Reporting' project. Please summarize the key decisions made, the outstanding questions, and the action items for my team. [Paste email thread here]" },
+            { id: 'prebuilt-2', category: 'Email', title: 'Draft Professional Email', content: "Draft a professional but friendly email to a stakeholder, [Stakeholder Name], informing them that the 'Project Alpha' deliverable will be delayed by 2 days due to unforeseen data validation issues. Reassure them that the core timeline is not at risk and that we will provide the final report by EOD on [New Date]. Offer a brief call to answer any questions." },
+            { id: 'prebuilt-3', category: 'Email', title: 'Change Email Tone', content: "Make the following email draft more concise and assertive, while remaining professional. [Paste your draft email here]" },
+            { id: 'prebuilt-4', category: 'Meetings', title: 'Generate Meeting Agenda', content: "Generate a 30-minute meeting agenda for a kickoff call with the marketing team for a new 'Competitor Analysis' project. The goals are to align on scope, define deliverables, and agree on a timeline. Include time for introductions and Q&A." },
+            { id: 'prebuilt-5', category: 'Meetings', title: 'Summarize Meeting Notes', content: "Act as an executive assistant. Review the following raw meeting notes and transform them into a clean summary. The summary should have three sections: 'Key Discussion Points', 'Decisions Made', and a table of 'Action Items' with columns for 'Task', 'Owner', and 'Due Date'. [Paste raw meeting notes here]" },
+            { id: 'prebuilt-6', category: 'Analysis', title: 'Extract Structured Data', content: "I've pasted a project request email below. Please extract the key information and format it as a JSON object with the following keys: 'projectName', 'stakeholderName', 'requestedDueDate', 'keyDeliverables'. [Paste project request email here]" },
+            { id: 'prebuilt-7', category: 'Analysis', title: 'Brainstorm Report Content', content: "I need to create a 5-slide PowerPoint presentation summarizing our team's Q2 performance. Our key achievements were: completed Project Phoenix on time, reduced ticket response time by 15%, and onboarded two new team members. Our main challenge was a data outage in May. Please generate a slide-by-slide outline for this presentation, including a title and 3-4 bullet points for each slide." },
+            { id: 'prebuilt-8', category: 'Team', title: 'Create Process Checklist', content: "Our team needs to create a standard process for onboarding a new client into our system. The key steps involve: receiving the initial request, validating the data, creating the client profile in Salesforce, sending a welcome packet, and scheduling a kickoff call. Please turn this into a detailed checklist that a team member can follow." },
+            { id: 'prebuilt-9', category: 'Team', title: 'Explain a Complex Topic', content: "Explain the concept of 'data integrity' as you would to a new team member who has no technical background. Use an analogy to make it easy to understand." },
+        ];
+
+        const scenarios = {
+            "General": [
+                {
+                    id: 1,
+                    title: "The Angry Stakeholder",
+                    problem: "You receive an email from a senior VP who is unhappy with a recent report from your team. The email is curt and demands an immediate explanation for perceived inaccuracies. You need to de-escalate the situation and provide a clear, professional response quickly.",
+                    prompts: [
+                        { text: "Write an email to an angry VP.", isCorrect: false, feedback: "This prompt is too vague. It lacks the context and desired tone needed for such a sensitive task. The result will likely be generic and unhelpful." },
+                        { text: "Summarize the attached email thread and draft a polite, professional, and non-defensive response. Explain that we are investigating the data and will provide a full report within 24 hours. Acknowledge their frustration.", isCorrect: true, feedback: "Correct! This prompt is excellent. It provides context (the email), specifies the persona and tone ('polite, professional, non-defensive'), and gives a clear action plan ('investigating... provide a report')." },
+                        { text: "Tell me why the VP is wrong.", isCorrect: false, feedback: "This prompt is confrontational and assumes the stakeholder is incorrect without investigation. It will not help de-escalate the situation." }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "The 50-Page Document",
+                    problem: "You've just been handed a 50-page process document for a new system your team must adopt. You have a meeting about it in one hour and need to understand the key steps, requirements, and potential impacts on your team's workflow.",
+                    prompts: [
+                        { text: "Act as a GBS process expert. Read the following document and provide a summary of the top 5 most critical changes for a team of data analysts. Format the output as bullet points. Then, list 3 potential risks or challenges for implementation.", isCorrect: true, feedback: "Perfect! This prompt uses persona crafting ('GBS process expert'), is highly specific about the desired output (top 5 changes, 3 risks), and specifies the format (bullet points), ensuring a concise and relevant summary." },
+                        { text: "Read this and tell me what it says.", isCorrect: false, feedback: "This is a very low-effort prompt. While Gemini will provide a summary, it will be generic and may not focus on the aspects most critical to you as a leader (workflow changes, risks, etc.)." },
+                        { text: "Make this document shorter.", isCorrect: false, feedback: "This is slightly better but still lacks specificity. 'Shorter' is subjective. The result will be a condensed version, but it might miss the key details you need for your meeting." }
+                    ]
+                }
+            ],
+            "Sales Ops": [
+                {
+                    id: 3,
+                    title: "Cleaning Lead Data",
+                    problem: "You have a list of 100 new leads from a conference, but the data is messy. It's in a single block of text with inconsistent formatting. You need to extract the Name, Company, and Email for each lead and format it as a clean CSV for import into Salesforce.",
+                    prompts: [
+                        { text: "Format this text.", isCorrect: false, feedback: "Too vague. 'Format' could mean anything. You need to specify the input, the desired output structure (CSV), and the specific data to extract." },
+                        { text: "Below is a block of text containing lead data. Extract the Name, Company, and Email for each person. Format the output as a CSV with headers: 'Name', 'Company', 'Email'.", isCorrect: true, feedback: "Excellent! This prompt clearly defines the task, specifies the exact data points to find, and dictates the precise output format (CSV with headers), making it ready for system import." },
+                        { text: "Find the emails in this text.", isCorrect: false, feedback: "This only solves part of the problem. You'll get the emails, but you'll miss the names and companies, requiring more manual work." }
+                    ]
+                }
+            ],
+            "HR Support": [
+                 {
+                    id: 4,
+                    title: "New Hire Onboarding",
+                    problem: "A new Financial Analyst is starting on your team next Monday. You need to create a comprehensive 30-day onboarding plan to get them up to speed quickly.",
+                    prompts: [
+                        { text: "Act as an experienced HR onboarding specialist. Create a detailed 30-day onboarding plan for a new Financial Analyst. The plan should be broken down by week and include sections for company policies, system training (Excel, SAP), key introductions to team members, and initial project assignments.", isCorrect: true, feedback: "This is a great prompt. It uses a specific persona, clearly defines the role being onboarded, and outlines the key components and structure (weekly breakdown, specific sections) for the plan." },
+                        { text: "Make an onboarding plan.", isCorrect: false, feedback: "This is too generic. It doesn't specify the role, the duration, or what topics the plan should cover, leading to a very high-level and likely unusable output." },
+                        { text: "What should a new hire learn?", isCorrect: false, feedback: "This will give you a list of topics, but not a structured, actionable plan. It creates more work for you to organize the ideas." }
+                    ]
+                }
+            ],
+            "IT Admin": [
+                 {
+                    id: 5,
+                    title: "Explaining a New Policy",
+                    problem: "Your department is rolling out a new, mandatory multi-factor authentication (MFA) policy. You need to draft a clear, concise email to all GBS employees, many of whom are not technical, explaining what MFA is, why it's important, and what they need to do.",
+                    prompts: [
+                        { text: "Explain MFA.", isCorrect: false, feedback: "This will give you a technical definition of MFA, which is likely too complex for a non-technical audience and won't include the 'call to action' part of your task." },
+                        { text: "Write an email about the new security policy.", isCorrect: false, feedback: "This is better, but it lacks the crucial context of the audience. The tone might be too technical or the explanation not simple enough." },
+                        { text: "Act as a helpful IT support specialist. Draft an email to all non-technical employees about a new MFA policy. Use a simple analogy to explain what MFA is and why it's important for security. Clearly state the deadline and provide a link to the setup instructions.", isCorrect: true, feedback: "Perfect. This prompt defines the persona, the audience (non-technical), the specific content to include (analogy, deadline, link), and the goal (to inform and guide action)." }
+                    ]
+                }
+            ]
+        };
+
+        const caseStudies = {
+            "Project Management": [
+                {
+                    title: "The Raw Request",
+                    description: "It starts with a vague email from a stakeholder. It has a goal, but lacks structure and clear deliverables.",
+                    prompt: `<strong>From:</strong> VP of Sales<br><strong>Subject:</strong> Q3 sales data<br><br>Hi team, I need a better way to see our regional sales performance for Q3. The current reports are too dense. I want to see top performers, regional totals, and product line breakdowns. Need something for the board meeting next week.`
+                },
+                {
+                    title: "Create a Project Brief",
+                    description: "Your first step is to bring clarity. Use Gemini to deconstruct the email and create a structured brief. This ensures you and the stakeholder are aligned.",
+                    prompt: `Act as a GBS project manager. Read the email below and transform it into a structured project brief. Extract the key stakeholder, the primary objective, the required data points (deliverables), and the deadline. Format this as a clean, easy-to-read summary.<br><br><span class="text-gray-500">[Paste the email text from Step 1 here]</span>`
+                },
+                {
+                    title: "Draft a Project Plan",
+                    description: "Now that you have a clear brief (the output from Step 2), you can create a high-level project plan. This is another prompt chaining example.",
+                    prompt: `Using the project brief below, create a high-level project plan. The plan should include four phases: Data Gathering, Data Validation, Report Development, and Final Review. Suggest a 1-week timeline, assigning 2 days to each of the first three phases and 1 day to the final review.<br><br><span class="text-gray-500">[Paste the project brief from Step 2 here]</span>`
+                },
+                {
+                    title: "Write the Kickoff Meeting Agenda",
+                    description: "With a plan in place, you're ready to meet with your team. Use the project plan from Step 3 to create a focused meeting agenda.",
+                    prompt: `Based on the project plan below, create a 30-minute kickoff meeting agenda. The goals are to align the team on the project scope, deliverables, and timeline. Include agenda items for reviewing the plan, assigning roles, and a Q&A session.<br><br><span class="text-gray-500">[Paste the project plan from Step 3 here]</span>`
+                }
+            ],
+            "Sales Ops": [
+                 {
+                    title: "Initial Request",
+                    description: "The Head of Sales wants a summary of Q2 performance, including key trends and a comparison to Q1, but provides no data.",
+                    prompt: `Hi, I need the Q2 sales performance summary for the leadership meeting. I want to see the key trends and how we did against Q1. Thanks.`
+                },
+                {
+                    title: "Data Analysis",
+                    description: "After gathering the raw data, you use Gemini to perform the initial analysis.",
+                    prompt: `Act as a senior sales operations analyst. You have been given raw sales data for Q1 and Q2. Analyze the data to identify the top 3 performing regions, the bottom 3 performing regions, and the overall percentage growth or decline from Q1 to Q2. Present your findings as a concise summary.`
+                },
+                {
+                    title: "Draft Summary Email",
+                    description: "Using the analysis from the previous step, draft a clear and concise email for the Head of Sales.",
+                    prompt: `Based on the sales analysis below, draft a professional email to the Head of Sales. Start with the overall performance summary, then list the top and bottom performing regions in bullet points. Conclude by noting that a full presentation is in progress.<br><br><span class="text-gray-500">[Paste summary from Step 2 here]</span>`
+                },
+                 {
+                    title: "Create Presentation Outline",
+                    description: "Finally, create a presentation outline based on the email summary for the leadership meeting.",
+                    prompt: `Using the email summary below, create a 5-slide presentation outline. The slides should be: 1. Title Slide. 2. Q2 Performance Overview. 3. Top & Bottom Performing Regions. 4. Key Trends & Insights. 5. Next Steps.<br><br><span class="text-gray-500">[Paste email text from Step 3 here]</span>`
+                }
+            ],
+             "HR Support": [
+                 {
+                    title: "The Problem",
+                    description: "The HR team has noticed a high volume of repetitive questions about the new remote work policy.",
+                    prompt: `Team, we are getting a lot of the same questions about the new remote work policy. We need a way to handle this more efficiently.`
+                },
+                {
+                    title: "Categorize Questions",
+                    description: "First, use Gemini to group the raw list of questions into logical themes.",
+                    prompt: `Below is a list of questions we've received about the new remote work policy. Categorize these questions into logical groups (e.g., 'Eligibility', 'Equipment', 'Expectations').<br><br><span class="text-gray-500">[Paste list of raw questions here]</span>`
+                },
+                {
+                    title: "Draft FAQ Answers",
+                    description: "Now, use the categories from Step 2 to draft clear answers for each group.",
+                    prompt: `You are an HR communications specialist. For each category of questions below, draft a clear, concise, and helpful answer. The tone should be supportive and professional.<br><br><span class="text-gray-500">[Paste categorized questions from Step 2 here]</span>`
+                },
+                {
+                    title: "Announce the New FAQ",
+                    description: "Finally, draft a company-wide announcement introducing the new, helpful FAQ document.",
+                    prompt: `Draft a company-wide email announcing a new FAQ document for the remote work policy. Explain that this resource was created to provide quick answers to common questions. Include a link to the new FAQ page and encourage employees to review it.`
+                }
+            ],
+             "IT Admin": [
+                 {
+                    title: "The Audit Finding",
+                    description: "An audit reveals that several users have licenses for expensive software they rarely use, costing the company money.",
+                    prompt: `Audit complete for 'PowerDesign Suite'. Report shows 45 licenses are assigned to users who have not logged in for over 90 days. We need to reclaim these licenses to optimize our budget.`
+                },
+                {
+                    title: "Draft User Email",
+                    description: "Use Gemini to draft a polite but clear email to the users with inactive licenses.",
+                    prompt: `Act as a courteous IT administrator. Draft a friendly but direct email to a list of users. Inform them that a software license audit for 'PowerDesign Suite' is underway. Ask them to confirm if they still require the license for their daily work by replying within 5 business days. Explain that unconfirmed licenses will be reclaimed to optimize costs.`
+                },
+                {
+                    title: "Create a Tracking Sheet",
+                    description: "To manage the responses, ask Gemini to create a simple tracking table.",
+                    prompt: `Create a Markdown table to track the software license audit. The columns should be: 'User Name', 'Email', 'Responded (Y/N)', 'License Reclaimed (Y/N)', and 'Notes'.`
+                },
+                {
+                    title: "Report to Management",
+                    description: "After the 5-day period, use the tracking sheet to create a summary report for your manager.",
+                    prompt: `Based on the tracking sheet data below, write a brief summary report for my manager. State the total number of licenses reviewed, how many were reclaimed, and the estimated annual cost savings (assume each license costs $500/year).<br><br><span class="text-gray-500">[Paste final tracking data here]</span>`
+                }
+            ]
+        };
+
+        const myDayEvents = [
+            {
+                time: "9:00 AM",
+                task: "You arrive at your desk to find 50 unread emails. You need to quickly identify what's urgent and what can wait.",
+                options: [
+                    { text: "Read all my emails.", outcome: "This is inefficient. You'll spend an hour just reading, losing valuable time." },
+                    { text: "Summarize my unread emails. Create a table with columns for Sender, Subject, a 1-sentence summary, and a priority rating (High, Medium, Low).", outcome: "Excellent choice! In seconds, you have a prioritized list. You see 3 high-priority items to tackle first and can ignore the rest for now." }
+                ]
+            },
+            {
+                time: "10:30 AM",
+                task: "A stakeholder sends a last-minute request: 'Can you get me the key takeaways from the attached 20-page Q2 performance report? I have a meeting in 30 minutes.'",
+                 options: [
+                    { text: "Summarize the attached document into 5 key bullet points, focusing on financial performance and project milestones. The audience is a senior executive.", outcome: "Perfect! You provide a concise, relevant summary in minutes, making your stakeholder look prepared for their meeting." },
+                    { text: "Tell me what this document is about.", outcome: "This will give you a general summary, but it might not be focused enough for a senior executive who needs specific, high-level takeaways." }
+                ]
+            },
+            {
+                time: "2:00 PM",
+                task: "You need to prepare for your 1-on-1 with a team member. You want to have a productive conversation about their recent project work and career goals.",
+                 options: [
+                    { text: "Brainstorm questions for a 1-on-1 meeting.", outcome: "This is a good start, but it's generic. The questions might not be tailored to this specific situation." },
+                    { text: "Act as a supportive manager. Generate 3 open-ended questions for a 1-on-1 with a team member to discuss their recent work on 'Project Alpha' and their long-term career aspirations.", outcome: "Great choice! This gives you specific, thoughtful questions that show you're engaged with their work and invested in their growth, leading to a much more productive conversation." }
+                ]
+            }
+        ];
+
+        const opportunityData = {
+            labels: ['Repetitive', 'Research-heavy', 'Reactive', 'Reporting'],
+            datasets: [{
+                label: 'Team Task Distribution',
+                data: [35, 25, 20, 20], // Initial values
+                backgroundColor: [
+                    'rgba(74, 144, 226, 0.7)',
+                    'rgba(80, 227, 194, 0.7)',
+                    'rgba(245, 166, 35, 0.7)',
+                    'rgba(126, 211, 33, 0.7)'
+                ],
+                borderColor: [
+                    '#4A90E2',
+                    '#50E3C2',
+                    '#F5A623',
+                    '#7ED321'
+                ],
+                borderWidth: 2,
+                hoverOffset: 8
+            }]
+        };
+
+        const opportunityDetailsData = {
+            'Repetitive': {
+                title: 'Tackling Repetitive Tasks',
+                description: 'These are the routine, low-variability tasks that consume significant time but offer little strategic value. Gemini excels at automating these, freeing up your team for more complex problem-solving.',
+                examples: [
+                    'Drafting standard weekly status reports.',
+                    'Compiling data from multiple sources into a single sheet.',
+                    'Responding to common internal or external queries with a consistent message.'
+                ]
+            },
+            'Research-heavy': {
+                title: 'Accelerating Research & Synthesis',
+                description: 'Tasks that require gathering, reading, and synthesizing large amounts of information are prime candidates for AI. Gemini can act as a research assistant, providing summaries and key insights in seconds.',
+                examples: [
+                    'Summarizing long documents or articles to prepare for a meeting.',
+                    'Conducting initial market or competitor analysis.',
+                    'Getting up to speed on a new internal process or project history.'
+                ]
+            },
+            'Reactive': {
+                title: 'Improving Reactive Workflows',
+                description: 'This involves responding to ad-hoc requests and questions. Gemini can provide instant, accurate answers based on existing knowledge, reducing interruptions for your subject matter experts.',
+                examples: [
+                    'Answering team questions about a specific company policy or process.',
+                    'Providing quick status updates to stakeholders based on project notes.',
+                    'Drafting initial responses to stakeholder requests for information.'
+                ]
+            },
+            'Reporting': {
+                title: 'Streamlining Reporting & Summarization',
+                description: 'The process of creating summaries, presentations, and reports is often time-consuming. Gemini can create first drafts, outlines, and summaries from raw data or notes, drastically cutting down preparation time.',
+                examples: [
+                    'Creating a PowerPoint outline from a long report.',
+                    'Writing a summary paragraph of project progress from bullet points.',
+                    'Transforming meeting notes into a formal summary for distribution.'
+                ]
+            }
+        };
+
+        // --- FIREBASE INITIALIZATION ---
+        async function initFirebase() {
+            appId = typeof __app_id !== 'undefined' ? __app_id : 'gbs-gemini-training';
+            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+
+            if (!firebaseConfig) {
+                console.error("Firebase config not found.");
+                return;
+            }
+
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+
+            onAuthStateChanged(auth, user => {
+                if (user) {
+                    userId = user.uid;
+                    console.log("User is signed in with UID:", userId);
+                    loadUserLibrary();
+                } else {
+                    console.log("User is signed out.");
+                    if (userPromptsUnsubscribe) userPromptsUnsubscribe();
+                }
+            });
+
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (error) {
+                console.error("Authentication failed:", error);
+            }
+        }
+
+        // --- DATA HANDLING (FIRESTORE) ---
+        function loadUserLibrary() {
+            if (!userId) return;
+            const promptsCollectionPath = `/artifacts/${appId}/users/${userId}/prompts`;
+            const q = query(collection(db, promptsCollectionPath));
+
+            userPromptsUnsubscribe = onSnapshot(q, (querySnapshot) => {
+                userLibrary = [];
+                querySnapshot.forEach((doc) => {
+                    userLibrary.push({ id: doc.id, ...doc.data() });
+                });
+                console.log("User library loaded/updated:", userLibrary);
+                renderMyLibrary();
+                displayPrompts('All'); // Re-render main library to update favorite statuses
+            });
+        }
+
+        async function addPromptToLibrary(promptData) {
+            if (!userId) return;
+            const promptsCollectionPath = `/artifacts/${appId}/users/${userId}/prompts`;
+            try {
+                await addDoc(collection(db, promptsCollectionPath), promptData);
+                console.log("Prompt added to library");
+            } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        }
+
+        async function removePromptFromLibrary(promptId) {
+            if (!userId) return;
+            const docPath = `/artifacts/${appId}/users/${userId}/prompts/${promptId}`;
+            try {
+                await deleteDoc(doc(db, docPath));
+                console.log("Prompt removed from library");
+            } catch(e) {
+                console.error("Error removing document: ", e);
+            }
+        }
+
+        // --- RENDER FUNCTIONS ---
+        function renderMyLibrary() {
+            const customList = document.getElementById('my-custom-prompts-list');
+            const favoriteList = document.getElementById('my-favorite-prompts-list');
+            const noCustomMsg = document.getElementById('no-custom-prompts');
+            const noFavoriteMsg = document.getElementById('no-favorite-prompts');
+
+            if (!customList) return; // Exit if not on the right page
+
+            customList.innerHTML = '';
+            favoriteList.innerHTML = '';
+
+            const customPrompts = userLibrary.filter(p => p.type === 'custom');
+            const favoritePrompts = userLibrary.filter(p => p.type === 'favorite');
+
+            // Render Custom Prompts
+            if (customPrompts.length > 0) {
+                noCustomMsg.classList.add('hidden');
+                customList.classList.remove('hidden');
+                customPrompts.forEach(prompt => {
+                    const card = createPromptCard(prompt, true);
+                    customList.appendChild(card);
+                });
+            } else {
+                noCustomMsg.classList.remove('hidden');
+                customList.classList.add('hidden');
+            }
+
+            // Render Favorite Prompts
+            if (favoritePrompts.length > 0) {
+                noFavoriteMsg.classList.add('hidden');
+                favoriteList.classList.remove('hidden');
+                favoritePrompts.forEach(prompt => {
+                    const originalPrompt = prompts.find(p => p.id === prompt.originalId);
+                    if (originalPrompt) {
+                       const card = createPromptCard({ ...originalPrompt, libraryId: prompt.id }, true);
+                       favoriteList.appendChild(card);
+                    }
+                });
+            } else {
+                noFavoriteMsg.classList.remove('hidden');
+                favoriteList.classList.add('hidden');
+            }
+        }
+
+        const promptLibraryEl = document.getElementById('prompt-library');
+        function displayPrompts(filter) {
+            if (!promptLibraryEl) return;
+            promptLibraryEl.innerHTML = '';
+            const filteredPrompts = (filter === 'All') ? prompts : prompts.filter(p => p.category === filter);
+
+            filteredPrompts.forEach(prompt => {
+                const card = createPromptCard(prompt, false);
+                promptLibraryEl.appendChild(card);
+            });
+        }
+
+        function createPromptCard(prompt, isMyLibrary) {
+            const card = document.createElement('div');
+            card.className = 'prompt-card bg-white p-6 rounded-lg shadow-sm';
+
+            const isFavorited = userLibrary.some(p => p.type === 'favorite' && p.originalId === prompt.id);
+
+            let buttonsHtml = '';
+            if (isMyLibrary) {
+                if (prompt.type === 'custom') { // It's a custom prompt in the library
+                    buttonsHtml = `<button data-id="${prompt.id}" class="remove-custom-btn text-red-500 hover:text-red-700 text-xs font-semibold">Remove</button>`;
+                } else { // It's a favorited prompt in the library
+                    buttonsHtml = `<button data-id="${prompt.libraryId}" class="unfavorite-btn text-red-500 hover:text-red-700 text-xs font-semibold">Unfavorite</button>`;
+                }
+            } else { // It's in the main library
+                buttonsHtml = `
+                    <svg data-id="${prompt.id}" class="favorite-btn h-6 w-6 ${isFavorited ? 'favorited' : ''}" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                `;
+            }
+
+            card.innerHTML = `
+                <div>
+                    <h4 class="font-bold text-lg mb-2 text-[#4A90E2]">${prompt.title}</h4>
+                    <p class="text-gray-600 text-sm">${prompt.content}</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end items-center">
+                    ${buttonsHtml}
+                </div>
+            `;
+            return card;
+        }
+
+
+        // --- EVENT LISTENERS ---
+        document.addEventListener('click', (e) => {
+            // Favorite button in main library
+            if (e.target.closest('.favorite-btn')) {
+                const btn = e.target.closest('.favorite-btn');
+                const promptId = btn.dataset.id;
+                const existingFavorite = userLibrary.find(p => p.type === 'favorite' && p.originalId === promptId);
+
+                if (existingFavorite) {
+                    removePromptFromLibrary(existingFavorite.id);
+                } else {
+                    addPromptToLibrary({ type: 'favorite', originalId: promptId });
+                }
+            }
+            // Unfavorite button in my library
+            if (e.target.matches('.unfavorite-btn')) {
+                removePromptFromLibrary(e.target.dataset.id);
+            }
+            // Remove custom button in my library
+            if (e.target.matches('.remove-custom-btn')) {
+                removePromptFromLibrary(e.target.dataset.id);
+            }
+        });
+
+        const promptFilterBtns = document.querySelectorAll('.prompt-filter-btn');
+        promptFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                promptFilterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-[#4A90E2]', 'text-white');
+                    b.classList.add('bg-white', 'text-gray-700');
+                });
+                btn.classList.add('active', 'bg-[#4A90E2]', 'text-white');
+                btn.classList.remove('bg-white', 'text-gray-700');
+                displayPrompts(btn.textContent);
+            });
+        });
+
+        const sections = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateSectionVisibility() {
+            const hash = window.location.hash;
+            const path = window.location.pathname.split('/').pop().replace('.html', '');
+            let targetId;
+
+            if (hash) {
+                targetId = hash;
+            } else if (path && path !== 'index' && path !== '') {
+                targetId = '#' + path;
+            } else {
+                targetId = '#why';
+            }
+
+            const toolHashes = ['#what', '#builder', '#my-library', '#simulator', '#reverse-prompt', '#my-day'];
+            const toolsDropdownBtn = document.getElementById('tools-dropdown-btn');
+
+            sections.forEach(section => {
+                const isVisible = '#' + section.id === targetId;
+                section.classList.toggle('hidden', !isVisible);
+                if (isVisible) {
+                    section.classList.add('fade-in');
+                    // Initialize content for the visible section
+                    if (section.id === 'case-studies' && !section.dataset.initialized) {
+                        initializeCaseStudies();
+                        section.dataset.initialized = 'true';
+                    }
+                    if (section.id === 'simulator' && !section.dataset.initialized) {
+                         displaySimulatorCategoryMenu();
+                        section.dataset.initialized = 'true';
+                    }
+                     if (section.id === 'my-day' && !section.dataset.initialized) {
+                        loadDayEvent(0);
+                        section.dataset.initialized = 'true';
+                    }
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === targetId);
+            });
+
+            if (toolsDropdownBtn) {
+                toolsDropdownBtn.classList.toggle('active', toolHashes.includes(targetId));
+            }
+        }
+
+        window.addEventListener('hashchange', updateSectionVisibility);
+
+
+        // --- Dropdown Menu Logic ---
+        const toolsDropdown = document.getElementById('tools-dropdown');
+        if (toolsDropdown) {
+            const btn = document.getElementById('tools-dropdown-btn');
+            const menu = document.getElementById('tools-dropdown-menu');
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.contains('hidden');
+                if (isHidden) {
+                    menu.classList.remove('hidden', 'opacity-0', 'scale-95');
+                    menu.classList.add('opacity-100', 'scale-100');
+                } else {
+                    menu.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => menu.classList.add('hidden'), 100); // Wait for transition
+                }
+            });
+            // Close dropdown when clicking outside
+            window.addEventListener('click', (e) => {
+                if (!toolsDropdown.contains(e.target)) {
+                    menu.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => menu.classList.add('hidden'), 100);
+                }
+            });
+             // Close dropdown when an item is clicked
+            menu.addEventListener('click', () => {
+                 menu.classList.add('opacity-0', 'scale-95');
+                 setTimeout(() => menu.classList.add('hidden'), 100);
+            });
+        }
+
+        // --- Chart and Slider Logic ---
+        const ctx = document.getElementById('opportunityChart')?.getContext('2d');
+        if (ctx) {
+            const myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: opportunityData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { padding: 20, font: { size: 14 } }
+                        },
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: '#4A4A4A',
+                            titleFont: { size: 16, weight: 'bold' },
+                            bodyFont: { size: 14 },
+                            padding: 12
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const i = elements[0].index;
+                            const category = opportunityData.labels[i];
+                            const details = opportunityDetailsData[category];
+
+                            document.getElementById('opportunity-intro').classList.add('hidden');
+                            const detailsContainer = document.getElementById('opportunity-details');
+                            detailsContainer.classList.remove('hidden');
+                            detailsContainer.classList.add('fade-in');
+
+                            document.getElementById('opportunity-title').textContent = details.title;
+                            document.getElementById('opportunity-description').textContent = details.description;
+                            const examplesList = document.getElementById('opportunity-examples');
+                            examplesList.innerHTML = '';
+                            details.examples.forEach(ex => {
+                                const li = document.createElement('li');
+                                li.textContent = ex;
+                                examplesList.appendChild(li);
+                            });
+                        }
+                    }
+                }
+            });
+
+            const sliders = {
+                repetitive: document.getElementById('repetitiveSlider'),
+                research: document.getElementById('researchSlider'),
+                reactive: document.getElementById('reactiveSlider'),
+                reporting: document.getElementById('reportingSlider')
+            };
+            const values = {
+                repetitive: document.getElementById('repetitiveValue'),
+                research: document.getElementById('researchValue'),
+                reactive: document.getElementById('reactiveValue'),
+                reporting: document.getElementById('reportingValue')
+            };
+            const totalPercentageEl = document.getElementById('totalPercentage');
+
+            function updateChartAndValues() {
+                const newValues = [
+                    parseInt(sliders.repetitive.value),
+                    parseInt(sliders.research.value),
+                    parseInt(sliders.reactive.value),
+                    parseInt(sliders.reporting.value)
+                ];
+                myChart.data.datasets[0].data = newValues;
+                myChart.update();
+                values.repetitive.textContent = `${newValues[0]}%`;
+                values.research.textContent = `${newValues[1]}%`;
+                values.reactive.textContent = `${newValues[2]}%`;
+                values.reporting.textContent = `${newValues[3]}%`;
+                const total = newValues.reduce((sum, val) => sum + val, 0);
+                totalPercentageEl.textContent = `${total}%`;
+                totalPercentageEl.classList.toggle('text-red-500', total !== 100);
+                totalPercentageEl.classList.toggle('text-green-600', total === 100);
+            }
+
+            for (const key in sliders) {
+                if(sliders[key]) sliders[key].addEventListener('input', updateChartAndValues);
+            }
+            updateChartAndValues();
+        }
+
+        // --- Prompt Builder Logic ---
+        const generatePromptBtn = document.getElementById('generatePromptBtn');
+        const saveToLibraryBtn = document.getElementById('saveToLibraryBtn');
+
+        if (generatePromptBtn) {
+            generatePromptBtn.addEventListener('click', () => {
+                const goal = document.getElementById('promptGoal').value;
+                const audience = document.getElementById('promptAudience').value;
+                const tone = document.getElementById('promptTone').value;
+                const format = document.getElementById('promptFormat').value;
+                const context = document.getElementById('promptContext').value.trim();
+
+                if (!context) {
+                    console.warn('Please provide some context for your prompt.');
+                    return;
+                }
+
+                let promptText = `Act as an expert GBS Manager. Your task is to ${goal.toLowerCase()}. The audience is ${audience.toLowerCase()}. The tone of the response should be ${tone.toLowerCase()} and the output must be in the format of ${format.toLowerCase()}.\n\nBased on these requirements, please process the following context:\n\n---\n${context}\n---`;
+
+                document.getElementById('generatedPromptOutput').textContent = promptText;
+                document.getElementById('generatedPromptContainer').classList.remove('hidden');
+            });
+        }
+
+        if (saveToLibraryBtn) {
+            saveToLibraryBtn.addEventListener('click', () => {
+                const content = document.getElementById('generatedPromptOutput').textContent;
+                const title = document.getElementById('promptGoal').value; // Use goal as title
+
+                if (content) {
+                    const newPrompt = {
+                        type: 'custom',
+                        title: `Custom: ${title}`,
+                        content: content,
+                        createdAt: new Date().toISOString()
+                    };
+                    addPromptToLibrary(newPrompt);
+                    saveToLibraryBtn.textContent = 'Saved!';
+                    setTimeout(() => { saveToLibraryBtn.textContent = 'Save'; }, 2000);
+                }
+            });
+        }
+
+        const copyPromptBtn = document.getElementById('copyPromptBtn');
+        if(copyPromptBtn) {
+            copyPromptBtn.addEventListener('click', () => {
+                const textToCopy = document.getElementById('generatedPromptOutput').textContent;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    copyPromptBtn.textContent = 'Copied!';
+                    setTimeout(() => { copyPromptBtn.textContent = 'Copy'; }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
+            });
+        }
+
+        // --- Reverse Prompt Logic ---
+        const generateReversePromptBtn = document.getElementById('generateReversePromptBtn');
+        if (generateReversePromptBtn) {
+            generateReversePromptBtn.addEventListener('click', async () => {
+                const input_text = document.getElementById('reversePromptInput').value;
+                const spinner = document.getElementById('reverse-prompt-spinner');
+                const outputContainer = document.getElementById('reverse-prompt-output-container');
+                const errorContainer = document.getElementById('reverse-prompt-error');
+
+                if (!input_text.trim()) {
+                    errorContainer.textContent = 'Please paste some text to analyze.';
+                    errorContainer.classList.remove('hidden');
+                    return;
+                }
+
+                spinner.classList.remove('hidden');
+                outputContainer.classList.add('hidden');
+                errorContainer.classList.add('hidden');
+
+                const meta_prompt = `You are an expert in prompt engineering. Analyze the following text and generate a high-quality, effective prompt that could have been used to create it. Break down your reasoning, explaining why the prompt you created is effective. The prompt should be structured to include: 1. A clear persona (e.g., 'Act as a...'). 2. A specific task or goal. 3. Instructions on tone and format if they can be inferred from the text. Return your response as a JSON object with two keys: "generated_prompt" and "explanation".\n\nText to analyze:\n---\n${input_text}\n---`;
+
+                try {
+                    const apiKey = ""; // TODO: Add your Google AI API key here
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const payload = { contents: [{ role: "user", parts: [{ text: meta_prompt }] }] };
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates[0].content.parts[0].text) {
+                        const responseText = result.candidates[0].content.parts[0].text;
+                        const cleanedText = responseText.replace(/```json|```/g, '').trim();
+                        const parsedJson = JSON.parse(cleanedText);
+
+                        document.getElementById('reverse-prompt-output').textContent = parsedJson.generated_prompt;
+                        document.getElementById('reverse-prompt-explanation').textContent = parsedJson.explanation;
+                        outputContainer.classList.remove('hidden');
+                    } else {
+                        throw new Error("Invalid response structure from API.");
+                    }
+                } catch (error) {
+                    console.error("Reverse prompt generation failed:", error);
+                    errorContainer.textContent = "Sorry, something went wrong while generating the prompt. Please try again.";
+                    errorContainer.classList.remove('hidden');
+                } finally {
+                    spinner.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- Scenario Simulator Logic ---
+        const simulatorContainer = document.getElementById('simulator-container');
+
+        function displaySimulatorCategoryMenu() {
+            if (!simulatorContainer) return;
+            let categoryHtml = Object.keys(scenarios).map(category => `
+                <div class="category-option p-6 rounded-lg cursor-pointer text-center" data-category="${category}">
+                    <h3 class="font-bold text-xl text-[#4A90E2]">${category}</h3>
+                </div>
+            `).join('');
+
+            simulatorContainer.innerHTML = `
+                <h3 class="text-2xl font-bold text-center mb-6">Choose a Scenario Category</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">${categoryHtml}</div>
+            `;
+        }
+
+        function loadScenario() {
+            if (!simulatorContainer || !currentScenarioCategory) return;
+
+            const scenario = scenarios[currentScenarioCategory][currentScenarioIndex];
+
+            if (!scenario) {
+                simulatorContainer.innerHTML = `
+                    <p class="text-center text-gray-600 text-xl">You've completed all scenarios in this category!</p>
+                    <div class="mt-6 text-center">
+                        <button id="backToCategoriesBtn" class="bg-gray-600 text-white font-bold py-2 px-6 rounded-full hover:bg-gray-700 transition-colors">Back to Categories</button>
+                    </div>
+                `;
+                return;
+            }
+
+            let optionsHtml = scenario.prompts.map((p, i) => `
+                <div class="scenario-option p-4 rounded-lg cursor-pointer" data-index="${i}">
+                    <p class="font-semibold">${p.text}</p>
+                    <div class="feedback mt-2 text-sm hidden"></div>
+                </div>
+            `).join('');
+
+            simulatorContainer.innerHTML = `
+                 <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold text-[#4A90E2]">${scenario.title}</h3>
+                    <button id="backToCategoriesBtn" class="text-sm text-gray-500 hover:text-gray-800">&larr; Back to Categories</button>
+                </div>
+                <p class="text-gray-600 mb-6">${scenario.problem}</p>
+                <div class="space-y-4">${optionsHtml}</div>
+                <div class="mt-6 text-right">
+                    <button id="nextScenarioBtn" class="hidden bg-[#4A90E2] text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition-colors">Next Scenario</button>
+                </div>
+            `;
+        }
+
+        if (simulatorContainer) {
+            simulatorContainer.addEventListener('click', e => {
+                // Category selection
+                const categoryEl = e.target.closest('.category-option');
+                if (categoryEl) {
+                    currentScenarioCategory = categoryEl.dataset.category;
+                    currentScenarioIndex = 0;
+                    loadScenario();
+                    return;
+                }
+
+                // Go back to category menu
+                if (e.target.id === 'backToCategoriesBtn') {
+                    currentScenarioCategory = null;
+                    displaySimulatorCategoryMenu();
+                    return;
+                }
+
+                // Prompt option selection
+                const optionEl = e.target.closest('.scenario-option');
+                if (optionEl && !optionEl.classList.contains('selected')) {
+                    const selectedIndex = parseInt(optionEl.dataset.index);
+                    const scenario = scenarios[currentScenarioCategory][currentScenarioIndex];
+                    const selectedPrompt = scenario.prompts[selectedIndex];
+
+                    // Disable further clicks
+                    const allOptions = simulatorContainer.querySelectorAll('.scenario-option');
+                    allOptions.forEach(opt => opt.classList.add('selected')); // Mark all as selected to prevent re-clicks
+
+                    // Show feedback
+                    const feedbackEl = optionEl.querySelector('.feedback');
+                    feedbackEl.textContent = selectedPrompt.feedback;
+                    feedbackEl.classList.remove('hidden');
+
+                    if (selectedPrompt.isCorrect) {
+                        optionEl.classList.add('correct');
+                    } else {
+                        optionEl.classList.add('incorrect');
+                        // Highlight the correct one
+                        const correctIndex = scenario.prompts.findIndex(p => p.isCorrect);
+                        simulatorContainer.querySelector(`.scenario-option[data-index='${correctIndex}']`).classList.add('correct');
+                    }
+
+                    document.getElementById('nextScenarioBtn').classList.remove('hidden');
+                }
+
+                // Next scenario button
+                if (e.target.id === 'nextScenarioBtn') {
+                    currentScenarioIndex++;
+                    loadScenario();
+                }
+            });
+        }
+
+        // --- Case Study Logic ---
+        const caseStudyContainer = document.getElementById('case-study-container');
+
+        function initializeCaseStudies() {
+            if (!caseStudyContainer) return;
+            const caseStudyTabs = document.createElement('nav');
+            caseStudyTabs.id = 'case-study-tabs';
+            caseStudyTabs.className = '-mb-px flex space-x-8';
+            caseStudyTabs.setAttribute('aria-label', 'Tabs');
+
+            const caseStudyContent = document.createElement('div');
+            caseStudyContent.id = 'case-study-content';
+            caseStudyContent.className = 'mt-8';
+
+            caseStudyContainer.innerHTML = '';
+            caseStudyContainer.appendChild(caseStudyTabs);
+            caseStudyContainer.appendChild(caseStudyContent);
+
+            const categories = Object.keys(caseStudies);
+
+            caseStudyTabs.innerHTML = categories.map((category, index) => `
+                <button class="case-study-tab ${index === 0 ? 'active' : ''}" data-category="${category}">${category}</button>
+            `).join('');
+
+            loadCaseStudy(categories[0]);
+
+            caseStudyTabs.addEventListener('click', e => {
+                if (e.target.matches('.case-study-tab')) {
+                    const category = e.target.dataset.category;
+                    document.querySelectorAll('.case-study-tab').forEach(tab => tab.classList.remove('active'));
+                    e.target.classList.add('active');
+                    loadCaseStudy(category);
+                }
+            });
+        }
+
+        function loadCaseStudy(category) {
+            const caseStudyContent = document.getElementById('case-study-content');
+            if (!caseStudyContent) return;
+            const studySteps = caseStudies[category];
+            let stepsHtml = studySteps.map((step, index) => `
+                <div class="timeline-step bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg text-[#4A90E2] mb-2">Step ${index + 1}: ${step.title}</h4>
+                    <p class="text-sm text-gray-500 italic mb-4">${step.description}</p>
+                    <div class="code-block text-xs">${step.prompt}</div>
+                </div>
+                ${index < studySteps.length - 1 ? '<div class="timeline-connector"></div>' : ''}
+            `).join('');
+
+            caseStudyContent.innerHTML = `<div class="timeline-container">${stepsHtml}</div>`;
+        }
+
+        // --- "My Day with AI" Logic ---
+        const myDayContainer = document.getElementById('my-day-container');
+
+        function loadDayEvent(index) {
+            if (!myDayContainer) return;
+
+            if (index >= myDayEvents.length) {
+                myDayContainer.innerHTML = `
+                    <p class="text-center text-gray-600 text-2xl font-bold">You've completed your day!</p>
+                    <p class="text-center text-gray-500 mt-4">You've seen how a few smart prompts can save hours of work. You're ready to start integrating AI into your real workflow.</p>
+                    <div class="mt-6 text-center">
+                        <button id="restartDayBtn" class="bg-gray-600 text-white font-bold py-2 px-6 rounded-full hover:bg-gray-700 transition-colors">Start Day Over</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const event = myDayEvents[index];
+            let optionsHtml = event.options.map((opt, i) => `
+                <div class="scenario-option p-4 rounded-lg cursor-pointer" data-index="${i}">
+                    <p class="font-semibold">${opt.text}</p>
+                    <div class="feedback mt-2 text-sm hidden p-4 bg-green-100 text-green-800 rounded-lg"></div>
+                </div>
+            `).join('');
+
+            myDayContainer.innerHTML = `
+                 <div class="mb-4">
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">${event.time}</span>
+                 </div>
+                <p class="text-gray-600 mb-6 text-lg">${event.task}</p>
+                <div class="space-y-4">${optionsHtml}</div>
+                <div class="mt-6 text-right">
+                    <button id="nextDayEventBtn" class="hidden bg-[#4A90E2] text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition-colors">Continue Day &rarr;</button>
+                </div>
+            `;
+        }
+
+        if(myDayContainer) {
+            myDayContainer.addEventListener('click', e => {
+                const optionEl = e.target.closest('.scenario-option');
+                if (optionEl && !optionEl.classList.contains('selected')) {
+                    const selectedIndex = parseInt(optionEl.dataset.index);
+                    const event = myDayEvents[currentDayEventIndex];
+                    const selectedOption = event.options[selectedIndex];
+
+                    const allOptions = myDayContainer.querySelectorAll('.scenario-option');
+                    allOptions.forEach(opt => opt.classList.add('selected'));
+
+                    const feedbackEl = optionEl.querySelector('.feedback');
+                    feedbackEl.textContent = selectedOption.outcome;
+                    feedbackEl.classList.remove('hidden');
+                    optionEl.classList.add('correct');
+
+                    document.getElementById('nextDayEventBtn').classList.remove('hidden');
+                }
+
+                if (e.target.id === 'nextDayEventBtn') {
+                    currentDayEventIndex++;
+                    loadDayEvent(currentDayEventIndex);
+                }
+
+                if (e.target.id === 'restartDayBtn') {
+                    currentDayEventIndex = 0;
+                    loadDayEvent(currentDayEventIndex);
+                }
+            });
+        }
+
+        // --- Animated Subtitle Logic ---
+        const animatedSubtitleEl = document.getElementById('animated-subtitle');
+        if (animatedSubtitleEl) {
+            const subtitles = [
+                "Automate Tedious Reports...",
+                "Summarize Long Meetings...",
+                "Draft Professional Emails..."
+            ];
+            let subtitleIndex = 0;
+
+            function cycleSubtitles() {
+                // Fade out the current text
+                animatedSubtitleEl.classList.remove('subtitle-animate-in');
+                animatedSubtitleEl.classList.add('subtitle-animate-out');
+
+                // After the fade-out is done, change the text and fade it in
+                setTimeout(() => {
+                    subtitleIndex = (subtitleIndex + 1) % subtitles.length;
+                    animatedSubtitleEl.textContent = subtitles[subtitleIndex];
+                    animatedSubtitleEl.classList.remove('subtitle-animate-out');
+                    animatedSubtitleEl.classList.add('subtitle-animate-in');
+                }, 500); // Match the animation duration
+            }
+
+            // Initial setup
+            animatedSubtitleEl.textContent = subtitles[0];
+            animatedSubtitleEl.classList.add('subtitle-animate-in');
+
+            // Start the cycle
+            setInterval(cycleSubtitles, 4000); // Change text every 4 seconds
+        }
+
+
+        // --- INITIAL LOAD ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            await initFirebase();
+            updateSectionVisibility();
+            displayPrompts('All');
+        });
+
+    </script>
+</body>
+</html>

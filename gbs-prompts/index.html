@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Prompt Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4; /* Updated: Soft off-white background */
+            color: #4A4A4A; /* Updated: Dark gray text */
+        }
+
+        /* --- Custom Scrollbar for lists --- */
+        .scrollable-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scrollable-list::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .scrollable-list::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .scrollable-list::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* --- General Card Style with Hover Animation --- */
+        .prompt-block {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            background-color: #FFFFFF; /* Updated: Pure white cards */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Updated: Softer shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added: Smooth transition for hover */
+        }
+        .prompt-block:hover {
+            transform: translateY(-5px); /* Added: Lift effect on hover */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Added: Deeper shadow on hover */
+        }
+
+        /* --- Homepage Category Card --- */
+        .category-card-list {
+            height: 200px; /* Fixed height for scrollable area */
+        }
+        .category-card-list a:hover {
+            color: #4A90E2; /* Updated: Accent color on hover */
+        }
+        .see-all-btn {
+            border: 1px solid #4A90E2; /* Updated: Accent color for border */
+            color: #4A90E2; /* Updated: Accent color for text */
+            transition: all 0.2s ease-in-out;
+        }
+        .see-all-btn:hover {
+            background-color: #4A90E2; /* Updated: Accent color for background */
+            color: white;
+        }
+
+        /* --- Detail Page Prompt Display --- */
+        .prompt-display-item {
+            border: 1px solid #e5e7eb; /* Updated: Softer border */
+            border-radius: 0.5rem;
+            background-color: #FFFFFF;
+        }
+
+        /* --- Quick Links Sidebar --- */
+        .quick-links-sidebar {
+            height: calc(100vh - 100px); /* Adjust height based on header */
+        }
+        .quick-links-sidebar a {
+            transition: color 0.2s ease;
+        }
+        .quick-links-sidebar a:hover, .quick-links-sidebar a.active {
+            color: #4A90E2; /* Updated: Accent color for active/hover links */
+        }
+
+        /* --- General UI Elements --- */
+        .main-heading {
+             color: #111827; /* Keep main headings darker for emphasis */
+        }
+        .accent-text {
+            color: #4A90E2;
+        }
+        .hidden {
+            display: none;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* --- Animated Subtitle Animations --- */
+        .subtitle-animate-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .subtitle-animate-out {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .h-8 {
+            min-height: 2rem; /* Ensure the container has a minimum height */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== HOMEPAGE VIEW =========== -->
+    <div id="homepage-view" class="fade-in">
+        <header class="text-center py-12 px-4">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight main-heading">Gemini Prompt Library</h1>
+            <p id="hero-subtitle" class="max-w-2xl mx-auto text-lg text-gray-500 mt-4">
+                Discover a curated collection of prompts to help you unlock the full potential of Gemini.
+            </p>
+            <div class="max-w-2xl mx-auto text-lg text-gray-500 mt-4">
+                How To Use:
+                <span id="animated-subtitle" class="font-semibold text-[#4A90E2] inline-block"></span>
+            </div>
+            <div class="mt-8 max-w-xl mx-auto relative">
+                <input type="text" id="homepage-search" placeholder="🔍 Search for prompts..." class="w-full p-3 border border-gray-300 rounded-lg text-lg pr-10">
+                <button id="clear-search-btn" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </header>
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+            <div id="loading-indicator" class="hidden text-center p-8">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+                <p class="mt-4 text-gray-600">Loading prompts...</p>
+            </div>
+            <!-- Category cards will be injected here by JavaScript -->
+            <div id="category-cards-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+        </main>
+    </div>
+
+    <!-- =========== DETAIL VIEW =========== -->
+    <div id="detail-view" class="hidden">
+        <div class="flex">
+            <!-- Quick Links Sidebar (Right Side) -->
+            <aside
+                    class="w-1/4 max-w-xs fixed right-0 top-0 bottom-0 bg-white/50 backdrop-blur-sm
+                            border-l border-gray-200 p-6 flex flex-col"
+                    >
+                    <h2 class="text-lg font-bold mb-4 main-heading">Quick Links</h2>
+<!-- ① Search box -->
+  <input
+    type="text"
+    id="quick-links-search"
+    placeholder="🔍 Search links…"
+    class="mb-4 p-2 border border-gray-300 rounded w-full"
+  />
+
+<nav
+                        id="quick-links-sidebar"
+                        class="flex-1 overflow-y-auto pr-4 scrollable-list"
+                    >
+                        <!-- injected links… -->
+                    </nav>
+                    </aside>
+
+            <!-- Main Content (Left Side) -->
+            <main class="w-3/4 pr-4">
+                <div class="p-6 md:p-8">
+                    <button id="back-to-home-btn" class="text-gray-500 hover:text-black mb-8">&larr; Back to All Categories</button>
+                    <!-- Prompt content will be injected here by JavaScript -->
+                    <div id="prompt-display-area"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+    <script type="module">
+        // --- DATA STRUCTURE ---
+        let promptData = {};
+        let allPrompts = [];
+        let lastScrollPosition = 0;
+
+        /**
+         * Flattens the prompt data into a single array for easier searching.
+         */
+        function flattenPrompts() {
+            allPrompts = [];
+            for (const categoryName in promptData) {
+                const category = promptData[categoryName];
+                for (const subCategoryName in category) {
+                    const prompts = category[subCategoryName];
+                    prompts.forEach(prompt => {
+                        allPrompts.push({
+                            ...prompt,
+                            category: categoryName,
+                            subcategory: subCategoryName
+                        });
+                    });
+                }
+            }
+        }
+
+        async function loadPrompts() {
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const categoryCardsContainer = document.getElementById('category-cards-container');
+            loadingIndicator.classList.remove('hidden');
+
+            try {
+                const response = await fetch('./prompts.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                promptData = data.promptData;
+                flattenPrompts();
+                renderHomepage(); // Initialize UI after data loads
+
+                const promptCount = allPrompts.length;
+                const date = new Date();
+                const month = date.toLocaleString('default', { month: 'long' });
+                const year = date.getFullYear();
+                const heroSubtitle = document.getElementById('hero-subtitle');
+                heroSubtitle.textContent = `Discover ${promptCount} Gemini prompts you have to try in ${month} ${year}!`;
+
+                // --- Animated Subtitle Logic ---
+                const animatedSubtitleEl = document.getElementById('animated-subtitle');
+                if (animatedSubtitleEl) {
+                    const subtitles = [
+                        "Browse by Category...",
+                        "Search Specific Topics...",
+                        "Copy & Customize Prompts...",
+                        "Understand Prompt Structure...",
+                        "Tailor to Your Needs...",
+                        "Combine Multiple Prompts...",
+                        "Master Effective Prompting..."
+                    ];
+                    let subtitleIndex = 0;
+
+                    function cycleSubtitles() {
+                        // Fade out the current text
+                        animatedSubtitleEl.classList.remove('subtitle-animate-in');
+ animatedSubtitleEl.classList.add('subtitle-animate-out');
+
+                        // After the fade-out is done, change the text and fade it in
+                        setTimeout(() => {
+                            subtitleIndex = (subtitleIndex + 1) % subtitles.length;
+                            animatedSubtitleEl.textContent = subtitles[subtitleIndex];
+                            animatedSubtitleEl.classList.remove('subtitle-animate-out');
+ animatedSubtitleEl.classList.add('subtitle-animate-in');
+                        }, 500); // Match the animation duration
+                    }
+
+                    // Display the first subtitle immediately and then cycle
+                    cycleSubtitles();
+                    setInterval(cycleSubtitles, 3000); // Cycle every 3 seconds
+                }
+            } catch (error) {
+                console.error('Failed to load prompts:', error);
+                // Display an error message to the user
+                categoryCardsContainer.innerHTML = `
+                    <div class="text-center text-red-500">
+                        <p>Error loading prompts. Please try again later.</p>
+                    </div>
+                `;
+            } finally {
+                loadingIndicator.classList.add('hidden');
+                categoryCardsContainer.classList.remove('hidden');
+            }
+        }
+
+        // --- DOM ELEMENTS ---
+        const homepageView = document.getElementById('homepage-view');
+        const detailView = document.getElementById('detail-view');
+        const categoryCardsContainer = document.getElementById('category-cards-container');
+        const promptDisplayArea = document.getElementById('prompt-display-area');
+        const quickLinksSidebar = document.getElementById('quick-links-sidebar');
+        const backToHomeBtn = document.getElementById('back-to-home-btn');
+        const homepageSearchInput = document.getElementById('homepage-search');
+        const clearSearchBtn = document.getElementById('clear-search-btn');
+        const gemModal = document.getElementById('gem-modal');
+        const closeGemModalBtn = document.getElementById('close-gem-modal-btn');
+        const generateGemBtn = document.getElementById('generate-gem-btn');
+        const copyGemBtn = document.getElementById('copy-gem-btn');
+        const generatedGemContainer = document.getElementById('generated-gem-container');
+        const generatedGemTextarea = document.getElementById('generated-gem');
+
+        // --- RENDER FUNCTIONS ---
+
+        /**
+         * Renders the initial homepage view with category cards.
+         */
+        function renderHomepage() {
+            categoryCardsContainer.innerHTML = '';
+            // Reset grid to default
+            categoryCardsContainer.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
+            for (const categoryName in promptData) {
+                const category = promptData[categoryName];
+                const subCategories = Object.keys(category);
+
+                const card = document.createElement('div');
+                card.className = 'prompt-block flex flex-col';
+
+                let subCategoryLinks = subCategories.map(subName =>
+                    `<li><a href="#" class="block py-1.5 text-gray-500" data-category="${categoryName}" data-subcategory="${subName}">→ ${subName}</a></li>`
+                ).join('');
+
+                card.innerHTML = `
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold text-center main-heading">Gemini Prompts for <span class="accent-text">${categoryName}</span></h2>
+                    </div>
+                    <div class="flex-grow px-6 category-card-list scrollable-list overflow-y-auto">
+                        <ul>${subCategoryLinks}</ul>
+                    </div>
+                    <div class="p-6 mt-auto">
+                        <button class="see-all-btn w-full py-2.5 rounded-md font-semibold" data-category="${categoryName}">See all prompts →</button>
+                    </div>
+                `;
+                categoryCardsContainer.appendChild(card);
+            }
+        }
+
+        /**
+         * Switches the view to show all prompts for a category.
+         * @param {string} category - The main category to show.
+         */
+        function showAllCategoryView(category) {
+            lastScrollPosition = window.scrollY;
+            renderAllCategoryView(category);
+            homepageView.classList.add('hidden');
+            detailView.classList.remove('hidden');
+            detailView.classList.add('fade-in');
+            window.scrollTo(0, 0); // Scroll to top
+        }
+
+        /**
+         * Highlights a search term in a block of text.
+         * @param {string} text - The text to highlight.
+         * @param {string} searchTerm - The term to highlight.
+         * @returns {string} The HTML string with the term highlighted.
+         */
+        function highlightText(text, searchTerm) {
+            if (!searchTerm) {
+                return text;
+            }
+            const regex = new RegExp(`(${searchTerm.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+            return text.replace(regex, '<mark class="bg-yellow-200">$1</mark>');
+        }
+
+        /**
+         * Creates a DOM element for a single prompt.
+         * @param {object} prompt - The prompt object.
+         * @param {boolean} isSearchResult - True if the prompt is for a search result.
+         * @param {string} searchTerm - The term to highlight in the prompt.
+         * @returns {HTMLElement} The created prompt element.
+         */
+        function createPromptElement(prompt, isSearchResult = false, searchTerm = '') {
+            const promptEl = document.createElement('div');
+            const escapedContent = prompt.content.replace(/"/g, '&quot;');
+
+            const titleClass = isSearchResult ? 'text-lg' : 'text-xl';
+            const breadcrumbHTML = isSearchResult ? `
+                <p class="text-gray-500 text-sm mb-3">
+ <span class="font-semibold">${prompt.category}</span> &gt; <span>${prompt.subcategory}</span>
+                </p>` : '';
+            const descriptionHTML = prompt.description ? `<p class="text-gray-600 text-sm mb-2">${prompt.description}</p>` : '';
+            const contentContainerClass = isSearchResult ? 'prompt-display-item p-4 text-gray-700 bg-gray-50 rounded-md' : 'prompt-display-item p-4 text-gray-700';
+
+            const highlightedTitle = isSearchResult ? highlightText(prompt.title, searchTerm) : prompt.title;
+            // We don't highlight description on the homepage search results for simplicity,
+            // but you could add that logic here if needed.
+            const highlightedDescription = prompt.description;
+            const highlightedContent = isSearchResult ? highlightText(prompt.content, searchTerm) : prompt.content;
+
+            promptEl.className = isSearchResult ? 'prompt-block p-4' : 'mb-8';
+
+            promptEl.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="${titleClass} font-semibold main-heading">${highlightedTitle}</h3>
+                    <div>
+                        <button class="copy-btn text-sm py-1 px-3 rounded-md bg-indigo-100 text-indigo-700 hover:bg-indigo-200" data-prompt-content="${escapedContent}">
+                            Copy
+                        </button>
+                        <button class="create-gem-btn text-sm py-1 px-3 rounded-md bg-green-100 text-green-700 hover:bg-green-200 ml-2 hidden" data-prompt-content="${escapedContent}">
+                            Create Gem
+                        </button>
+                    </div>
+                </div>
+                ${breadcrumbHTML}
+ ${descriptionHTML}
+                <div class="${contentContainerClass}">
+                    <p>${highlightedContent}</p>
+                </div>
+            `;
+
+            return promptEl;
+        }
+
+        /**
+         * Renders the results of a search query on the homepage.
+         * @param {Array} results - An array of prompt objects to display.
+         */
+        function renderSearchResults(results) {
+            const searchTerm = homepageSearchInput.value.trim();
+            categoryCardsContainer.innerHTML = '';
+            if (results.length === 0) {
+                categoryCardsContainer.innerHTML = `
+                <div class="text-center text-gray-500 col-span-full py-16">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2z" />
+                    </svg>
+                    <h3 class="mt-2 text-sm font-semibold text-gray-900">No prompts found</h3>
+                    <p class="mt-1 text-sm text-gray-500">We couldn’t find anything with that search term. Please try again.</p>
+                    <div class="mt-6">
+                        <button type="button" id="clear-search-suggestions-btn" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            Clear Search
+                        </button>
+                    </div>
+                </div>`;
+                return;
+            }
+
+            // Change grid layout for search results
+            categoryCardsContainer.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
+
+            results.forEach(prompt => {
+                const promptEl = createPromptElement(prompt, true, searchTerm);
+                categoryCardsContainer.appendChild(promptEl);
+            });
+        }
+
+
+        function renderQuickLinks(activeCategory, activeSubCategory) {
+            quickLinksSidebar.innerHTML = '';
+            for (const categoryName in promptData) {
+                const categoryTitle = document.createElement('h4');
+                categoryTitle.className = 'font-bold mt-4 mb-2 main-heading';
+                categoryTitle.innerHTML = `Gemini Prompts for <span class="accent-text">${categoryName}</span>`;
+                quickLinksSidebar.appendChild(categoryTitle);
+
+                const subList = document.createElement('ul');
+                for (const subCategoryName in promptData[categoryName]) {
+                    const li = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = '#';
+                    link.textContent = subCategoryName;
+                    link.dataset.category = categoryName;
+                    link.dataset.subcategory = subCategoryName;
+                    // Highlight the active link
+                    if (categoryName === activeCategory && subCategoryName === activeSubCategory) {
+                        link.className = 'active font-semibold';
+                    }
+                    li.appendChild(link);
+                    subList.appendChild(li);
+                }
+                quickLinksSidebar.appendChild(subList);
+            }
+        }
+
+        /**
+         * Renders the detail view for a specific sub-category.
+         * @param {string} activeCategory - The main category to display.
+         * @param {string} activeSubCategory - The sub-category to display.
+         */
+        function renderDetailView(activeCategory, activeSubCategory) {
+            // Render the main prompt content
+            promptDisplayArea.innerHTML = '';
+            const subCategoryPrompts = promptData[activeCategory][activeSubCategory];
+
+            const header = document.createElement('h1');
+            header.className = 'text-3xl font-bold mb-8 main-heading';
+            header.innerHTML = `Gemini Prompts for <span class="accent-text">${activeSubCategory}</span>`;
+            promptDisplayArea.appendChild(header);
+
+            subCategoryPrompts.forEach(prompt => {
+                const fullPrompt = { ...prompt, category: activeCategory, subcategory: activeSubCategory };
+                const promptEl = createPromptElement(fullPrompt, false);
+                promptDisplayArea.appendChild(promptEl);
+            });
+
+            // Render the quick links sidebar
+            renderQuickLinks(activeCategory, activeSubCategory);
+        }
+
+        /**
+         * Renders the detail view for all prompts in a specific category.
+         * @param {string} activeCategory - The main category to display.
+         */
+        function renderAllCategoryView(activeCategory) {
+            // Render the main prompt content
+            promptDisplayArea.innerHTML = '';
+
+            const header = document.createElement('h1');
+            header.className = 'text-3xl font-bold mb-8 main-heading';
+            header.innerHTML = `All Prompts in <span class="accent-text">${activeCategory}</span>`;
+            promptDisplayArea.appendChild(header);
+
+            const category = promptData[activeCategory];
+            for (const subCategoryName in category) {
+                const subCategoryPrompts = category[subCategoryName];
+
+                const subHeader = document.createElement('h2');
+                subHeader.className = 'text-2xl font-bold mt-8 mb-4 main-heading';
+                subHeader.textContent = subCategoryName;
+                promptDisplayArea.appendChild(subHeader);
+
+                subCategoryPrompts.forEach(prompt => {
+                    const fullPrompt = { ...prompt, category: activeCategory, subcategory: subCategoryName };
+                    const promptEl = createPromptElement(fullPrompt, false);
+                    promptDisplayArea.appendChild(promptEl);
+                });
+            }
+
+            // Render the quick links sidebar
+            renderQuickLinks(activeCategory, null); // No active subcategory
+        }
+
+        // --- NAVIGATION LOGIC ---
+
+        /**
+         * Switches the view from homepage to detail page.
+         * @param {string} category - The main category to show.
+         * @param {string} subCategory - The specific sub-category to show.
+         */
+        function showDetailView(category, subCategory) {
+            lastScrollPosition = window.scrollY;
+            renderDetailView(category, subCategory);
+            homepageView.classList.add('hidden');
+            detailView.classList.remove('hidden');
+            detailView.classList.add('fade-in');
+            window.scrollTo(0, 0); // Scroll to top
+        }
+
+        /**
+         * Switches the view from detail page back to the homepage.
+         */
+        function showHomepage() {
+            detailView.classList.add('hidden');
+            homepageView.classList.remove('hidden');
+            homepageView.classList.add('fade-in');
+            setTimeout(() => {
+                window.scrollTo(0, lastScrollPosition);
+            }, 0);
+        }
+
+        function populateGemModal(content) {
+            // Simple parsing logic based on keywords.
+            // This can be improved with more advanced NLP in the future.
+            const personaMatch = content.match(/act as an? (.*)/i);
+            document.getElementById('gem-persona').value = personaMatch ? `You are a ${personaMatch[1]}` : '';
+
+            // For the other fields, we'll just put the whole content in the 'Task' field for now.
+            document.getElementById('gem-task').value = content;
+            document.getElementById('gem-context').value = '';
+            document.getElementById('gem-audience').value = '';
+            document.getElementById('gem-tone').value = '';
+            document.getElementById('gem-format').value = '';
+        }
+
+        function showGemModal(content) {
+            populateGemModal(content);
+            gemModal.classList.remove('hidden');
+        }
+
+        function hideGemModal() {
+            gemModal.classList.add('hidden');
+            generatedGemTextarea.value = '';
+            generatedGemContainer.classList.add('hidden');
+        }
+
+        // --- EVENT LISTENERS ---
+
+        // Event listener for homepage search
+        homepageSearchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.trim().toLowerCase();
+
+            if (searchTerm === '') {
+                renderHomepage();
+                clearSearchBtn.classList.add('hidden');
+                return;
+            }
+
+            clearSearchBtn.classList.remove('hidden');
+            const filteredPrompts = allPrompts.filter(prompt => {
+                const titleMatch = prompt.title.toLowerCase().includes(searchTerm);
+                const contentMatch = prompt.content.toLowerCase().includes(searchTerm);
+                return titleMatch || contentMatch;
+            });
+
+            renderSearchResults(filteredPrompts);
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            homepageSearchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            renderHomepage();
+        });
+
+        function handleCopyClick(e) {
+            const target = e.target.closest('.copy-btn');
+            if (!target) return;
+
+            const content = target.dataset.promptContent;
+            if (content) {
+                navigator.clipboard.writeText(content).then(() => {
+                    target.textContent = 'Copied!';
+                    target.classList.add('bg-green-200', 'text-green-800');
+                    setTimeout(() => {
+                        target.textContent = 'Copy';
+                        target.classList.remove('bg-green-200', 'text-green-800');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                    target.textContent = 'Error';
+                    setTimeout(() => {
+                        target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        }
+
+
+        // Event listener for the homepage
+        categoryCardsContainer.addEventListener('click', (e) => {
+            const target = e.target;
+
+            if (target.id === 'clear-search-suggestions-btn') {
+                homepageSearchInput.value = '';
+                clearSearchBtn.classList.add('hidden');
+                renderHomepage();
+                return;
+            }
+
+            if (target.closest('.copy-btn')) {
+                handleCopyClick(e);
+                return;
+            }
+
+            if (target.classList.contains('create-gem-btn')) {
+                const content = target.dataset.promptContent;
+                showGemModal(content);
+                return;
+            }
+
+            // Handle "See all prompts" button click
+            if (target.classList.contains('see-all-btn')) {
+                const categoryName = target.dataset.category;
+                showAllCategoryView(categoryName);
+            }
+
+            // Handle clicking on a sub-category link
+            if (target.tagName === 'A' && target.dataset.subcategory) {
+                e.preventDefault();
+                showDetailView(target.dataset.category, target.dataset.subcategory);
+            }
+        });
+
+        // Event listener for the detail view's content area (for copy buttons)
+        promptDisplayArea.addEventListener('click', (e) => {
+            if (e.target.classList.contains('create-gem-btn')) {
+                const content = e.target.dataset.promptContent;
+                showGemModal(content);
+                return;
+            }
+            handleCopyClick(e);
+        });
+
+
+        // Event listener for the detail view's quick links
+        quickLinksSidebar.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A' && e.target.dataset.subcategory) {
+                e.preventDefault();
+                const category = e.target.dataset.category;
+                const subCategory = e.target.dataset.subcategory;
+                renderDetailView(category, subCategory); // Re-render the view
+            }
+        });
+
+        // Event listener for the "Back" button
+        backToHomeBtn.addEventListener('click', showHomepage);
+
+        closeGemModalBtn.addEventListener('click', hideGemModal);
+
+        generateGemBtn.addEventListener('click', () => {
+            const persona = document.getElementById('gem-persona').value;
+            const task = document.getElementById('gem-task').value;
+            const context = document.getElementById('gem-context').value;
+            const audience = document.getElementById('gem-audience').value;
+            const tone = document.getElementById('gem-tone').value;
+            const format = document.getElementById('gem-format').value;
+
+            let gemString = `Persona: – “${persona}”\n\n`;
+            gemString += `Task: – “${task}”\n\n`;
+            gemString += `Context: – “${context}”\n\n`;
+            if (audience) {
+                gemString += `Audience (optional): – “${audience}”\n\n`;
+            }
+            if (tone) {
+                gemString += `Tone & Style (optional): – “${tone}”\n\n`;
+            }
+            gemString += `Format: – “${format}”`;
+
+            generatedGemTextarea.value = gemString;
+            generatedGemContainer.classList.remove('hidden');
+        });
+
+        copyGemBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(generatedGemTextarea.value).then(() => {
+                copyGemBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyGemBtn.textContent = 'Copy Gem';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        });
+
+        // --- INITIAL LOAD ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPrompts();
+        });
+
+    </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('quick-links-search');
+    // grab the <nav> itself
+    const nav = document.getElementById('quick-links-sidebar');
+
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.trim().toLowerCase();
+
+      // pick up every link (or change selector if you have list-items)
+      const items = Array.from(nav.querySelectorAll('a'));
+
+      items.forEach(a => {
+        const text = a.textContent.toLowerCase();
+        a.style.display = text.includes(term) ? '' : 'none';
+      });
+    });
+  });
+</script>
+    <!-- =========== Gem Configuration Modal =========== -->
+    <div id="gem-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-1/2 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Gem Configuration</h3>
+                <div class="mt-2 px-7 py-3">
+                    <form id="gem-form">
+                        <div class="mb-4">
+                            <label for="gem-persona" class="block text-sm font-medium text-gray-700 text-left">Persona</label>
+                            <textarea id="gem-persona" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="gem-task" class="block text-sm font-medium text-gray-700 text-left">Task</label>
+                            <textarea id="gem-task" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="gem-context" class="block text-sm font-medium text-gray-700 text-left">Context</label>
+                            <textarea id="gem-context" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="gem-audience" class="block text-sm font-medium text-gray-700 text-left">Audience (optional)</label>
+                            <textarea id="gem-audience" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="gem-tone" class="block text-sm font-medium text-gray-700 text-left">Tone & Style (optional)</label>
+                            <textarea id="gem-tone" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="gem-format" class="block text-sm font-medium text-gray-700 text-left">Format</label>
+                            <textarea id="gem-format" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                        </div>
+                    </form>
+                    <div id="generated-gem-container" class="hidden mt-4">
+                        <label for="generated-gem" class="block text-sm font-medium text-gray-700 text-left">Generated Gem</label>
+                        <textarea id="generated-gem" rows="6" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" readonly></textarea>
+                        <button id="copy-gem-btn" class="mt-2 text-sm py-1 px-3 rounded-md bg-blue-100 text-blue-700 hover:bg-blue-200">Copy Gem</button>
+                    </div>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="generate-gem-btn" class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-auto shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300">
+                        Generate Gem
+                    </button>
+                    <button id="close-gem-modal-btn" class="ml-2 px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-auto shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

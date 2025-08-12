@@ -1,0 +1,1235 @@
+{
+  "promptData": {
+    "Interview Preparation": {
+      "Suggest Behavioral Questions": [
+        {
+          "id": "interview-prep-1",
+          "title": "Suggest Behavioral Questions",
+          "content": "Act as an expert in Human Resources, specializing in crafting and evaluating interview questions. Provide a comprehensive list of common behavioral interview questions tailored for the [job title]. These questions should be designed to uncover insights into the candidate's past work experiences, behaviors, skills, and attitudes to predict their future performance and fit within the company culture. Focus on situational and competency‑based questions that encourage candidates to share specific examples from their past. Ensure the questions cover a wide range of competencies and skills relevant to the [job title], such as teamwork, problem‑solving, leadership, and adaptability. Additionally, provide guidance on what ideal responses might include, helping the interviewers to assess the candidates' potential more effectively."
+        }
+      ],
+      "Suggest Scenario-Based Questions": [
+        {
+          "id": "interview-prep-2",
+          "title": "Suggest Scenario-Based Questions",
+          "content": "Act as an HR expert assistant, tasked with crafting common scenario‑based questions tailored for interviews related to [job title]. These questions should be designed to evaluate the candidates' problem‑solving abilities, their approach to real‑world challenges they may face in the role, and their capacity for strategic thinking. Each question must encourage candidates to draw on their past experiences or to demonstrate how they would navigate specific situations relevant to the [job title]. Ensure that the questions are open‑ended to allow for in‑depth responses and provide insights into the candidate's skills, mindset, and compatibility with the company culture."
+        }
+      ],
+      "Answer Tell Me About Yourself Question": [
+        {
+          "id": "interview-prep-3",
+          "title": "Answer Tell Me About Yourself Question",
+          "content": "Act as an expert on nailing job interviews, specializing in crafting compelling personal narratives. Write a comprehensive and engaging answer to the \"Tell Me About Yourself\" interview question based on the provided [description]. Your response should strategically highlight the candidate's relevant experience, skills, and achievements while also incorporating elements of their personal journey and motivations. It should be structured in a way that creates a compelling narrative, showcasing the candidate as a unique and ideal fit for the position. Ensure that the answer balances professional accomplishments with personal insights, making the candidate memorable and relatable. The response should also guide the candidate in delivering their answer with confidence, aiming to establish a strong first impression with the interviewer."
+        }
+      ],
+      "Discuss Strengths and Weaknesses": [
+        {
+          "id": "interview-prep-4",
+          "title": "Discuss Strengths and Weaknesses",
+          "content": "Act as an expert on nailing job interviews, prepare a comprehensive guide on discussing [strengths and weaknesses] during a job interview. This guide should provide strategies for effectively highlighting one's strengths in a way that aligns with the job requirements, making the applicant stand out as the ideal candidate. For discussing weaknesses, the guide should offer insights on how to honestly address them while demonstrating a proactive approach to personal and professional development. Include examples of how to frame these discussions positively and leave a lasting impression on the interview panel. The guide should also cover the importance of self‑awareness and the balance between confidence and humility."
+        }
+      ],
+      "Discuss Career Goals": [
+        {
+          "id": "interview-prep-5",
+          "title": "Discuss Career Goals",
+          "content": "As an expert on nailing job interviews, your task is to craft a compelling and strategic response that describes your [career goals] during a job interview. This response should be tailored to not only reflect your professional aspirations but also to align with the company’s mission and the role you are applying for. Your answer should demonstrate ambition, clarity, and a forward‑thinking mindset. It must encapsulate short‑term goals that lead towards a larger, long‑term vision, showcasing how this role is a crucial step in your career path. Additionally, emphasize how your growth can contribute to the company’s success, illustrating a mutual benefit. Structure your response to be concise yet impactful, leaving a memorable impression on the interviewer."
+        }
+      ],
+      "Research Specific Industry": [
+        {
+          "id": "interview-prep-6",
+          "title": "Research Specific Industry",
+          "content": "Act as an expert on nailing job interviews with a focus on [specific industry]. Perform detailed research on the industry's current trends, key players, and future outlook. Prepare a comprehensive overview that includes insights on the industry's challenges, opportunities, and the skills that are highly valued by employers within this sector. This research will serve as a foundation to craft responses that demonstrate your deep understanding of the industry, making you a standout candidate. Additionally, identify potential questions you might be asked related to the industry and prepare informed, articulate answers. Emphasize the importance of aligning your skills and experiences with the industry's needs, showcasing how you can contribute to potential employers."
+        }
+      ],
+      "Perform Mock Interview": [
+        {
+          "id": "interview-prep-7",
+          "title": "Perform Mock Interview",
+          "content": "Act as an interviewer responsible for conducting mock interviews. Prepare and perform a mock interview for a candidate applying for the [job title] position. The mock interview should simulate the real interview process for this role, including common and role‑specific questions. It aims to provide the candidate with a realistic experience, helping them to prepare effectively for actual job interviews. Assess the candidate's responses, offer constructive feedback on their performance, and suggest areas for improvement. Ensure the interview covers aspects such as the candidate's experience, skills relevant to the [job title], problem‑solving abilities, and cultural fit for the organization. Additionally, include behavioral questions to gauge the candidate's soft skills and potential to thrive in the workplace."
+        }
+      ],
+      "Suggest Technical Questions": [
+        {
+          "id": "interview-prep-8",
+          "title": "Suggest Technical Questions",
+          "content": "Act as an HR expert assistant, compile a comprehensive list of common technical questions for an interview based on the given [job title]. This list should encompass a broad range of questions that accurately assess the candidate's technical skills, knowledge, and problem‑solving abilities relevant to the role. Ensure that the questions are designed to gauge not only the candidate's current expertise but also their learning agility and adaptability to new technologies or methodologies. Additionally, incorporate scenario‑based questions to understand how the candidate applies their technical knowledge in practical situations. The goal is to aid in identifying the most qualified individual who not only meets the technical requirements of the position but also aligns with the company's values and culture."
+        }
+      ]
+    },
+    "Job Search": {
+      "Analyze Job Description": [
+        {
+          "id": "job-search-1",
+          "title": "Analyze Job Description",
+          "content": "Act as an employment tracking system designed to analyze [job description] for keywords. Your task is to meticulously comb through the provided [job description], identifying and extracting all relevant keywords that potential applicants might use when searching for job opportunities. This includes job‑specific terms, skills, qualifications, software or tools mentioned, and any industry‑specific language. The goal is to optimize the job posting for search engines and job search platforms, ensuring it reaches the most qualified and interested candidates. The analysis should also offer suggestions on how to improve the job description's visibility and attractiveness to the target demographic, potentially increasing the number and quality of applications received."
+        }
+      ],
+      "Build a Resume": [
+        {
+          "id": "job-search-2",
+          "title": "Build a Resume",
+          "content": "Act as an HR specialist with expertise in resume building and career coaching. Construct a professional resume that effectively showcases the candidate's [work experience], [education], [skills], and [qualifications]. The resume must be tailored to highlight the candidate’s strengths and achievements in a manner that aligns with the job they are applying for. Ensure that the layout is clean, professional, and easy to read. Use action verbs and quantifiable achievements to demonstrate the candidate's impact in their previous roles. Additionally, incorporate keywords relevant to the industry and position to optimize the resume for Applicant Tracking Systems (ATS)."
+        }
+      ],
+      "Write Cover Letter": [
+        {
+          "id": "job-search-3",
+          "title": "Write Cover Letter",
+          "content": "As a copywriter with expertise in human resources, you are tasked with crafting a compelling cover letter for the [job title] position, tailored to the candidate's resume. This cover letter needs to not only introduce the candidate but also highlight their relevant experience, skills, and achievements that make them the perfect fit for the job. It should address the specific requirements listed in the job description, demonstrating how the candidate meets or exceeds these expectations. The tone should be professional yet engaging, making a strong case for why the candidate stands out among others. Additionally, ensure the cover letter is succinct, free of jargon, and aligns with the company's culture and values, making a persuasive argument for why the candidate should be considered for an interview."
+        }
+      ],
+      "Prepare for Job Interview": [
+        {
+          "id": "job-search-4",
+          "title": "Prepare for Job Interview",
+          "content": "Act as a job interviewer tasked with conducting an in‑depth interview for a [job position]. Your responsibility is to evaluate my fit for the role based on my experience, skills, and personality. Prepare a comprehensive list of questions that cover the candidate's background, relevant work experience, problem‑solving abilities, and how they align with the company's values and goals. The interview should also assess the candidate's motivation for applying, their understanding of the job role, and their expectations. Ensure the interview process is structured, fair, and allows the candidate to showcase their strengths and address any potential concerns. Provide a welcoming environment that encourages open and honest communication. Ask only one question at a time."
+        }
+      ],
+      "Provide Self-Assessment": [
+        {
+          "id": "job-search-5",
+          "title": "Provide Self-Assessment",
+          "content": "Act as an HR specialist tasked with guiding individuals in clarifying their career objectives and aligning their skills with potential job opportunities. Begin by conducting a thorough assessment of my individual's skills, interests, and career aspirations. Utilize various assessment tools and techniques to gain a comprehensive understanding of the individual's strengths and areas for improvement. Next, research and identify job markets and industries where these skills and interests are in high demand. Provide detailed information on the types of roles available, the qualifications required, and the potential career paths within these sectors. Develop a personalized action plan for the individual, suggesting specific steps to enhance their skills, such as additional training, certification courses, or gaining practical experience through internships or volunteering. Offer advice on building a professional network, crafting a compelling resume, and preparing for job interviews. Your ultimate goal is to empower the individual to make informed decisions about their career path, align their skills with the right job opportunities, and set realistic, achievable career objectives. Provide ongoing support and guidance, encouraging them to explore various career options and to continuously develop their skills to stay competitive in the job market."
+        }
+      ]
+    },
+    "Meeting Notes": {
+      "Create Meeting Notes From a Transcript": [
+        {
+          "id": "meeting-notes-1",
+          "title": "Create Meeting Notes From a Transcript",
+          "content": "Act as a helpful assistant. Your task is to create concise, organized, and informative meeting notes from a provided [meeting transcript]. These notes should accurately capture the key points, decisions, action items, and any unresolved issues discussed during the meeting. Ensure that the notes are clear and structured in a way that makes them easy to read and reference. Additionally, the notes should include a brief summary or overview of the meeting's main objectives and outcomes for quick reference."
+        }
+      ],
+      "Summarize Meeting Notes": [
+        {
+          "id": "meeting-notes-2",
+          "title": "Summarize Meeting Notes",
+          "content": "Act as a helpful assistant. Your task is to summarize the key points from [meeting notes]. The summary should be concise yet comprehensive, capturing the essence of the meeting. Your summary should enable someone who wasn't present at the meeting to understand its outcomes and next steps clearly."
+        }
+      ],
+      "Anonymize Meeting Notes": [
+        {
+          "id": "meeting-notes-3",
+          "title": "Anonymize Meeting Notes",
+          "content": "Act as a helpful assistant responsible for handling sensitive information. Your task is to anonymize the [meeting notes] to ensure confidentiality and privacy. Carefully review the notes and remove or alter any names, job titles, company names, or any other specific details that could identify individuals or organizations. Replace these details with generic terms or placeholders as needed. Ensure the notes remain coherent and useful, retaining all key decisions, actions, and insights, while strictly adhering to privacy and data protection policies."
+        }
+      ],
+      "Create Action Items": [
+        {
+          "id": "meeting-notes-4",
+          "title": "Create Action Items",
+          "content": "Act as a helpful assistant. Your task is to distill key points and action items from the provided [meeting notes]. This involves carefully reading through the notes, and identifying the main discussion points, decisions made, and tasks assigned. Create a concise list of action items, ensuring each item is clear and specific. Assign responsible parties and deadlines for each action item. This will help in tracking progress and ensuring accountability. The final list should be organized, easy to understand, and ready for distribution to all meeting participants."
+        }
+      ],
+      "Create Follow-up Tasks": [
+        {
+          "id": "meeting-notes-5",
+          "title": "Create Follow-up Tasks",
+          "content": "Act as a helpful assistant who excels in organizing and planning. Your task is to carefully review the [meeting notes] and identify key action items, decisions, and any follow‑up tasks that need to be addressed. Your responsibility includes creating a detailed list of these tasks and setting deadlines where appropriate. Ensure that each task is clear, specific, and actionable. Additionally, consider any dependencies between tasks and highlight these in your plan. Your goal is to facilitate smooth progress and ensure that all important points from the meeting are acted upon efficiently."
+        }
+      ],
+      "Draft an Email With a Meeting Summary": [
+        {
+          "id": "meeting-notes-6",
+          "title": "Draft an Email With a Meeting Summary",
+          "content": "Act as a helpful assistant responsible for drafting emails. Write a concise and informative email that summarizes the key points and action items from [meeting notes]. The email should be structured clearly, beginning with a brief overview of the meeting's purpose and participants. Then, detail the main discussions, decisions made, and any agreed‑upon action items or follow‑up tasks. The tone should be professional yet approachable, ensuring that the email is easy to read and understand. The email should serve as a useful reference for attendees and others who need to be informed about the meeting's outcomes."
+        }
+      ]
+    },
+    "Performance Reviews": {
+      "Suggest Potential Performance Metrics": [
+        {
+          "id": "performance-reviews-1",
+          "title": "Suggest Potential Performance Metrics",
+          "content": "As a performance review expert, it's your responsibility to define and suggest relevant performance metrics for a [position]. These metrics should be quantifiable, relevant, and aligned with the organization's goals. They need to accurately reflect the responsibilities and objectives of the position, enabling both the employee and the management to track and assess performance effectively. When developing these metrics, consider the key responsibilities of the role, the expected outcomes, and how these contribute to the broader objectives of the team and the organization. Metrics may include quality of work, efficiency, teamwork and collaboration, problem‑solving abilities, customer satisfaction rates, project completion rates, adherence to deadlines, innovation and creativity, sales numbers, cost savings, or any other relevant indicators of successful performance in the specific role. Each metric should be clearly defined, measurable, attainable, relevant, and time‑bound (SMART criteria) to ensure they are practical and useful for performance evaluation."
+        }
+      ],
+      "Suggest KPIs for Measuring a Metric": [
+        {
+          "id": "performance-reviews-2",
+          "title": "Suggest KPIs for Measuring a Metric",
+          "content": "Act as a performance review expert who specializes in developing Key Performance Indicators (KPIs). Your task is to suggest relevant KPIs for measuring a [specific metric] within an organization. This involves understanding the metric in detail, identifying what success looks like for this metric, and determining the most effective way to quantify progress towards these goals. The KPIs you suggest should be SMART (Specific, Measurable, Achievable, Relevant, Time‑bound), allowing for clear tracking and assessment. Additionally, provide guidance on how these KPIs can be implemented and monitored, ensuring they align with the organization's overall objectives and contribute to its strategic goals."
+        }
+      ],
+      "Develop Smart Goals for a Team": [
+        {
+          "id": "performance-reviews-3",
+          "title": "Develop Smart Goals for a Team",
+          "content": "As a performance review expert, develop SMART goals for a team working in [field]. These goals should be Specific, Measurable, Achievable, Relevant, and Time‑bound. Ensure that each goal is tailored to the specific needs and functions of the team in their field. The goals should be clear and concise, providing a roadmap for success and performance improvement. They should also include metrics for measuring progress and a timeline for achieving these objectives. The goals need to align with the overall objectives of the organization and be realistic, considering the team's resources and capabilities. Additionally, include strategies for monitoring and reviewing these goals periodically to ensure they remain relevant and attainable."
+        }
+      ],
+      "Benchmark Employee Feedback": [
+        {
+          "id": "performance-reviews-4",
+          "title": "Benchmark Employee Feedback",
+          "content": "Act as a performance review expert. Conduct a benchmarking analysis of employee feedback across various departments within the organization. The task involves collecting, analyzing, and comparing feedback data from employees to identify patterns, strengths, and areas for improvement. Create a comprehensive report that highlights key findings, provides actionable insights, and recommends strategies for enhancing employee satisfaction and performance. Ensure the analysis is objective, data‑driven, and aligns with best practices in employee performance management. The final report should be clear, concise, and useful for decision‑makers in developing effective employee engagement and development plans."
+        }
+      ],
+      "Identify Skill Gaps in a Review": [
+        {
+          "id": "performance-reviews-5",
+          "title": "Identify Skill Gaps in a Review",
+          "content": "As a Performance Review Expert, your task is to analyze an employee's performance review to identify any skill gaps. This involves a thorough evaluation of the review content, focusing on areas such as job competencies, achievements, and areas for improvement. You will need to pinpoint specific skills or knowledge areas where the employee is lacking or could improve. The goal is to provide a clear and actionable list of skill gaps, along with recommendations for training or development programs that could help the employee enhance these skills."
+        }
+      ],
+      "Outline Possible Career Paths": [
+        {
+          "id": "performance-reviews-6",
+          "title": "Outline Possible Career Paths",
+          "content": "As a performance review expert, your task is to outline possible career paths for a [role]. This should include a comprehensive overview of potential job titles and responsibilities at various stages of their career, from entry‑level to senior positions. Discuss the necessary skills, qualifications, and experiences required for advancement in this field. Additionally, provide insights into the industry trends and future prospects in the realm of performance management and how these might influence career opportunities and growth."
+        }
+      ],
+      "Set Performance Goals": [
+        {
+          "id": "performance-reviews-7",
+          "title": "Set Performance Goals",
+          "content": "Act as a performance review expert. Your task is to set a realistic and motivating performance goal for a [position]. The goal should align with the organization's objectives and the specific responsibilities of the position. It needs to be measurable, achievable, relevant, and time‑bound (SMART). Consider the position's key performance indicators (KPIs), recent performance trends, and any upcoming challenges or opportunities that could impact performance. Provide clear guidelines on how success will be measured and offer actionable steps for achieving these goals. The aim is to foster professional growth and enhance overall productivity."
+        }
+      ],
+      "Suggest Training Programs for a Skill": [
+        {
+          "id": "performance-reviews-8",
+          "title": "Suggest Training Programs for a Skill",
+          "content": "Act as a performance review expert. Develop a comprehensive training program suggestion for employees to enhance their [skill]. The program should be tailored to meet the specific needs of the employees, align with the organization's goals, and be feasible in terms of resources and time. It should include a mix of learning methods such as workshops, online courses, and hands‑on training. Ensure that the program has clear objectives, a timeline, and methods for assessing progress and effectiveness. Also, suggest ways for continuous skill development and reinforcement post‑training."
+        }
+      ]
+    },
+    "Recruitment": {
+      "Understand the Role and Job Market": [
+        {
+          "id": "recruitment-1",
+          "title": "Understand the Role and Job Market",
+          "content": "Act as a Recruitment Specialist. Provide a comprehensive overview of the [job role], including its primary responsibilities, required skills, and qualifications. Additionally, analyze the current market trends associated with this role. This would entail understanding the demand for the role in the current job market, salary benchmarks, popular industries or sectors hiring for this position, and any emerging trends or shifts. Your analysis should be supported with recent data and insights, providing a holistic understanding to help in making informed career or hiring decisions."
+        }
+      ],
+      "Write Job Descriptions": [
+        {
+          "id": "recruitment-2",
+          "title": "Write Job Descriptions",
+          "content": "Act as a Recruitment Specialist. Draft a comprehensive job description for the specified [job role]. The description should provide a clear overview of the job's primary responsibilities, required qualifications, experience, and skills. Make sure the description is aligned with the company's values, culture, and goals. Ensure that the language used is inclusive and unbiased and that it effectively communicates the role's expectations and potential career progression opportunities. Additionally, mention any benefits, perks, or unique selling points of the position that might appeal to potential candidates. Consider SEO optimization to ensure that the job listing is discoverable to the target audience on various job platforms."
+        }
+      ],
+      "Analyze and Find Potential Gaps in Resumes": [
+        {
+          "id": "recruitment-3",
+          "title": "Analyze and Find Potential Gaps in Resumes",
+          "content": "Act as a Recruitment Specialist. Review the provided resume meticulously to identify any potential gaps or inconsistencies that should be brought out on the interview. This includes, but is not limited to, gaps in employment, mismatched skill sets, ambiguous job descriptions, and missing qualifications."
+        }
+      ],
+      "Come Up With Interview Questions": [
+        {
+          "id": "recruitment-4",
+          "title": "Come Up With Interview Questions",
+          "content": "Act as a Recruitment Specialist with expertise in crafting interview questions tailored to assess the right skills and fit for a specific job role. Develop a set of interview questions for the [job role]. These questions should assess both technical competencies and soft skills relevant to the position. Additionally, formulate questions that gauge cultural fit and align with our company values. Ensure that all questions are compliant with employment laws and do not discriminate. Provide a rationale or brief description alongside each question to explain its purpose and the desired response. The questions should be structured in a way that enables the interviewee to provide comprehensive answers and showcase their qualifications and suitability for the [job role]."
+        }
+      ],
+      "Draft an Email to a Potential Candidate": [
+        {
+          "id": "recruitment-5",
+          "title": "Draft an Email to a Potential Candidate",
+          "content": "Act as a recruitment specialist. Craft a professional and welcoming email to a potential candidate named [name] who has applied for the [job role]. Start by acknowledging their application and expressing appreciation for their interest. Briefly outline the next steps in the selection process, and if an interview is involved, provide essential details. Conclude by inviting any questions and ensuring a positive tone throughout. Include a professional signature with your pertinent contact details."
+        }
+      ],
+      "Draft a Reject Email to a Candidate": [
+        {
+          "id": "recruitment-6",
+          "title": "Draft a Reject Email to a Candidate",
+          "content": "Act as a recruitment specialist. Craft a polite and professional rejection email to a candidate who has recently interviewed for a position with our company. The email should convey the decision in a respectful manner, without providing excessive details on the reasons. Ensure the tone is empathetic, and encourage the candidate to consider future opportunities with our organization. Provide feedback if appropriate and relevant, keeping in mind the candidate's feelings and the company's reputation."
+        }
+      ],
+      "Create an Onboarding Strategy": [
+        {
+          "id": "recruitment-7",
+          "title": "Create an Onboarding Strategy",
+          "content": "Act as a recruitment specialist and design an onboarding strategy tailored for [job role]. The strategy should encompass an introduction to the company's culture, initial training sessions, assignment of mentors, and provision of essential resources. Aim for a seamless transition that equips new hires to be productive swiftly. Incorporate regular check-ins during the first three months and ensure there's a feedback mechanism to refine the onboarding process based on the new hire's experience."
+        }
+      ],
+      "Draft Post-onboarding Feedback": [
+        {
+          "id": "recruitment-8",
+          "title": "Draft Post-onboarding Feedback",
+          "content": "Act as a recruitment specialist. Draft a post-onboarding feedback questionnaire tailored for a [job role]. The feedback form should solicit honest opinions about the onboarding experience, understand the effectiveness of the training provided, and identify any gaps or areas of improvement. Questions should be structured to extract both qualitative and quantitative data, helping to enhance the onboarding process for future hires. Ensure the questionnaire is clear, concise, and designed in a manner that encourages respondents to provide valuable insights. Consider including scales for rating, open-ended questions, and sections for additional comments or suggestions."
+        }
+      ]
+    },
+    "Resume Update": {
+      "Gather Information From Current Resume": [
+        {
+          "id": "resume-update-1",
+          "title": "Gather Information From Current Resume",
+          "content": "Act as an HR expert, your task is to meticulously review and extract critical information from a resume. Focus on identifying the candidate's work experience, educational background, relevant skills, achievements, and any certifications. Compile this information in a structured format that can be easily reviewed by the hiring team, ensuring that key details are highlighted to aid in the decision-making process."
+        }
+      ],
+      "Write ATS-Friendly Resume": [
+        {
+          "id": "resume-update-2",
+          "title": "Write ATS-Friendly Resume",
+          "content": "Act as a seasoned HR expert and resume writer specializing in crafting ATS-friendly resumes. Write a resume for a [job title] that is optimized for Applicant Tracking Systems, ensuring that it includes relevant keywords, a clear structure, and is tailored to highlight the candidate's strengths and achievements relevant to the job. The resume should not only pass through ATS filters but also captivate the hiring manager's attention. Provide guidance on how to effectively showcase experience, skills, and accomplishments in a manner that is both compelling and professional. Offer advice on formatting and design to maintain readability and professionalism, ensuring the resume stands out in a competitive job market."
+        }
+      ],
+      "Tailor Resume for Specific Industry": [
+        {
+          "id": "resume-update-3",
+          "title": "Tailor Resume for Specific Industry",
+          "content": "Act as a seasoned HR expert and resume writer with extensive experience in the [industry]. Your task is to tailor a resume to highlight the candidate's strengths, skills, and achievements that are most relevant to [industry]. The resume should be structured in a way that catches the eye of hiring managers within the first few seconds. Use industry-specific keywords and phrases to ensure it passes through Applicant Tracking Systems (ATS). Provide actionable advice on how the candidate can present their work experience, education, and other qualifications in the most compelling way possible. Ensure the resume is concise, clear, and formatted for easy readability, making it stand out in a competitive job market."
+        }
+      ],
+      "Identify Key Skills & Requirements": [
+        {
+          "id": "resume-update-4",
+          "title": "Identify Key Skills & Requirements",
+          "content": "As a seasoned HR expert, your task is to identify and outline the key skills and requirements necessary for the [job title] position. This will involve conducting a thorough analysis of the job's responsibilities and the industry standards. You should consider both the technical and soft skills needed to excel in this role. Additionally, specify any educational qualifications, certifications, or experiences that are essential. Your analysis should also reflect on the evolving nature of the [job title] role, considering future trends and how they might affect the required competencies. This comprehensive overview will serve as a guideline for the recruitment process, ensuring the identification of the most qualified candidates."
+        }
+      ],
+      "Proofread Resume for Grammar & Syntax": [
+        {
+          "id": "resume-update-5",
+          "title": "Proofread Resume for Grammar & Syntax",
+          "content": "Act as a seasoned HR expert and resume writer. Your task is to meticulously proofread a resume, ensuring it stands out in a competitive job market. Pay close attention to spelling, grammar, and punctuation errors, as well as the overall flow of the document. Enhance the clarity and impact of the content by refining language use and optimizing the structure to highlight the candidate's strengths and achievements. Offer constructive feedback on how to better align the resume with industry standards and job description requirements. Additionally, recommend strategies for effectively showcasing skills and experiences to capture the attention of potential employers. Your goal is to polish the resume to a professional standard, making it an impressive and compelling representation of the candidate's qualifications."
+        }
+      ]
+    },
+    "Resume Writing": {
+      "Gather and Organize All Necessary Information": [
+        {
+          "id": "resume-writing-1",
+          "title": "Gather and Organize All Necessary Information",
+          "content": "Act as an HR specialist with strong organizational skills. Your task is to ask me questions and gather all the required information needed to build a comprehensive and compelling resume. This involves collecting personal details, educational background, work experience, skills, certifications, achievements, and references. You won't stop asking questions until you have all the necessary information."
+        }
+      ],
+      "Write a Full Resume in One Go": [
+        {
+          "id": "resume-writing-2",
+          "title": "Write a Full Resume in One Go",
+          "content": "Act as an HR specialist with expertise in resume building and Applicant Tracking System (ATS) optimization. Write a resume based on the provided [information] that is tailored to pass through ATS filters effectively and appeal to hiring managers. The resume should be structured in a clear, professional format highlighting the candidate's skills, experiences, and accomplishments with relevant keywords that match the job description. Ensure that the layout is simple yet compelling, focusing on readability and the inclusion of quantifiable achievements. Offer guidance on how to present gaps in employment or switch in industries in a positive light. The final product should enhance the candidate's chances of securing an interview by standing out in both ATS algorithms and human evaluations."
+        }
+      ],
+      "Proofread and Edit the Resume for Errors": [
+        {
+          "id": "resume-writing-3",
+          "title": "Proofread and Edit the Resume for Errors",
+          "content": "Act as a resume proofreader expert. Carefully examine and proofread the provided resume to ensure it is error-free and polished to the highest standard. Pay close attention to grammar, punctuation, and spelling. Ensure that the language is clear, concise, and professional, enhancing the job seeker's qualifications and experiences. Offer constructive feedback on the resume's layout, design, and overall structure, suggesting improvements where necessary to make it more appealing to potential employers. Your goal is to optimize the resume, increasing the job seeker's chances of securing interviews in their desired field."
+        }
+      ],
+      "Tailor Resume to a Job Description": [
+        {
+          "id": "resume-writing-4",
+          "title": "Tailor Resume to a Job Description",
+          "content": "Act as an HR specialist with expertise in resume building. Tailor the existing resume to perfectly match the [job description] provided. This task involves analyzing the job description in detail to understand the specific skills, experiences, and qualifications the employer is seeking. Then, meticulously revise the existing resume to highlight the most relevant aspects of the candidate's background. This includes rephrasing bullet points to emphasize transferable skills, prioritizing experiences that directly relate to the job requirements, and ensuring the resume format and design are professional and easy to read. Incorporate keywords from the job description to ensure the resume passes through Applicant Tracking Systems (ATS) effectively."
+        }
+      ]
+    },
+    "ADHD": {
+      "Organize Daily Tasks": [
+        {
+          "id": "adhd-1",
+          "title": "Organize Daily Tasks",
+          "content": "Your role is to function as a sophisticated TODO list management tool. Organize a [list of daily tasks], prioritizing them based on urgency, importance, and deadlines. Allocate time slots for each task, suggesting the best order to tackle them to maximize productivity. Provide reminders for upcoming deadlines and suggest breaks to ensure efficiency doesn't wane. Additionally, offer flexibility by allowing for adjustments based on unexpected tasks or extended durations of certain activities. Ensure the list is clear, actionable, and motivates progress throughout the day."
+        }
+      ],
+      "Help With Weekly Planning": [
+        {
+          "id": "adhd-2",
+          "title": "Help With Weekly Planning",
+          "content": "Act as a productivity expert tasked with organizing and optimizing the upcoming week's schedule based on the [list of future tasks]. Your objective is to ensure that all tasks are prioritized effectively, deadlines are met, and time is managed efficiently. Begin by reviewing the list of tasks, assessing their importance, urgency, and estimated time to completion. Develop a structured plan that allocates specific time blocks for each task, incorporating breaks and contingency time for unexpected events. Offer strategies for minimizing distractions and maintaining focus, and suggest tools or techniques for tracking progress. Your plan should not only aim to complete all tasks on time but also enhance overall productivity and reduce stress throughout the week."
+        }
+      ],
+      "Prioritize Tasks": [
+        {
+          "id": "adhd-3",
+          "title": "Prioritize Tasks",
+          "content": "Act as an advanced TODO list application with prioritization capabilities. Analyze the provided [list of tasks] to determine their relevance based on urgency, importance, and deadlines. Organize these tasks in a prioritized list that clearly indicates which task should be tackled first, second, third, etc. Offer suggestions for scheduling and time management to ensure the most critical tasks are completed efficiently and on time. Additionally, provide the rationale behind the prioritization to help the user understand the importance of each task's order. Remember to adapt the prioritization as new tasks are added or as circumstances change."
+        }
+      ],
+      "Create Focus Challenges": [
+        {
+          "id": "adhd-4",
+          "title": "Create Focus Challenges",
+          "content": "Act as an interactive productivity expert specializing in solutions for individuals with ADHD. Design a focus challenge that is specifically tailored to help those with ADHD improve their concentration and productivity. The challenge should be engaging, accessible, and broken down into manageable tasks that can be easily integrated into daily routines. Incorporate elements of gamification to motivate participants and track progress. Provide clear instructions, objectives, and outcomes for each part of the challenge. Ensure the challenge includes a variety of activities that cater to different learning styles and preferences, offering flexibility while maintaining structure. Offer tips and strategies for overcoming common distractions and maintaining focus. The ultimate goal is for participants to develop skills and habits that enhance their ability to concentrate, leading to improved performance in their personal and professional lives."
+        }
+      ],
+      "Guide Through Mindfulness Exercise": [
+        {
+          "id": "adhd-5",
+          "title": "Guide Through Mindfulness Exercise",
+          "content": "Act as a mindfulness expert, guide through a structured mindfulness exercise designed to alleviate stress and enhance mental clarity. The exercise should be suitable for beginners and can be practiced anywhere, anytime. Begin with a brief introduction to mindfulness, explaining its benefits and how it can be integrated into daily life. Then, lead into a step-by-step guide that focuses on breathing techniques, body scans, and visualization methods to promote relaxation and awareness. Emphasize the importance of a non-judgmental attitude and encourage the participant to be fully present during the exercise. Conclude with tips on how to maintain a regular mindfulness practice and incorporate mindfulness into everyday activities."
+        }
+      ],
+      "Create Efficient Workflows": [
+        {
+          "id": "adhd-6",
+          "title": "Create Efficient Workflows",
+          "content": "Act as a productivity expert. Your task is to design an efficient workflow tailored to [custom needs] that optimizes time management and enhances overall productivity. This includes identifying bottlenecks, streamlining processes, and integrating suitable productivity tools. You should also consider the team's or individual's working style and preferences to ensure the workflow is both effective and sustainable. Provide clear, actionable steps and potentially a visual workflow diagram. Additionally, offer training or guidance on implementing and maintaining this optimized workflow, ensuring it can adapt to future needs or changes."
+        }
+      ]
+    },
+    "Daily Scheduling": {
+      "Create Time Blocks": [
+        {
+          "id": "daily-scheduling-1",
+          "title": "Create Time Blocks",
+          "content": "Your task is to analyze a provided [list of tasks] and suggest optimal time blocks for each task to ensure maximum productivity and efficiency. Consider factors such as task complexity, priority, and the average human concentration span. Your recommendations should also account for necessary breaks to prevent burnout and maintain high levels of focus throughout the day. Provide a detailed schedule that allocates specific time frames for each task, including start and end times. Offer advice on how to deal with potential distractions and how to adjust the schedule if a task takes more or less time than anticipated."
+        }
+      ],
+      "Align Daily Tasks with Long-Term Goals": [
+        {
+          "id": "daily-scheduling-2",
+          "title": "Align Daily Tasks with Long-Term Goals",
+          "content": "Your task is to develop a strategic plan that aligns daily tasks with [long-term goals] for an individual. This involves identifying key long-term objectives and breaking them down into actionable, daily tasks. You will create a comprehensive schedule that not only prioritizes these tasks but also includes time for review and adjustment based on progress. The plan should incorporate effective time management techniques, such as task batching, prioritization methods, and the use of technology for reminders and tracking."
+        }
+      ],
+      "Create Personalized Daily Schedule": [
+        {
+          "id": "daily-scheduling-3",
+          "title": "Create Personalized Daily Schedule",
+          "content": "Create a comprehensive daily schedule designed to optimize an individual's productivity based on their specified [priorities/deadlines/goals]. The schedule must strategically allocate time blocks for various tasks, ensuring that the most critical and time-sensitive tasks are prioritized. It should also incorporate breaks to prevent burnout, allow for flexibility to handle unforeseen tasks or emergencies, and include time for review and planning at the start and end of the day."
+        }
+      ],
+      "Manage Daily Priorities": [
+        {
+          "id": "daily-scheduling-4",
+          "title": "Manage Daily Priorities",
+          "content": "Evaluate and rank the provided [list of tasks] based on their urgency and importance. This requires a deep understanding of prioritization techniques such as the Eisenhower Matrix, which categorizes tasks into four quadrants: urgent and important, important but not urgent, urgent but not important, and neither urgent nor important. For each task, provide a brief rationale for its placement, considering deadlines, impact on goals, and resources required."
+        }
+      ],
+      "Act as Accountability Partner": [
+        {
+          "id": "daily-scheduling-5",
+          "title": "Act as Accountability Partner",
+          "content": "As an Accountability Partner, your main task is to help me set clear, achievable goals and hold me accountable for reaching those goals. Start by having a detailed discussion with me to understand my aspirations, strengths, and areas for improvement. Based on this discussion, work with me to set specific, measurable, attainable, relevant, and time-bound (SMART) goals. Once the goals are established, create a plan with me outlining the steps needed to achieve those goals. Schedule regular check-ins to track progress, discuss any challenges faced, and offer support and guidance as needed. Encourage me to stay focused and motivated, and celebrate milestones reached along the way."
+        }
+      ]
+    },
+    "Branding": {
+      "Brand Strategy": [
+        {
+          "id": "branding-1",
+          "title": "Suggest Brand Names",
+          "content": "Act as a brand naming expert. Generate a list of 10 unique and creative names for a [company description] . The names should align with the company's brand identity, resonate with the target market, and be easy to pronounce and remember. The names should also be unique enough to stand out in the industry and not be easily confused with other brands. Research on potential trademark conflicts should be conducted to ensure the names are available for use."
+        },
+        {
+          "id": "branding-2",
+          "title": "Craft Mission and Vision Statements",
+          "content": "Act as a brand positioning expert. Write a mission and vision statement for a [company description] . The mission statement should clearly articulate the company's purpose and its impact on its customers and the world. The vision statement should describe the company's future ambitions and where it wants to be in the future. Both statements should be aligned with the company's core values and inspire both employees and customers. Ensure the statements are concise, memorable, and can effectively guide the company's strategy."
+        },
+        {
+          "id": "branding-3",
+          "title": "Plan Long-Term Positioning",
+          "content": "Act as a brand positioning expert for the given [company] . Your task is to outline a comprehensive 5-year brand positioning plan that aligns with the company's mission, vision, and business objectives. The plan should identify the company's unique selling propositions, target audience, and market positioning. It should also include strategies to differentiate the brand from competitors, improve brand recognition, and increase market share. Additionally, provide yearly goals, key performance indicators, and tactics to measure the effectiveness of the brand positioning strategies. Ensure the plan is adaptable to market changes and trends."
+        }
+      ],
+      "Brand Identity": [
+        {
+          "id": "branding-4",
+          "title": "Create Logo Design Concepts",
+          "content": "As an expert in graphic design who has worked with major brands, your task is to suggest five unique concepts for a logo for a [company description] . These concepts should reflect the company's brand identity, values, and mission. They should be visually appealing, memorable, and versatile enough for use in various formats and platforms. Each concept should be distinctly different, offering a range of options and styles for consideration. Your suggestions should include a brief explanation of your ideas, the rationale behind them, and how they align with the company’s branding strategy."
+        },
+        {
+          "id": "branding-5",
+          "title": "Generate Color Scheme",
+          "content": "Act as an expert graphic designer with experience working with major brands. Your task is to recommend a color palette that effectively conveys the [brand description] . The color palette should be visually appealing, reflect the brand's personality, and resonate with the target audience. It should also be versatile enough to be used across various mediums such as print, digital, and social media. Provide reasoning behind your chosen colors, explaining how they align with the brand's identity and messaging."
+        },
+        {
+          "id": "branding-6",
+          "title": "Write a Brand Story",
+          "content": "As an experienced business copywriter, your task is to write a compelling brand story for a [company description] . The story should convey the company's mission, vision, and core values in an engaging and authentic manner. It should connect with the target audience on an emotional level, inspiring trust and fostering loyalty. Draw upon the company's history, achievements, and unique selling points to craft a narrative that distinguishes the brand in the marketplace. The brand story should be suitable for use across various platforms including the company's website, social media, and marketing materials."
+        }
+      ],
+      "Market Research": [
+        {
+          "id": "branding-7",
+          "title": "Research Market Trends",
+          "content": "Act as a Market Research Specialist. Your task is to summarize the latest trends in the given [industry] . This task requires thorough research of reliable sources to identify current trends and predict future ones. You need to provide a clear, comprehensive, and concise summary that highlights key points, including what the trends are, how they are impacting the industry, and potential implications for businesses within this industry. The summary should be informative and valuable for decision-making processes."
+        }
+      ]
+    },
+    "Course Creation": {
+      "Content Development": [
+        {
+          "id": "course-1",
+          "title": "Assist in Research",
+          "content": "As an experienced course creator, your task is to provide a comprehensive summary of the latest studies or news on a specific [topic] . This involves conducting thorough research to gather the most recent and relevant information, studies, and developments in the field. Your summary should be detailed, yet concise, and tailored to an audience interested in learning more about this topic. It should include key findings, notable trends, and any significant changes or advancements in the field. This summary will be used to update or create course content, ensuring that it remains current and informative for students or learners. Your expertise in course creation should guide the structure and presentation of the summary, making it both engaging and educational."
+        },
+        {
+          "id": "course-2",
+          "title": "Outline Course Syllabus",
+          "content": "Act as an experienced course creator. Develop a detailed course syllabus for a course on [topic] . The syllabus should provide a comprehensive overview of the course content, including a week-by-week breakdown of topics, learning objectives, and required readings or resources. Ensure that the course is structured to facilitate progressive learning, building on concepts in a logical sequence. Incorporate varied teaching methodologies, such as lectures, discussions, and hands-on activities. Also, include evaluation methods like assignments, quizzes, or projects to assess student understanding. The syllabus should be clear, engaging, and tailored to the needs and interests of the intended audience."
+        },
+        {
+          "id": "course-3",
+          "title": "Suggest Supplemental Materials",
+          "content": "As an experienced course creator, your task is to identify and suggest a range of supplemental materials for a course on [topic] . These materials should enhance the learning experience, providing additional depth and perspective beyond the core curriculum. Evaluate various types of resources such as books, articles, videos, podcasts, and interactive tools. Ensure these materials are accessible, relevant, and engaging for the target audience. Your suggestions should cater to different learning styles and complement the main course content, aiming to reinforce and expand upon key concepts. Consider the current trends and advancements in the field of [topic] to keep the course content fresh and up-to-date."
+        },
+        {
+          "id": "course-4",
+          "title": "Draft a Script for a Video",
+          "content": "As an experienced course creator, your task is to draft a script for a [lecture/video] focusing on [topic] . The script should be informative, engaging, and structured to facilitate easy understanding. Begin with an introduction that hooks the audience and clearly states the objectives of the lecture/video. Use a conversational tone to explain key concepts, incorporating real-world examples or case studies to illustrate points. Ensure the content is well-organized, with logical progression and clear transitions between sections. Conclude with a summary of the key takeaways and a call to action, encouraging further exploration of the topic. Remember to align the script with the target audience's level of knowledge and interest in the subject."
+        }
+      ],
+      "Student Engagement": [
+        {
+          "id": "course-5",
+          "title": "Suggest Discussion Topics",
+          "content": "As an experienced course creator, develop a list of engaging and thought-provoking discussion topics related to [topic] . These topics should stimulate critical thinking, encourage interactive participation, and deepen learners' understanding of the subject. Each topic should be framed in a way that is accessible yet challenging, catering to a diverse range of perspectives. Additionally, consider incorporating real-world applications and current trends in the field to make the discussions more relevant and enriching for the participants."
+        },
+        {
+          "id": "course-6",
+          "title": "Create Personalized Learning Tips",
+          "content": "As an experienced course creator, your task is to develop personalized learning tips for [student] focused on [topic] . This requires analyzing the student's learning style, strengths, and areas for improvement. Create an engaging and effective learning strategy that caters specifically to the student's needs. The tips should be actionable, clear, and tailored to help the student grasp the concepts in [topic] more effectively. Include a mix of different teaching methods like visual aids, practical exercises, and interactive activities. Ensure the tips are structured to facilitate both understanding and retention, aiming to boost the student's confidence and interest in the subject."
+        }
+      ],
+      "Assessment": [
+        {
+          "id": "course-7",
+          "title": "Give Feedback on Assignments",
+          "content": "As an experienced course creator, review and provide constructive feedback on an assignment. Your role involves evaluating the assignment's content, structure, and adherence to the given guidelines. Offer insightful suggestions to improve clarity, engagement, and educational value. Highlight strengths and areas for improvement, maintaining a positive and encouraging tone. Ensure your feedback is detailed, actionable, and supports the student's learning journey, helping them understand not just what to improve, but also how to make those improvements effectively."
+        },
+        {
+          "id": "course-8",
+          "title": "Create an Interactive Quiz",
+          "content": "Act as an experienced course creator. Design a comprehensive and engaging quiz on [topic] that accurately assesses learners' understanding and retention of the material. The quiz should be structured to challenge and stimulate critical thinking, offering a variety of question types such as multiple-choice, true/false, and short answer. Ensure that the questions are clear, relevant, and aligned with the learning objectives. The quiz should also include a feedback mechanism for each answer, providing learners with immediate insight into their performance and encouraging further learning."
+        }
+      ]
+    },
+    "Data Analysis": {
+      "Data Preparation": [
+        {
+          "id": "data-1",
+          "title": "Validate Data Format",
+          "content": "As a Data Analysis Expert, your task is to validate a dataset to ensure it meets a specified [list of conditions] . This involves meticulously checking each data entry against the conditions, such as data type, range values, missing values, and format consistency. You will use statistical and computational methods to identify any discrepancies, outliers, or anomalies in the dataset. Your goal is to ensure the data is clean, accurate, and ready for further analysis or processing. This task requires a keen eye for detail, a solid understanding of data integrity principles, and proficiency in data analysis tools and software. Your findings and any corrections made should be documented in a comprehensive report, outlining the validation process, issues identified, and the steps taken to resolve them, ensuring the dataset's reliability and effectiveness for its intended use."
+        },
+        {
+          "id": "data-2",
+          "title": "Clean Data",
+          "content": "Act as a data analysis expert responsible for ensuring the integrity and quality of data sets. Your task is to clean a specific data set for misspellings, grammatical errors, or syntax issues that could impact data analysis or outcomes. You will use various data cleaning tools and techniques to identify and correct errors, standardizing the data set for further analysis. This involves carefully reviewing the data set, identifying anomalies or inconsistencies, and applying corrections where necessary. Additionally, you will document the cleaning process, including the errors found and the actions taken to correct them, ensuring transparency and reproducibility in the data analysis process. Your ultimate goal is to enhance the reliability and accuracy of the data set, enabling precise and valid insights to be derived from it."
+        },
+        {
+          "id": "data-3",
+          "title": "Create Mock Datasets",
+          "content": "Act as a data generator tasked with creating a comprehensive mock dataset. The dataset needs to include the specified [columns] , which should be designed to simulate real-world data accurately. Ensure that the dataset is structured in a way that allows for easy analysis and manipulation. Pay special attention to creating realistic entries that reflect potential real-life scenarios related to the dataset’s intended use. The dataset should be diverse enough to support various analyses, including statistical tests, machine learning models, and data visualization projects. Instead of text, provide the dataset in a commonly used format such as CSV or Excel, and include a brief documentation outlining the structure of the dataset, the meaning of each column, and any assumptions made during the data generation process."
+        }
+      ],
+      "Analysis & Visualization": [
+        {
+          "id": "data-4",
+          "title": "Segment Data",
+          "content": "Act as a data analysis expert. Your task is to segment data into groups based on [specified criteria] . This involves using Python to analyze a dataset and categorize the data points into distinct groups. The segmentation should be logical, meaningful, and based on the predefined criteria, which could range from demographic characteristics to user behavior or purchase history. Your analysis will need to include a rationale for the segmentation approach, an explanation of the methodology used, and a detailed presentation of the findings. The goal is to provide actionable insights that can inform decision-making, improve targeting strategies, or enhance understanding of the dataset’s underlying patterns."
+        },
+        {
+          "id": "data-5",
+          "title": "Analyze Data Set for an Outcome",
+          "content": "Act as a data analysis expert. Analyze the provided data to find insights that will lead to [desired outcome] . Utilize statistical methods, data visualization techniques, and any necessary tools to extract meaningful information from the data. Present your findings in a clear and concise manner, highlighting key trends, patterns, and potential opportunities for improvement. Make data-driven recommendations that will help achieve the desired outcome."
+        },
+        {
+          "id": "data-6",
+          "title": "Visualize Data",
+          "content": "As a Data Analysis Expert, your task is to visualize data for achieving [desired outcome] . This involves using visualization tools and techniques to create clear, comprehensive, and engaging visuals. Your visuals should effectively communicate the insights and support decision-making related to [desired outcome] . You will need to identify key performance indicators, trends, and patterns within the data that are vital for understanding how to reach the [desired outcome] . Ensure that your visualizations are accessible to all stakeholders, including those without a technical background, and highlight actionable insights that can drive strategy. Additionally, you should provide a brief explanation or commentary alongside your visualizations to guide the viewer through your findings and recommend next steps. Your ultimate goal is to make the data tell a story that resonates with the audience and facilitates informed decisions towards achieving the [desired outcome] ."
+        }
+      ]
+    },
+    "Event Planning": {
+      "Conceptualization": [
+        {
+          "id": "event-planning-1",
+          "title": "Brainstorm Event Themes",
+          "content": "Act as an experienced event planner tasked with brainstorming unique event themes and concepts based on [topic] . Your role involves leveraging your creative thinking and deep understanding of event planning to conceive innovative and memorable event ideas that resonate with the intended audience. You will need to consider the venue, target demographic, potential sponsors, and the overall objectives of the event. Your concepts should not only be original and engaging but also feasible within budget and logistical constraints. Develop a detailed proposal for each concept, including a vision statement, key activities, potential challenges and solutions, and how the theme aligns with the client's goals and [topic] 's essence. Your ultimate goal is to create an immersive experience that exceeds client expectations and leaves a lasting impact on attendees."
+        },
+        {
+          "id": "event-planning-2",
+          "title": "Help with Decoration and Styling Tips",
+          "content": "Act as a design & stylist expert specialized in event planning and decoration. Provide comprehensive decor ideas and themes tailored specifically to the [event type] . Your recommendations should encompass everything from color schemes and lighting to table arrangements and focal points, creating a cohesive and immersive atmosphere for the event. Consider the event's purpose, location, and target audience to propose innovative and memorable decor solutions that enhance the overall experience."
+        },
+        {
+          "id": "event-planning-3",
+          "title": "Suggest Entertainment",
+          "content": "As an experienced event planner, you are tasked with recommending suitable entertainment options tailored to the specific needs and preferences of the [event type] . Your role involves conducting a thorough analysis of the event's target audience, theme, and overall objectives to ensure that the entertainment aligns perfectly with the event's atmosphere and goals. You will need to consider factors such as the venue's capacity, the demographic of attendees, and the tone of the event (formal, casual, educational, etc.) in your recommendations."
+        }
+      ],
+      "Logistics & Management": [
+        {
+          "id": "event-planning-4",
+          "title": "Plan Event Budget",
+          "content": "As an experienced event planner, your task is to create a comprehensive budget and cost breakdown for the upcoming event, taking into consideration various aspects such as venue, catering, entertainment, marketing, and any additional services required. Your responsibility includes negotiating with vendors to secure the best prices, ensuring quality services while maintaining the event's budget constraints. You will need to allocate funds efficiently across different segments, ensuring that all critical components of the event are adequately funded to achieve a successful outcome. Start by asking for all necessary details you need."
+        },
+        {
+          "id": "event-planning-5",
+          "title": "Create Event Schedule",
+          "content": "Act as an experienced event planner, tasked with creating a comprehensive timeline for an event centered around [event theme] . This detailed plan should encompass all phases of the event, including setup, the execution of the main event, and the teardown process. Begin by outlining the pre-event planning stages, specifying tasks such as venue booking, supplier contracts, and promotional activities. For the setup phase, detail the timeline for venue decoration, technical setups like sound and lighting, and the arrangement of any booths or exhibits. During the main event, provide a minute-by-minute schedule that includes the timing of keynotes, performances, breaks, meals, and any other significant activities. Factor in time for guest speakers, entertainment, and interactive sessions, ensuring a smooth flow that keeps attendees engaged from start to finish. Finally, describe the teardown process, including the dismantling of setups, cleanup, and the return of rented equipment. Specify any post-event activities such as feedback collection, thank you notes to attendees and partners, and the return of lost items. Ensure that your timeline is realistic, allowing for unforeseen delays, and is communicated clearly to all stakeholders involved. Highlight any critical points where extra attention or resources are needed, and provide contingency plans for potential issues. Your goal is to ensure a seamless experience that leaves a lasting positive impression on all participants."
+        },
+        {
+          "id": "event-planning-6",
+          "title": "Delegate Tasks",
+          "content": "Act as an experienced event planning manager tasked with overseeing a large-scale event. Your responsibility includes suggesting task delegation strategies for the event team members to ensure a smooth and successful execution of the event. Develop a comprehensive strategy that covers the allocation of tasks based on individual strengths and expertise, establishing clear communication channels, setting deadlines, and implementing a system for tracking progress and accountability. Start by asking for all the details about the event."
+        }
+      ],
+      "Promotion": [
+        {
+          "id": "event-planning-7",
+          "title": "Promote Event",
+          "content": "Act as an expert in creating comprehensive marketing strategies specifically tailored for events. Develop a detailed marketing plan that encompasses social media campaigns, email marketing, and targeted ad strategies to effectively promote [specific event] . This plan should identify the target audience and tailor the messaging to resonate with them, leveraging the strengths of each platform to maximize reach and engagement. Outline objectives for each campaign, including expected reach, engagement metrics, and conversion goals. Include a timeline for each phase of the campaign, from initial awareness-building to post-event follow-up, ensuring each step is designed to build anticipation, drive registrations or ticket sales, and maintain interest in the event. Provide recommendations for content creation, including themes and messages that align with the event's branding and objectives, as well as suggestions for optimizing ad spend across platforms to achieve the best ROI. Start by asking for all the details about the event."
+        }
+      ]
+    },
+    "Excel": {
+      "Function Guidance": [
+        {
+          "id": "excel-1",
+          "title": "Explain How Excel Function Works",
+          "content": "Act as a proficient Excel user and explain how the [name of Excel function] works in a clear and concise manner. Provide step-by-step instructions on how to use the function, including any necessary parameters or inputs. Give examples or scenarios where the function would be useful and explain the benefits of using it. Make sure to include any tips or best practices for optimizing the function's performance in Excel."
+        },
+        {
+          "id": "excel-2",
+          "title": "Explain How to Use Excel Functions",
+          "content": "Act as a proficient Excel user and create a step-by-step guide on how to use the [Excel function] to perform a specific [action] . Break down the process into easy-to-follow instructions, including screenshots or examples where necessary. Explain the purpose and benefits of using this function, and highlight any tips or tricks that can help users optimize their use of Excel. Make sure to provide clear and concise explanations to help users understand and successfully execute the task."
+        }
+      ],
+      "Automation & Commands": [
+        {
+          "id": "excel-3",
+          "title": "Write Excel Commands",
+          "content": "Act as a proficient Excel user. Write an Excel command to perform a specific [action] . The command should accurately achieve the desired outcome. Provide any necessary explanations or additional information to ensure that the command is easily understood and can be executed successfully."
+        },
+        {
+          "id": "excel-4",
+          "title": "Write Macros",
+          "content": "Act as a proficient Excel user with knowledge of VBA. Develop a VBA Excel macro that automates a [specific task] within the spreadsheet. The macro should perform the desired action efficiently and accurately, saving time and reducing the margin for error. Ensure that the macro is user-friendly and easily accessible for other users who may need to utilize it in the future. Test the macro thoroughly to confirm its functionality and make any necessary adjustments to optimize its performance."
+        }
+      ],
+      "Task Assistance": [
+        {
+          "id": "excel-5",
+          "title": "Perform Complex Tasks",
+          "content": "Act as a proficient Excel user. Follow the detailed task instructions provided to perform a [task] using Excel. This may involve data analysis, creating formulas, generating reports, or any other task that requires advanced Excel skills. Ensure accuracy, efficiency, and attention to detail while completing the task. If there are any uncertainties or questions, seek clarification before proceeding to ensure the task is completed successfully."
+        },
+        {
+          "id": "excel-6",
+          "title": "Turn ChatGPT Into a Useful Excel Assistant",
+          "content": "Act as an Excel expert. Provide step-by-step instructions on how to complete a specific task in Excel. This could include tasks such as creating a pivot table, formatting data, using formulas or functions, creating charts or graphs, or any other Excel-related task. Clearly explain each step, specify any required settings, or options, explain what functions to use, and provide any additional tips or recommendations to ensure accurate and efficient completion of the task. Help me with the following task: [describe your task]"
+        }
+      ]
+    },
+    "Goal Setting": {
+      "Planning & Strategy": [
+        {
+          "id": "goal-setting-1",
+          "title": "Structure Goals",
+          "content": "Act as a goal setting expert. Your task is to take the provided [list of goals] and break them down into actionable steps, complete with timelines and milestones for each step. This process should start with a clear definition of each goal, followed by a detailed plan that outlines what needs to be achieved, how it can be done, and by when. For each goal, identify the key actions required, assign a realistic timeline for completion, and set specific milestones to mark progress. Ensure that the plan is both achievable and challenging, keeping in mind the resources available and any potential obstacles."
+        },
+        {
+          "id": "goal-setting-2",
+          "title": "Plan & Track Goals",
+          "content": "Act as a goal-setting expert responsible for drafting a detailed action plan to track a specific [list of goals] . This plan should begin with a comprehensive assessment of each goal, including its relevance, urgency, and the specific outcomes desired. Following this, develop a step-by-step strategy that outlines the tasks and milestones necessary to achieve each goal. Your plan must include a timeline for each step, identifying responsible parties and resources required. Incorporate methods for monitoring progress and adjusting strategies as needed to ensure continuous movement toward goal achievement."
+        },
+        {
+          "id": "goal-setting-3",
+          "title": "Brainstorm Goals",
+          "content": "Act as an expert in setting actionable goals. Your task is to brainstorm and articulate clear, achievable goals for [specific area of life] . Provide a list of goals that are SMART (Specific, Measurable, Achievable, Relevant, Time-bound). Ensure that these goals not only inspire motivation but also include practical steps for how an individual can begin to work towards achieving them."
+        }
+      ],
+      "Mindset & Support": [
+        {
+          "id": "goal-setting-4",
+          "title": "Help With Self-Reflection",
+          "content": "As a goal setting expert, design a comprehensive session aimed at facilitating deep introspection on the provided [list of goals] . Develop a series of guided questions designed to provoke thought, encourage self-examination, and identify the underlying motivations behind each goal. These questions should challenge the individual to consider their priorities, potential obstacles, and the actionable steps necessary to achieve their objectives. The session should be structured in a way that promotes open and honest reflection, allowing for a thorough exploration of each goal."
+        },
+        {
+          "id": "goal-setting-5",
+          "title": "Provide Motivation & Accountability",
+          "content": "Act as a goal setting expert, tasked with creating personalized affirmations for an individual based on their [specific list of goals] . These affirmations should be designed to motivate, inspire, and build confidence, helping the individual to focus on their objectives and maintain a positive mindset. Each affirmation must be clear, concise, and powerful, directly addressing the goals provided. Ensure that the affirmations are actionable and encourage progress, reinforcing the belief that these goals are attainable."
+        }
+      ]
+    },
+    "Market Research": {
+      "Market Research Prompts": [
+        {
+          "id": "market-research-1",
+          "title": "Suggest Research Methodologies",
+          "content": "Act as an experienced market researcher. Develop a comprehensive list of market research methodologies that can be utilized to gather valuable insights about [product/service] and its potential market. These methodologies should cover both primary and secondary research techniques, including but not limited to surveys, focus groups, interviews, observation, case studies, and market analysis. Each suggested methodology should come with a brief explanation of how it will contribute to understanding the market demand, competitive landscape, customer preferences, and potential barriers to entry. Additionally, include recommendations for digital analytics tools and social media listening platforms that could provide real-time data and trends related to [product/service]. Ensure that the methodologies are feasible, cost-effective, and tailored to gather the most relevant information to inform strategic decisions."
+        },
+        {
+          "id": "market-research-2",
+          "title": "Gather Public Data",
+          "content": "Act as an experienced market researcher. Your task is to gather comprehensive public data on [product/service] and its [target audience]. This involves conducting a detailed analysis of market trends, customer preferences, competitive landscape, and potential growth areas. Utilize a variety of sources, including online databases, consumer surveys, social media analytics, and industry reports, to compile a report that offers insightful and actionable information. The report should identify key opportunities and challenges facing [product/service] in reaching [target audience], and propose data-driven recommendations to enhance market penetration and customer engagement. Ensure that your research is thorough, up-to-date, and complies with all relevant data protection regulations."
+        },
+        {
+          "id": "market-research-3",
+          "title": "Create Customer Personas",
+          "content": "As an experienced market researcher, your task is to develop a comprehensive customer persona for [product/service]. This persona will serve as a cornerstone for marketing strategies, product development, and customer support initiatives. Your work should involve in-depth research and analysis to accurately represent the target customer. Begin by identifying the key demographics of the target audience, including age, gender, location, and income level. Delve into psychographics, such as interests, values, lifestyle, and challenges that the target audience faces which [product/service] can solve. Your customer persona should detail: Demographic information, Psychographics, Behavioral traits, Goals and challenges, Preferred channels of communication, A day in the life scenario."
+        },
+        {
+          "id": "market-research-4",
+          "title": "Identify Market Gaps",
+          "content": "Act as an experienced market researcher specializing in [niche]. Your task is to conduct a comprehensive analysis to identify existing market gaps where [product/service] could significantly impact and gain an advantage. This involves examining current market trends, customer needs and preferences, competitor strategies, and potential areas for innovation or improvement. Utilize both qualitative and quantitative research methods, including surveys, interviews, and data analysis, to gather insights. Based on your findings, provide a detailed report highlighting specific opportunities for [product/service] to fill these gaps effectively. The report should include actionable recommendations and strategies for positioning [product/service] to capitalize on these identified opportunities, considering the competitive landscape and target audience's evolving needs."
+        },
+        {
+          "id": "market-research-5",
+          "title": "Find Competitors",
+          "content": "As an experienced market researcher, your task is to identify potential competitors for a specific [product/service]. This involves conducting a comprehensive market analysis to uncover direct and indirect competitors within the market. You will need to use various research methodologies, including online databases, industry reports, social media analysis, and customer feedback platforms to gather relevant data. Your analysis should include a detailed profile of each competitor, covering aspects such as their market share, product offerings, pricing strategies, distribution channels, marketing approaches, and customer base. Additionally, identify any unique selling propositions (USPs) or weaknesses of these competitors to understand their position in the market. The final deliverable should be a comprehensive report that not only lists the potential competitors but also provides an analysis of their strengths and weaknesses, competitive positioning, and potential impact on the [product/service] you are researching. This report will be crucial for strategic planning, helping to inform decisions on product development, marketing strategies, and market entry tactics."
+        }
+      ]
+    },
+    "Newsletter": {
+      "Newsletter Prompts": [
+        {
+          "id": "newsletter-1",
+          "title": "Draft Opinion Piece",
+          "content": "As a successful newsletter creator with a large audience, draft an opinion piece on the given [topic]. Your piece should be engaging, persuasive, and informative, aiming to spark discussions among your readers. Make sure to back up your opinion with relevant facts and statistics. The piece should be written in a conversational tone to maintain the rapport with your audience. Ensure that it is in line with your newsletter's overall tone and style. Make sure to include a call-to-action at the end to encourage readers to respond or share your piece."
+        },
+        {
+          "id": "newsletter-2",
+          "title": "Provide Industry Updates",
+          "content": "As a successful newsletter creator with a large audience, your task is to provide a concise yet comprehensive summary of the latest developments in the [sector]. The summary should be able to capture the interest of our newsletter audience, providing them with valuable insights and updates in a digestible format. This includes highlighting key events, trends, and notable changes in the sector. The content should be written in a conversational tone, maintaining a balance between professional and engaging. It should adhere to our brand voice and style guide. The summary should also encourage the readers to engage and interact with our brand, thereby increasing our newsletter's overall effectiveness."
+        },
+        {
+          "id": "newsletter-3",
+          "title": "Summarize Interview",
+          "content": "As a successful newsletter creator with a large audience, your task is to summarize a recent interview with [person] for the next newsletter issue. Capture the key points, insights, and highlights of the interview in a concise and engaging manner. Your summary should engage the readers, encourage them to read the full interview, and add value to their understanding of the subject. The tone and style of your writing should be consistent with the rest of the newsletter, and it should be optimized for email reading. Remember to include a call-to-action to drive reader engagement."
+        },
+        {
+          "id": "newsletter-4",
+          "title": "Edit & Proofread",
+          "content": "As a successful newsletter creator with a large audience, your task is to edit and proofread the upcoming newsletter issue. This includes reviewing the content for clarity, coherence, and conciseness. Check for any grammatical, spelling, or punctuation errors and rectify them. Ensure the content aligns with the brand voice and is engaging for the audience. Also, check the layout and design for consistency and visual appeal. Make sure all links work and lead to the correct pages. Your goal is to create a newsletter that is error-free, easy to read, and engaging for the audience. Here is the issue:"
+        },
+        {
+          "id": "newsletter-5",
+          "title": "Generate Catchy Headlines",
+          "content": "As a successful newsletter creator with a large audience, generate 5 catchy headlines for an upcoming newsletter article about [topic]. The headlines should be engaging, compelling, and should accurately represent the content of the article. They should be tailored to attract the interest of our target audience and encourage them to read the entire article. These headlines should also be SEO-friendly to increase the visibility of our newsletter on search engines."
+        },
+        {
+          "id": "newsletter-6",
+          "title": "Write Engaging Intro",
+          "content": "As a successful newsletter creator with a large audience, your task is to write an engaging introduction for a story about [topic]. The introduction should be compelling, drawing in readers to want to continue reading the story. It should give a brief overview of what the story will be about, without giving too much away. It should also align with the tone and style typically used in the newsletter, to maintain consistency for the readers. Use your expertise in content creation to make the introduction as captivating as possible."
+        },
+        {
+          "id": "newsletter-7",
+          "title": "Come Up With CTAs",
+          "content": "As a successful newsletter creator with a large audience, your task is to come up with compelling call-to-action phrases for a newsletter about [topic]. These phrases should encourage subscribers to engage with the content, click on links, or take other desired actions. The phrases should be aligned with the topic of the newsletter and resonate with the audience, prompting them to take immediate action."
+        },
+        {
+          "id": "newsletter-8",
+          "title": "Generate Subscription Campaign Ideas",
+          "content": "As a successful newsletter creator with a large audience, your task is to generate innovative and compelling campaign ideas to increase our newsletter subscriptions. The campaign should encourage potential subscribers to sign up for our newsletter, highlighting the benefits and value they will receive. Your ideas need to be creative, original, and capable of effectively reaching our target audience. Consider various marketing channels and strategies, including social media, email marketing, incentives, and partnerships. Remember to keep our brand's image and values in mind throughout the process."
+        },
+        {
+          "id": "newsletter-9",
+          "title": "Suggest Cross-Promotion Strategies",
+          "content": "As a successful newsletter creator with a large audience, come up with innovative and effective strategies to cross-promote our newsletter. Identify potential collaboration opportunities, and suggest ways to leverage your existing audience to increase our newsletter's readership. Consider cross-promotion strategies such as guest editorials, newsletter swaps, shout-outs, and other mutually beneficial promotional activities. Your suggestions should be based on your experience and understanding of what works best for audience engagement and growth in newsletter marketing."
+        },
+        {
+          "id": "newsletter-10",
+          "title": "Write Article",
+          "content": "As an experienced copywriter and successful newsletter creator with a large audience, your task is to write an engaging and informative article on the [topic] for our newsletter. The article should be well-researched, informative, and appealing to our diverse audience. It should be written in an engaging style, using language and tone that aligns with our brand voice. The article should ideally stimulate reader interest and drive engagement, leading to high open and click-through rates. Incorporate relevant keywords strategically to improve our SEO ranking."
+        }
+      ]
+    },
+    "Product Management": {
+      "Product Management Prompts": [
+        {
+          "id": "product-management-1",
+          "title": "Perform Market Research",
+          "content": "Act as a seasoned product manager. Perform comprehensive market research based on the given [product description]. Your task involves identifying the target market, analyzing competitors, understanding customer needs and preferences, and evaluating the potential market size. You will also assess current trends that might affect the product's success. Your findings should inform product development, positioning, and marketing strategies. Compile your research into a detailed report, including data analysis, insights, and actionable recommendations to ensure the product's competitive edge in the market."
+        },
+        {
+          "id": "product-management-2",
+          "title": "Build a Pricing Strategy",
+          "content": "Act as a seasoned product manager with extensive experience in market analysis, competitive strategy, and value proposition. Develop a comprehensive pricing strategy for [product description] that effectively balances profitability with market penetration. Your strategy should include a thorough market analysis to identify target customer segments, competitive pricing benchmarks, and potential barriers to entry. Utilize a value-based pricing approach to highlight the product's unique benefits and justify its price point. Additionally, consider implementing tiered pricing models, discounts, or promotional offers to cater to different customer segments and drive volume. Ensure your pricing strategy is adaptable, allowing for future adjustments based on market feedback and sales performance data. Your ultimate goal is to position [product description] competitively in the market, maximizing revenue while ensuring customer satisfaction and loyalty."
+        },
+        {
+          "id": "product-management-3",
+          "title": "Create Customer Personas",
+          "content": "Act as a seasoned product manager with extensive experience in market analysis and customer behavior. Your task is to create detailed customer personas for a [product]. These personas should represent the ideal customers, including demographics, interests, behaviors, and purchasing motivations. Your work will involve analyzing existing data, conducting market research, and using your insights to build personas that accurately reflect the target audience. These personas will be crucial for tailoring marketing strategies, product development, and sales approaches. Ensure each persona is well-documented, including scenarios on how they would interact with the product, their pain points, and the solutions the product offers to meet their needs."
+        },
+        {
+          "id": "product-management-4",
+          "title": "Create a Product Roadmap",
+          "content": "Act as a seasoned product manager. Your task is to create a comprehensive product roadmap for [product], a groundbreaking offering that addresses the needs of [target audience]. This roadmap should outline the strategic direction and development phases of the product, from inception to launch and beyond. Begin by conducting a thorough market analysis to understand the competitive landscape and the unique value proposition of [product]. Identify key milestones, including initial market research, prototype development, testing phases, beta release, and official launch. Each phase should have clearly defined objectives, deliverables, timelines, and the resources required. Incorporate feedback loops with target users to ensure the product meets their needs and expectations. Prioritize features based on their impact and feasibility, ensuring the most critical elements are developed first. Additionally, detail the marketing and sales strategies that will accompany the product development phases to build anticipation and drive adoption upon release. Include key performance indicators (KPIs) to measure the success of the product at various stages. Your roadmap should be flexible yet focused, allowing for adjustments as the product evolves while keeping the team aligned towards the ultimate goal of revolutionizing the market for [target audience]. Ensure that the roadmap is visually engaging and easy to understand, facilitating communication with stakeholders and team members."
+        },
+        {
+          "id": "product-management-5",
+          "title": "Write User Stories",
+          "content": "Act as a seasoned product manager. Your task is to craft comprehensive user stories for [product] based on its description. These user stories should be detailed, focusing on the needs and goals of the end users. They should follow the standard format of \"As a [type of user], I want [an action] so that [benefit].\" Each story must clearly outline how different types of users will interact with the product, their expectations, and the value the product brings to their lives. Ensure that the user stories are prioritized based on the impact on the user experience and the product's strategic goals. Your user stories will be pivotal in guiding the development team to understand and empathize with the users, ensuring that the product development is user-centric and meets the market needs effectively."
+        },
+        {
+          "id": "product-management-6",
+          "title": "Analyze Customer Feedback",
+          "content": "As a seasoned product manager, you are tasked with analyzing [customer feedback entries] to identify patterns, trends, and insights that can inform product development and enhancement strategies. Your analysis should focus on extracting actionable insights from the feedback, prioritizing the feedback based on its potential impact on customer satisfaction and business goals, and recommending concrete steps for addressing the feedback. You should categorize the feedback into themes, quantify the feedback to understand its prevalence, and assess the feedback's significance in relation to the product's current performance and future roadmap. Your analysis will be crucial in guiding the product team's efforts to iterate on the product, improve user experience, and ultimately drive product success. Ensure that your recommendations are data-driven, align with the company's strategic objectives, and are presented in a clear, concise, and actionable manner to stakeholders."
+        }
+      ]
+    },
+    "Project Management": {
+      "Project Management Prompts": [
+        {
+          "id": "project-management-1",
+          "title": "Create Project Blueprint for a Team",
+          "content": "As an experienced project manager, your task is to develop a comprehensive project blueprint based on the given [project description]. This blueprint should outline the project's objectives, scope, deliverables, timelines, budget, and resource allocation. Start by conducting a thorough analysis of the project description to identify key requirements and objectives. Then, define the project scope to establish clear boundaries and prevent scope creep. Develop a detailed work breakdown structure (WBS) to identify all the tasks and activities needed to complete the project. Create a realistic timeline, setting milestones and deadlines for each phase of the project. Prepare a budget that includes an estimate of all costs associated with the project, such as labor, materials, and equipment. Finally, allocate resources effectively, ensuring that each task is assigned to team members with the appropriate skills and expertise. Throughout this process, consider potential risks and devise mitigation strategies to ensure the project's success. The blueprint should serve as a roadmap for the project team, guiding them from initiation through to completion, while ensuring that the project's goals are achieved efficiently and effectively."
+        },
+        {
+          "id": "project-management-2",
+          "title": "Conduct Risk Analysis",
+          "content": "Act as an experienced project manager responsible for overseeing the successful execution of a [project]. Your task is to create a comprehensive risk analysis document that identifies potential risks associated with the project, assesses their impact, and outlines mitigation strategies. This document should cover all aspects of the project, including but not limited to financial, operational, technological, and legal risks. Utilize your expertise to prioritize risks based on their likelihood and potential impact on the project's objectives. Develop a plan for regular monitoring and reporting of these risks throughout the project lifecycle. Your analysis will be crucial in making informed decisions and ensuring the project's resilience against unforeseen challenges."
+        },
+        {
+          "id": "project-management-3",
+          "title": "Help With Meetings",
+          "content": "As an experienced project manager, create a Post Project Evaluation Template for a [project]. This template should be comprehensive and designed to assess the project's overall performance, identifying successes, challenges, areas for improvement, and lessons learned. The evaluation template must include sections for: Project Overview, Objectives and Outcomes, Budget and Resources, Process and Implementation, Team Performance and Collaboration, Challenges and Problem-Solving, Stakeholder Satisfaction, Lessons Learned, Recommendations for Future Projects, Appendices."
+        },
+        {
+          "id": "project-management-4",
+          "title": "Communicate With Stakeholders",
+          "content": "As an experienced project manager, your task is to draft an email to the stakeholders of [project], providing them with a comprehensive update that includes both the [achievements] and [current challenges] the project is facing. This email should serve not only to inform but also to maintain stakeholders' confidence in the project's success. Start by briefly summarizing the project's goals and its current status. Highlight the key achievements that have been made towards these goals, including any milestones reached, metrics that show progress, or positive feedback from users or clients. Be specific about what has been accomplished and, if possible, link these achievements to the hard work of your team and the strategic decisions made along the way. Next, address the current challenges the project is facing. Be honest and transparent about these obstacles, but also demonstrate a proactive approach to solving them. Outline any strategies or solutions you are considering or have already put into place to overcome these issues. This section should reassure stakeholders that, despite the challenges, the project is in capable hands. Throughout the email, maintain a positive and professional tone. Your goal is to keep stakeholders informed and engaged with the project, reassuring them of its continued progress and your commitment to its success."
+        },
+        {
+          "id": "project-management-5",
+          "title": "Prioritize Project Tasks",
+          "content": "Act as an experienced project manager responsible for overseeing a complex [project]. Your task is to prioritize the various tasks within the project according to their urgency, importance, and the resources required. Begin by evaluating each task's impact on the project's overall objectives and deadlines. Develop a strategy for tackling the tasks in a sequence that maximizes efficiency and effectiveness while minimizing risks. You will need to communicate your plan clearly to your team, assigning responsibilities and setting clear deadlines. Additionally, you must monitor the progress of these tasks, making adjustments as necessary to ensure the project stays on track. Use project management tools and methodologies to organize tasks, and consider factors such as task dependencies, team member workloads, and potential bottlenecks in your planning. Your ultimate goal is to ensure the successful completion of the project on time and within budget, maintaining high-quality standards throughout the process."
+        }
+      ]
+    },
+    "Sales": {
+      "Market Research": [
+        {
+          "id": "sales-1",
+          "title": "Perform Market Research",
+          "content": "Act as an experienced salesman with years of expertise in the field. Your task is to gather crucial market data that will inform a comprehensive sales strategy for [product type] . This involves conducting in-depth market research to understand the competitive landscape, identifying target customer segments, and analyzing current trends and customer behaviors related to [product type] . Utilize a variety of research methods, including surveys, focus groups, and analysis of sales data. The goal is to compile a detailed report that includes potential sales channels, pricing strategies, and recommendations for marketing and promotional tactics. Your insights will be instrumental in positioning [product type] for success in the market, leveraging your experience to anticipate challenges and capitalize on opportunities."
+        }
+      ],
+      "Sales Enablement": [
+        {
+          "id": "sales-2",
+          "title": "Help With Sales Enablement",
+          "content": "As an experienced salesman with years of expertise, your task is to create a comprehensive sales outline tailored for [target customer] that showcases the key benefits they will gain from [product] . This outline should serve not only as a persuasive tool but also as a strategic guide for engaging potential customers effectively. Begin by identifying and understanding the specific needs, preferences, and pain points of [target customer] . Use this insight to highlight how [product] directly addresses these areas, emphasizing the unique value proposition and competitive advantages it offers. Ensure that your sales outline is structured logically, flows smoothly, and speaks directly to [target customer] in a language they understand and appreciate. Your goal is to not only inform and persuade but also to build a connection that positions [product] as the ideal solution for their needs."
+        },
+        {
+          "id": "sales-3",
+          "title": "Write Sales Scripts",
+          "content": "Act as an experienced salesman with years of expertise in direct sales. Your task is to write a compelling sales script for [product] that targets [target audience] . The script must be designed to engage potential customers from the beginning, addressing their needs and concerns while highlighting the benefits and features of [product] . Use persuasive language to build interest, create a connection, and ultimately convince the customer to make a purchase. The script should include questions that encourage customer interaction, responses to common objections, and a strong closing that urges immediate action. Ensure the script is concise, adaptable for different sales scenarios, and encapsulates your years of sales wisdom to maximize conversion rates."
+        },
+        {
+          "id": "sales-4",
+          "title": "Simulate Sales Call",
+          "content": "Act as a hesitant customer on a sales call. You're being presented with [product] , but despite the salesperson's best efforts, you're not yet convinced to make a purchase. Your task is to articulate your objections clearly, covering a range of concerns such as the product's price, its relevance to your needs, potential doubts about its effectiveness, and any other reservations you might have. Your objections should be rational and reflect common concerns that customers might have, providing a realistic scenario for the salesperson to address. The objective is to present these objections as challenges that need to be overcome for you to consider moving forward with the purchase."
+        },
+        {
+          "id": "sales-5",
+          "title": "Suggest Sales Collaterals",
+          "content": "As an experienced salesman with years of expertise, your task is to identify and suggest a range of effective sales collaterals for the sales process of [product] . These materials should be designed to support and enhance the sales strategy, providing potential clients with compelling information that addresses their needs and concerns. Your suggestions should include a variety of formats such as brochures, case studies, product demos, comparison charts, and testimonials that can be used at different stages of the sales funnel to build trust, demonstrate value, and ultimately close deals. Additionally, provide guidance on how each collateral type can be effectively utilized in the sales process to engage prospects, overcome objections, and facilitate decision-making. Your recommendations should be based on proven sales principles and your own successful experiences in the field."
+        }
+      ]
+    },
+    "Time Management": {
+      "Daily Planning": [
+        {
+          "id": "time-management-1",
+          "title": "Organize Daily Tasks",
+          "content": "I need assistance in organizing my tasks for the day to ensure that I stay on track and prioritize effectively. Your task is to create a detailed schedule outlining each task, its priority level, estimated time needed to complete, and any specific deadlines or time constraints. - Tasks to be organized: [list of tasks] - Priority levels: [priority levels] - Deadlines: [deadlines]"
+        },
+        {
+          "id": "time-management-2",
+          "title": "Set Daily Goals",
+          "content": "I need assistance in setting achievable and realistic goals for the day. The goals should be specific, measurable, attainable, relevant, and time-bound (SMART goals) to ensure that I stay focused and productive throughout the day. Your task is to work with me to identify tasks that need to be completed and prioritize them based on their importance and urgency. Together, we will create a plan of action with clear and actionable steps to help me accomplish my goals for the day. - Tasks to be completed: [list of tasks] - Deadline for completion: [deadline]"
+        },
+        {
+          "id": "time-management-3",
+          "title": "Prioritizing Work",
+          "content": "I need assistance in prioritizing my tasks for the day. I have a list of tasks that need to be completed, but I am feeling overwhelmed and unsure of where to start. Your task is to review the list of tasks and help me determine which ones are the most urgent and important. Provide a suggested order in which I should tackle each task, taking into consideration deadlines, importance, and any dependencies between tasks. - List of tasks: [list of tasks]"
+        },
+        {
+          "id": "time-management-4",
+          "title": "Adjust Daily Schedule",
+          "content": "I need assistance in rearranging my tasks for today due to an unexpected task that has come up. I need to ensure that all important tasks are still completed, but in a revised order to accommodate the new task. Your task is to help me prioritize and reschedule my tasks for the day, taking into consideration deadlines, importance, and any time constraints. - Current tasks: [current tasks] - Unexpected task: [Unexpected task description]"
+        },
+        {
+          "id": "time-management-5",
+          "title": "Create a Time Block Schedule",
+          "content": "I need help creating a structured time block schedule for my workday to maximize productivity and efficiency. The schedule should allocate specific time slots for different tasks, breaks, and activities, ensuring that I stay organized and focused throughout the day. Your task is to design a detailed time block schedule that takes into account my work priorities, deadlines, and preferred work habits. The schedule should be realistic and manageable, allowing for flexibility while also promoting productivity. - Work priorities: [work priorities] - Preferred work habits: [work habits]"
+        }
+      ],
+      "Productivity & Organization": [
+        {
+          "id": "time-management-6",
+          "title": "Organize Email Inbox",
+          "content": "I need tips on how to effectively manage and organize my email inbox to increase productivity and efficiency. The tips should help me stay on top of important emails, reduce clutter, and streamline my communication process. Your task is to provide a list of practical and actionable tips that can be easily implemented to improve email management skills. - Email platform: [email platform] - Current email management issues: [current issues]"
+        },
+        {
+          "id": "time-management-7",
+          "title": "Improve Focus",
+          "content": "I need suggestions for techniques that can help improve focus and productivity during work hours. The techniques should be practical, easy to implement, and effective in helping individuals stay focused and avoid distractions while working. Your task is to provide a list of proven techniques that can help improve focus, concentration, and productivity during work hours. - Work environment: [work environment] - Typical distractions: [typical distractions]"
+        },
+        {
+          "id": "time-management-8",
+          "title": "Manage Work-Life Balance",
+          "content": "I am struggling to balance my work commitments with personal time, and I need assistance in creating a plan or schedule that allows me to effectively manage both aspects of my life. The goal is to maintain a healthy work-life balance and prevent burnout. Your task is to help me create a schedule or plan that prioritizes both work responsibilities and personal time, ensuring that I can be productive at work while also taking care of my well-being and personal needs. - Work commitments: [work commitments] - Personal time activities: [personal time activities]"
+        }
+      ],
+      "Project & Team Management": [
+        {
+          "id": "time-management-9",
+          "title": "Track Project Milestones",
+          "content": "I need someone to track and document the milestones achieved in an ongoing project. This includes noting key accomplishments, deadlines met, and any deviations from the project plan. This information will be used to evaluate progress, identify areas for improvement, and communicate updates to stakeholders. Your task is to regularly update the project milestone tracker with accurate and up-to-date information. - Project details: [project details] - Stakeholders: [stakeholders]"
+        },
+        {
+          "id": "time-management-10",
+          "title": "Coordinate Team Tasks",
+          "content": "I need help creating a detailed task list for my team to ensure that we stay on track and meet our project objectives. The task list should outline all the necessary steps, deadlines, and responsibilities for each team member. Your task is to develop a comprehensive task list that breaks down the project into manageable action items, assigns roles and responsibilities, and sets clear deadlines for each task. - Project objectives: [project objectives]"
+        }
+      ]
+    },
+    "VBA": {
+      "Automation": [
+        {
+          "id": "vba-1",
+          "title": "Create VBA Macro to Automate Reports in Powerpoint",
+          "content": "I need a VBA macro created that will automatically update a PowerPoint presentation with data from an Excel spreadsheet. The macro should be able to dynamically populate slides with the latest information from the Excel file, ensuring that the presentation is always up-to-date without manual intervention. Your task is to write a VBA macro that establishes a connection between the PowerPoint presentation and the Excel data, allowing for seamless updates whenever the Excel file is edited. - Excel data: [Excel data] - PowerPoint presentation: [PowerPoint presentation]"
+        },
+        {
+          "id": "vba-2",
+          "title": "Automate Email Sending From Outlook",
+          "content": "I need a VBA code that will automate the process of sending personalized emails with attachments to contacts stored in an Excel sheet. The code should be efficient, error-free, and easy to use for someone with basic VBA knowledge. Your task is to write a VBA script that will extract contact information from the Excel sheet, compose individualized emails with specified attachments, and send them out automatically. - Excel sheet format: [format] - Email template: [template]"
+        },
+        {
+          "id": "vba-3",
+          "title": "Write VBA Code to Automate Excel Task",
+          "content": "I need a VBA code that can automate a specific task in Excel. The code should be efficient, error-free, and easy to use by someone with basic Excel knowledge. The task to be automated could be anything from data manipulation, report generation, formatting, or any other repetitive task that can be streamlined with automation. Your task is to write a VBA code that addresses the specific task mentioned and ensure it runs smoothly without any issues. - Excel task to be automated: [task description] - Desired outcome: [desired outcome]"
+        }
+      ],
+      "Code Management": [
+        {
+          "id": "vba-4",
+          "title": "Optimize Existing VBA Code",
+          "content": "I need someone with expertise in VBA programming to review my code and identify areas where it can be optimized for efficiency. The code is currently functional but I believe it can be improved to run faster and more smoothly. Your task is to analyze the VBA code, identify any redundant or inefficient sections, and suggest optimizations to streamline the code and improve its performance. - VBA code: [code snippet]"
+        },
+        {
+          "id": "vba-5",
+          "title": "Make VBA Code More Readable",
+          "content": "I have a VBA code that needs to be restructured to make it more organized, easier to understand, and maintainable for future updates. The current code is functional but lacks clarity and efficiency. Your task is to refactor the VBA code, breaking it down into smaller, more manageable modules, improving variable naming conventions, and adding comments to explain the logic behind each section. The goal is to make the code more readable and maintainable for any future modifications. - Current VBA code: [current VBA code]"
+        }
+      ],
+      "Function Development": [
+        {
+          "id": "vba-6",
+          "title": "Develop Custom VBA Function",
+          "content": "I need a custom VBA function created that will perform a specific calculation in Excel. The function should be designed to automate a repetitive task and improve efficiency in data analysis. Your task is to write a VBA function that takes in the necessary input parameters, performs the calculation accurately, and returns the desired output. - Calculation to be performed: [calculation] - Input parameters: [parameters]"
+        }
+      ]
+    },
+    "Business Plan": {
+      "Core Components": [
+        {
+          "id": "business-plan-1",
+          "title": "Write Executive Summary",
+          "content": "Act as a serial entrepreneur with extensive experience in starting and scaling businesses. Write an executive summary that outlines the core aspects of a new venture. This summary should briefly [describe the business] , articulate the [problem it aims to solve] , and highlight its [unique selling proposition] . The document needs to be compelling enough to attract potential investors, partners, or customers. Ensure that the language is clear, the points are concise, and the value proposition is evident. The executive summary should serve as a powerful introduction to the business plan, encapsulating the essence of the venture and why it stands out in the market."
+        },
+        {
+          "id": "business-plan-2",
+          "title": "Write a Business Description",
+          "content": "As a serial entrepreneur with strong copywriting experience, your task is to craft a compelling business description that encapsulates the essence of the [company's mission and vision] . This description should not only define what the business stands for and aims to achieve but also resonate with its [target audience] , inspiring them to engage with the brand. Your writing must succinctly convey the company's core values, objectives, and the unique approach it takes to fulfill its mission. Highlight the innovative aspects of the business that set it apart from competitors and detail how its vision aligns with future industry trends or societal needs. This business description will be utilized across various platforms, including the company website, press releases, and investor pitches, so it needs to be adaptable yet consistently impactful. It should invoke a sense of trust and credibility, compelling readers to learn more about the company, its products, or services."
+        }
+      ],
+      "Market & Product Analysis": [
+        {
+          "id": "business-plan-3",
+          "title": "Conduct Competitor Analysis",
+          "content": "Act as an experienced market researcher. Conduct comprehensive market research to identify potential competitors for [business description] . This task involves analyzing the current market landscape, identifying key players, and understanding their strengths, weaknesses, opportunities, and threats in relation to our business. Utilize both primary and secondary research methods, including surveys, interviews, and data analysis, to gather relevant information. Develop a detailed report that outlines the competitive environment, provides insights into market trends, and suggests strategic recommendations for positioning our business effectively. Ensure that the research is thorough, up-to-date, and provides actionable insights to inform our business strategy."
+        },
+        {
+          "id": "business-plan-4",
+          "title": "Find Products and Services",
+          "content": "As an experienced market researcher, your task is to analyze the provided [business description] and suggest a product or service that aligns with the business’s core competencies, market demands, and potential growth opportunities. Your suggestion should be backed by a thorough market analysis, including competitor analysis, target audience identification, and trend evaluation. You should also consider the scalability of the product or service, its potential impact on the business’s revenue, and how it could differentiate the business in the market. Prepare a detailed report outlining your research methodology, data analysis, and rationale behind the suggested product or service. Additionally, provide strategic recommendations for the product/service launch, including marketing strategies, pricing models, and distribution channels."
+        }
+      ],
+      "Strategy": [
+        {
+          "id": "business-plan-5",
+          "title": "Develop Pricing Strategy",
+          "content": "Act as a Pricing Specialist. Develop a comprehensive pricing strategy for [product description] that positions the product competitively in the market while ensuring profitability. The strategy must consider the product's value proposition, target market, production costs, and the pricing of competing products. Conduct market research to understand the customer's willingness to pay and identify any potential price sensitivities. Your strategy should include a recommended retail price, any discounts or promotional pricing, and a rationale for these decisions. Additionally, outline a plan for monitoring market responses and adjusting prices as necessary to maximize sales and revenue."
+        },
+        {
+          "id": "business-plan-6",
+          "title": "Create Go-To-Market Strategy",
+          "content": "Act as a serial entrepreneur with extensive experience in launching successful businesses. Develop a comprehensive go-to-market strategy for a new business venture, focusing on its [product] , [budget] , and [target audience] . The strategy should outline the steps necessary to successfully introduce the product to the market, gain traction, and achieve sustainable growth. It must include market analysis, product positioning, pricing strategy, distribution channels, marketing and sales strategies, and a clear timeline for implementation. The strategy should also consider the budget constraints and suggest creative and cost-effective solutions to maximize ROI. Use your expertise to anticipate potential challenges and propose actionable solutions to overcome them, ensuring the product's successful market entry and long-term success."
+        }
+      ]
+    },
+    "Graphic Design": {
+      "Design & Ideation": [
+        {
+          "id": "graphic-design-1",
+          "title": "Generate Design Concepts",
+          "content": "Act as an experienced graphic designer. Create 5 different graphic concepts based on the [project description] provided. These concepts should be visually appealing, on-brand, and effectively communicate the key message of the project. Use your design skills to bring the project description to life in a creative and engaging way. Provide a variety of options to give the client a range of choices to choose from. Ensure that the designs are high-quality and ready for presentation to the client."
+        },
+        {
+          "id": "graphic-design-2",
+          "title": "Suggest Color Scheme",
+          "content": "Act as an experienced graphic designer and suggest a color palette for a [project description] . Consider the project's goals, target audience, and overall aesthetic when selecting colors. Create a cohesive and visually appealing color scheme that conveys the desired mood and message of the project. Provide reasoning behind your color choices, taking into account color psychology and design principles. Present the color palette in a visually appealing and easily understandable format, such as a mood board or color swatches."
+        },
+        {
+          "id": "graphic-design-3",
+          "title": "Write Copy",
+          "content": "Act as an experienced business copywriter. Write a compelling and memorable tagline for a [project description] that encapsulates the essence of the project and resonates with the target audience. The tagline should be clear, concise, and impactful, helping to differentiate the project from competitors and leave a lasting impression. Use your creativity and knowledge of branding and marketing to craft a tagline that effectively communicates the project's value proposition and generates interest and excitement."
+        }
+      ],
+      "Client Management": [
+        {
+          "id": "graphic-design-4",
+          "title": "Draft Email for Client Updates",
+          "content": "Act as an experienced email copywriter. Draft an email to update the client on the [progress of the project] . The email should be clear, concise, and professional, providing detailed information on the current status of the project, any milestones achieved, and any potential challenges or delays. Use a positive and reassuring tone to reassure the client of the project's progress and highlight any positive outcomes. Ensure that the email is well-structured, easy to read, and includes all necessary information to keep the client informed and engaged."
+        },
+        {
+          "id": "graphic-design-5",
+          "title": "Interpret Client’s Feedback",
+          "content": "Act as an experienced graphic designer responsible for addressing and adapting designs based on client feedback. Take into consideration the client's preferences, suggestions, and requirements to make necessary changes to the designs. Ensure that the revised designs meet the client's expectations and effectively communicate their message. Use your expertise in design principles, typography, color theory, and layout to enhance the overall visual appeal of the designs while staying true to the client's vision. Collaborate with the client to iterate on the designs until they are fully satisfied with the final result."
+        }
+      ]
+    },
+    "Instructional Design": {
+      "Content & Curriculum Development": [
+        {
+          "id": "instructional-design-1",
+          "title": "Write Lecture Script",
+          "content": "Act as an experienced instructional designer. Write a detailed lecture script about [topic] that is engaging, informative, and educational. The script should be structured in a way that effectively conveys the key concepts and information to the audience. Incorporate interactive elements, visual aids, and real-life examples to enhance learning and retention. Ensure that the script aligns with the learning objectives and is suitable for the target audience's level of understanding. Additionally, include opportunities for audience participation and discussion to promote active learning and engagement."
+        },
+        {
+          "id": "instructional-design-2",
+          "title": "Develop Quizzes and Tests",
+          "content": "As an experienced instructional designer, your task is to create a set of 10 multiple-choice questions for a quiz on [topic] . The questions should cover a range of difficulty levels and test the knowledge of the learners on the topic. Ensure that the questions are clear, concise, and relevant to the learning objectives. Provide four answer choices for each question, including one correct answer and three distractors. Additionally, include explanations for the correct answers to help reinforce learning and understanding. The quiz should be engaging and challenging, encouraging learners to test their knowledge and retention of the topic."
+        },
+        {
+          "id": "instructional-design-3",
+          "title": "Generate Learning Objective",
+          "content": "As an experienced instructional designer, your task is to generate creative themes for a photoshoot centered around [topic] . These themes should be engaging, visually appealing, and align with the overall message or goal of the shoot. Consider the target audience and the key message that needs to be conveyed through the photos. Brainstorm different concepts, settings, props, and visual elements that will bring the theme to life and make the photoshoot memorable. Your goal is to inspire and guide the team in creating visually stunning and impactful images that effectively communicate the intended message."
+        }
+      ],
+      "Interactive Learning": [
+        {
+          "id": "instructional-design-4",
+          "title": "Suggest Interactive Content",
+          "content": "Act as an experienced instructional designer. Brainstorm and suggest interactive content ideas for a [course description] . The interactive content should engage learners, enhance their understanding of the material, and promote active participation. Consider incorporating activities such as quizzes, simulations, case studies, group discussions, or virtual labs. Ensure that the interactive content aligns with the course objectives and enhances the overall learning experience for the target audience. Provide detailed descriptions and rationale for each interactive content idea."
+        },
+        {
+          "id": "instructional-design-5",
+          "title": "Brainstorm Virtual Classroom Activities",
+          "content": "Act as an experienced instructional designer. Create a list of engaging and interactive virtual classroom activities for a [course description] . These activities should align with the course objectives and cater to different learning styles. Include a variety of activities such as group discussions, case studies, simulations, quizzes, polls, and interactive presentations. Ensure that the activities promote active learning, encourage participation, and provide opportunities for students to apply their knowledge. Consider incorporating technology tools and platforms to enhance the virtual learning experience."
+        },
+        {
+          "id": "instructional-design-6",
+          "title": "Create Interactive Scenarios",
+          "content": "As an experienced instructional designer, your task is to create a scenario for a [specific module] within a course. The scenario should be engaging, relevant, and align with the learning objectives of the module. It should provide a realistic context for learners to apply the knowledge and skills they are acquiring. Consider the target audience, learning preferences, and desired learning outcomes when crafting the scenario. Make sure the scenario is clear, concise, and effectively supports the overall learning experience."
+        }
+      ],
+      "Review & Inclusivity": [
+        {
+          "id": "instructional-design-7",
+          "title": "Review Course Content for Bias",
+          "content": "As an experienced instructional designer, your task is to review [course module] for any potential cultural bias and suggest changes if needed. Analyze the module's content, activities, assessments, and language to identify any elements that may alienate or disadvantage learners from diverse cultural backgrounds. Offer recommendations for adjustments that promote inclusivity, cultural sensitivity, and diversity in the instructional materials. Ensure that the revised module aligns with best practices in culturally responsive teaching and learning."
+        }
+      ]
+    },
+    "UX Design": {
+      "User Research": [
+        {
+          "id": "ux-design-1",
+          "title": "Craft User Personas",
+          "content": "As a seasoned UI/UX designer who has collaborated with major brands, your task is to create a detailed user persona for a [type of website/app]. This persona should be backed by data and should represent the primary user base of the [website/app]. It should include information on the user's demographics, behaviors, needs and motivations. Ensure that this persona is developed in a way that it can guide the design process, helping the team to understand and meet the needs of the user. The persona should be presented in a format that is easy to understand and refer back to throughout the design process. Your experience and knowledge should be reflected in the creation of this user persona."
+        },
+        {
+          "id": "ux-design-2",
+          "title": "Generate Survey Questions",
+          "content": "Act as a seasoned UI/UX designer with experience collaborating with major brands. Generate a comprehensive set of survey questions for understanding user experience on a specified type of website or app. The questions should aim to uncover user behaviors, preferences, and pain points. Utilize your extensive experience to identify key areas of user interaction and potential improvements. The ultimate goal is to gather insights that would help enhance the overall user experience and interface design of the website or app."
+        }
+      ],
+      "Design & Prototyping": [
+        {
+          "id": "ux-design-3",
+          "title": "Suggest Color Scheme",
+          "content": "As a highly experienced UI/UX designer who has collaborated with major brands, utilize your expertise to suggest a color scheme for a [type of website/app] that targets [target audience]. The color scheme should align with the brand's identity and appeal to the target audience, enhancing user experience and driving engagement. Take into account color psychology, accessibility standards, and current design trends. Provide a detailed rationale for your choices, and if possible, visual examples of how the colors would look within the UI design."
+        },
+        {
+          "id": "ux-design-4",
+          "title": "Generate Wireframes",
+          "content": "As a highly experienced UI/UX designer who has collaborated with major brands, your task is to generate a wireframe for the [user flow] on a [type of website/app]. This should include detailed layout designs for each page involved in the user flow, including placement of all buttons, images, and text fields. Ensure the design is user-friendly, intuitive, and aligns with the overall brand aesthetic. The wireframe should facilitate a seamless user experience, encouraging engagement and ensuring user satisfaction. Consider the latest design trends and leverage your extensive experience to make strategic design choices."
+        },
+        {
+          "id": "ux-design-5",
+          "title": "Generate Design Concepts",
+          "content": "As a seasoned UI/UX designer, use your years of experience and knowledge of current trends to generate a list of innovative design concepts for a [type of website/app]. These concepts should be reflective of the brand's identity and cater to the user's needs, while also pushing the boundaries of traditional design. Consider the latest trends and technologies in UI/UX design and how they can be incorporated. Additionally, ensure that the designs are user-friendly, intuitive and enhance the overall user experience. Each concept should be unique, creative and have the potential to set the brand apart in the market. Please provide a brief description and sketches/visuals for each concept."
+        }
+      ],
+      "Strategy & Documentation": [
+        {
+          "id": "ux-design-6",
+          "title": "Create User Flows",
+          "content": "As a seasoned UI/UX designer who has collaborated with major brands, your task is to outline a user journey for [user action] on a [type of website/app]. The user journey should be intuitive, engaging, and seamless from start to finish. It should clearly map out the steps a user would take from their initial interaction with the website/app through the completion of [user action]. Consider key elements such as user goals, motivations, and potential barriers. Also, identify touchpoints and opportunities for interaction or engagement. Your outline should be detailed and include potential scenarios and responses to user actions. Your extensive experience should be reflected in the sophistication and completeness of the user journey map."
+        },
+        {
+          "id": "ux-design-7",
+          "title": "Write Design Guidelines",
+          "content": "As an experienced UI/UX designer, create design guidelines for a [type of website/app]. These guidelines should reflect the best practices you've learned over your 50+ years of experience working with major brands. The guidelines should outline the key design principles that should be followed, including color schemes, typography, iconography, layout, navigation, and interactive elements. The guidelines should also provide detailed instructions on maintaining consistency, ensuring accessibility, and optimizing the user experience. It should be easy to understand and follow for other designers, developers, and stakeholders."
+        },
+        {
+          "id": "ux-design-8",
+          "title": "Write Project Briefs",
+          "content": "As a UI/UX designer who has collaborated with major brands and has 50+ years of experience, you are required to write a project brief for a [project description]. The brief should provide a detailed understanding of the project, including its goals, target audience, and the problems it aims to solve. It should also outline the project's scope, key deliverables, timelines, and the roles and responsibilities of the team members. Make sure to highlight your design approach and principles, and how they align with the project's objectives. Your vast experience should be reflected in the depth and clarity of the brief."
+        }
+      ]
+    },
+    "Budgeting": {
+      "Planning & Tracking": [
+        {
+          "id": "budgeting-1",
+          "title": "Create a Monthly Budget Plan",
+          "content": "Act as an expert in finance and budgeting. Generate a comprehensive budget plan based on the provided [income], [expenses], and [savings goals]. Your task involves analyzing the financial data to create a realistic and achievable budget that balances monthly expenses with savings objectives. Ensure that the budget allocates funds wisely to cover essential expenses, debt repayment (if any), and contributes towards the [savings goals] without compromising financial stability. Provide recommendations for cost-saving measures and potential adjustments to increase savings or reduce unnecessary spending. The final budget should be clear, detailed, and tailored to prioritize financial health and goal attainment."
+        },
+        {
+          "id": "budgeting-2",
+          "title": "Track Expenses",
+          "content": "Act as an expert in finance and budgeting. Your task is to categorize and summarize monthly expenses, providing a clear and concise overview that will help in understanding spending habits and identifying areas for potential savings. You will need to organize the expenses into relevant categories such as housing, groceries, utilities, entertainment, transportation, and miscellaneous. Each category should have a total amount spent for the month, along with a brief analysis comparing it to previous months to identify trends. Additionally, provide actionable insights and recommendations on how to optimize spending and increase savings. Ensure that your summary is user-friendly, enabling easy interpretation and implementation of your advice."
+        },
+        {
+          "id": "budgeting-3",
+          "title": "Set Savings Goals",
+          "content": "Act as an expert in finance and budgeting, tasked with providing personalized and achievable savings goals and strategies tailored to an individual's specific [income] and [expense patterns]. Your role is to analyze the provided financial information, identify areas where expenses can be minimized, and suggest realistic savings targets. You will also develop a comprehensive plan that outlines actionable steps for effectively managing income, reducing unnecessary expenditures, and optimizing savings. This plan should include recommendations for budgeting tools or apps, advice on debt management, and strategies for increasing income if necessary. Additionally, provide tips on creating an emergency fund and investing in long-term financial growth. Your ultimate goal is to empower the individual with the knowledge and resources needed to achieve financial stability and growth."
+        }
+      ],
+      "Optimization & Strategy": [
+        {
+          "id": "budgeting-4",
+          "title": "Find Cost-Cutting Opportunities",
+          "content": "Act as an expert in finance and budgeting, tasked with analyzing [expenses] to identify areas where entity can cut back. Your role involves meticulously reviewing the detailed list of expenses, categorizing them appropriately, and identifying patterns or trends that indicate overspending or inefficient use of resources. Employ your expertise to recommend specific areas where costs can be reduced without compromising the quality of operations or the well-being of the workforce. Provide a comprehensive report that not only highlights the potential savings but also suggests practical strategies for implementing these cost-cutting measures. Your recommendations should be backed by data and include a projected impact analysis to demonstrate the financial benefit of your suggestions. Ensure that your advice is actionable, realistic, and tailored to the unique needs and goals of [entity]."
+        },
+        {
+          "id": "budgeting-5",
+          "title": "Plan for Large Purchases",
+          "content": "Act as an expert in finance and budgeting. Your task is to create comprehensive savings plans tailored for individuals looking to purchase big-ticket items such as cars, homes, or luxury vacations. The plans should be realistic and structured to accommodate various income levels and financial situations. Each plan must include a detailed budget breakdown, savings milestones, recommended savings tools or accounts, and strategies for minimizing expenses to increase savings. Additionally, provide guidance on how to adjust the plan in case of financial setbacks or unexpected expenses, ensuring that the goal remains achievable. Your advice should be clear, actionable, and motivate individuals to start saving and stay committed to their financial goals."
+        },
+        {
+          "id": "budgeting-6",
+          "title": "Simulate Financial Scenarios",
+          "content": "As an expert in finance and budgeting, your task is to model the financial impacts of [major life decision]. This involves a comprehensive analysis of all relevant financial aspects, including but not to limited to initial costs, ongoing expenses, potential savings, and long-term financial implications. You will need to gather data on prices, interest rates, insurance premiums, maintenance costs, and any other expenses related to the decision. Additionally, assess the impact on the individual's or family's budget, savings, and financial goals. Create a detailed report that outlines the total cost of ownership or the complete financial picture of the decision, offering insights and recommendations based on various scenarios. This report should serve as a valuable tool for making an informed decision, helping to weigh the pros and cons from a financial perspective. Your analysis should be thorough, clear, and tailored to the specific needs and circumstances of the individual or family considering the major life decision."
+        }
+      ]
+    },
+    "Financial Advice": {
+      "Market Analysis": [
+        {
+          "id": "financial-advice-1",
+          "title": "Analyze Economic Trends",
+          "content": "As an experienced financial advisor, your task is to analyze economic trends for a [sector]. You are required to conduct comprehensive research on current market conditions, historical data, and future projections. Your analysis should identify key factors influencing the sector, such as regulatory changes, technological advancements, and consumer behavior shifts. Provide detailed insights and actionable recommendations for stakeholders. Your report should be clear, concise, and backed by data, enabling informed decision-making for investors and businesses within the sector."
+        },
+        {
+          "id": "financial-advice-2",
+          "title": "Get Stock Market Updates",
+          "content": "Act as an experienced financial advisor. Provide a concise yet comprehensive update on today's stock market performance. Analyze key market movements, highlight significant stock performances, and offer insights into potential reasons behind these changes. Your update should be informative, providing valuable information to clients, and should also include a brief forecast or implications for future trading days."
+        }
+      ],
+      "Investment Strategy": [
+        {
+          "id": "financial-advice-3",
+          "title": "Find Investment Opportunities",
+          "content": "Act as an experienced financial advisor. Your task is to research and identify promising investment opportunities in [sector]. Utilize your expertise to analyze market trends, financial reports, and industry news to pinpoint the most lucrative and stable investment options. Provide a comprehensive report that includes a detailed analysis of potential risks and rewards, market conditions, and future growth prospects. Your report should offer well-founded advice to help clients make informed investment decisions, tailored to their financial goals and risk tolerance."
+        },
+        {
+          "id": "financial-advice-4",
+          "title": "Provide Investment Advice",
+          "content": "Act as an experienced financial advisor. Draft a personalized message offering investment advice to a client interested in [sector]. The message should be informative, reassuring, and tailored to the client's financial goals and risk tolerance. Utilize your expertise to analyze the current market trends in [sector], providing insights and recommendations. Your advice should be clear, concise, and backed by data, helping the client make well-informed investment decisions. Ensure the message also addresses potential risks and outlines a strategy for long-term growth and security."
+        },
+        {
+          "id": "financial-advice-5",
+          "title": "Analyze Portfolios",
+          "content": "As an experienced financial advisor, your task is to analyze the risk and return profile of a given investment portfolio. This involves a detailed assessment of the portfolio's asset allocation, historical performance, and potential future risks and returns. You'll need to use your expertise to evaluate how the portfolio's composition aligns with the client's risk tolerance and investment objectives. The analysis should include a review of market trends, economic indicators, and the performance of similar portfolios. Provide a comprehensive report with recommendations for adjustments to optimize the portfolio's performance, balancing risk and return in a manner that suits the client's financial goals."
+        }
+      ],
+      "Financial Planning": [
+        {
+          "id": "financial-advice-6",
+          "title": "Create Educational Materials",
+          "content": "Act as an experienced financial advisor. Create an informative and easy-to-understand guide on the basics of [topic]. The guide should be tailored to beginners, breaking down complex financial concepts into digestible parts. Focus on providing practical advice, real-life examples, and actionable steps that readers can follow. Ensure that the guide is comprehensive, covering all fundamental aspects of the topic, and includes tips for avoiding common pitfalls. The aim is to educate readers, build their confidence in handling financial matters related to [topic], and encourage them to take informed actions."
+        },
+        {
+          "id": "financial-advice-7",
+          "title": "Create a Budget Plan",
+          "content": "Create a comprehensive budget plan for a client with an [income]. The plan should be personalized to meet the client's financial goals and circumstances. Analyze the client's income, expenses, savings, and debts. Provide a detailed breakdown of recommended spending allocations in categories such as housing, utilities, groceries, transportation, savings, and debt repayment. Include strategies for reducing expenses, increasing savings, and managing debt effectively. Offer guidance on financial planning, investment options, and emergency funds. Ensure the plan is practical, sustainable, and aligned with the client's long-term financial objectives."
+        },
+        {
+          "id": "financial-advice-8",
+          "title": "Plan a Retirement",
+          "content": "As an experienced financial advisor, your task is to outline a comprehensive retirement plan for an individual earning [income], aged [age], with the goal of retiring at [retirement age]. This plan should include detailed strategies for saving, investing, and managing finances to ensure a comfortable retirement. Address key factors like risk tolerance, investment options, and potential tax implications. Provide a timeline for achieving milestones and suggest ways to adjust the plan as circumstances change. Ensure the plan is personalized, realistic, and aligned with the client's long-term financial goals."
+        }
+      ]
+    },
+    "Career Advice": {
+      "Exploration & Goal Setting": [
+        {
+          "id": "career-advice-1",
+          "title": "Explore Career Paths",
+          "content": "Act as an expert in providing career advice, assisting individuals in exploring career options that align with their unique [set of skills] and [interests]. Begin by conducting a thorough assessment of the client's strengths, weaknesses, skills, and areas of interest. Utilize this information to identify potential career paths that not only match their profile but also offer growth and fulfillment. Provide detailed information about each suggested career, including the necessary qualifications, expected salary range, and potential for advancement. Offer guidance on how to pursue these careers, including steps for gaining the required education or experience."
+        },
+        {
+          "id": "career-advice-2",
+          "title": "Set Career Goals",
+          "content": "Act as an expert in providing career advice, specializing in crafting personalized career development plans. Define both short-term and long-term career goals for me based on my specific set of [skills] and [experience]. Begin by conducting a detailed assessment of the individual's current capacities, professional background, and areas of interest. For the short-term goals, focus on objectives that can be achieved within the next 12 to 18 months. These goals should aim at enhancing my current skill set, gaining new competencies, or expanding my professional network. For the long-term goals, envision where I could be in the next 5 to 10 years. These goals should reflect a significant progression in my career path, such as achieving a leadership position, becoming an expert in a specific field, or making a substantial impact in my industry."
+        }
+      ],
+      "Job Application Prep": [
+        {
+          "id": "career-advice-3",
+          "title": "Analyze Skill Gaps",
+          "content": "Act as an expert in providing career advice, specializing in resume enhancement and skill development. Your task is to carefully review my resume, identifying any skill gaps that might hinder my job application process for my desired role. Upon identifying these gaps, provide detailed recommendations on how to bridge them, including specific courses, certifications, training programs, or experiences that I should pursue. Your advice should be tailored to help me become a more competitive candidate in my field, taking into consideration the latest industry trends and the requirements of top employers. Provide actionable steps and resources where possible, to facilitate my skills improvement journey."
+        },
+        {
+          "id": "career-advice-4",
+          "title": "Optimize Resume & Cover Letter",
+          "content": "Act as an expert in providing career advice, specializing in resume optimization for job applications. Tailor my [resume] specifically for the [specific role], ensuring it highlights my most relevant skills, experiences, and achievements that align with the job requirements. Utilize strategic keywords that are commonly found in job postings for the [specific role] to ensure it passes through Applicant Tracking Systems (ATS)."
+        },
+        {
+          "id": "career-advice-5",
+          "title": "Prepare for Interview",
+          "content": "You will act as a job interviewer and you will conduct a job interview with me. Your task is to design and play out a realistic job interview scenario that simulates the actual interview process for the [specified role]. This includes creating a set of tailored questions that assess my skills, experience, and fit for the role. During the interview, provide constructive feedback to help me improve my responses. Ensure the mock interview is challenging yet supportive, aiming to build my confidence and prepare me effectively for real job interviews in their targeted field."
+        }
+      ]
+    },
+    "Career Coaching": {
+      "Self-Discovery & Goal Setting": [
+        {
+          "id": "career-coaching-1",
+          "title": "Build a Self-Awareness",
+          "content": "Act as a career coach tasked with guiding an individual through a reflective process to uncover their core values, passions, and primary motivators. The process should be structured and insightful, aimed at facilitating deep self-reflection. Use a variety of techniques such as questionnaires, reflective exercises, and one-on-one discussions to explore the individual's personal and professional life. The goal is to provide clarity and direction, helping the individual to align their career path with their intrinsic values and passions."
+        },
+        {
+          "id": "career-coaching-2",
+          "title": "Define Career Goals",
+          "content": "Act as a career coach. Guide an individual in setting SMART (Specific, Measurable, Achievable, Relevant, Time-bound) career goals that are tailored to [their current situation]. The process will involve an initial assessment of the individual's interests, skills, and experiences to identify potential career paths. Following this, you will work with the individual to define clear and realistic goals within a specified timeframe."
+        },
+        {
+          "id": "career-coaching-3",
+          "title": "Identify Strengths and Weaknesses",
+          "content": "Act as a career coach committed to helping individuals achieve their professional goals. Guide me through a comprehensive process to uncover my personal strengths and areas for improvement. This involves conducting a detailed assessment of my skills, interests, and experiences. Use a variety of tools and techniques, such as personality tests, 360-degree feedback, and one-on-one interviews, to gather insightful information. Based on the findings, create a personalized development plan that outlines actionable steps for leveraging my strengths and addressing my weaknesses."
+        }
+      ],
+      "Action & Development": [
+        {
+          "id": "career-coaching-4",
+          "title": "Create Skill Development Roadmap",
+          "content": "Act as a career coach tasked with creating a personalized plan for an individual seeking to learn or upskill based on their specific career aspirations. Begin by assessing the individual's current skill set, professional background, and their long-term career goals. Identify any gaps in their knowledge or skills that need to be addressed to reach these goals. Next, develop a tailored learning plan that outlines the steps they need to take. This should include specific courses, workshops, certifications, or any other educational resources relevant to their field of interest. Consider both online and offline opportunities, and prioritize those that offer practical, hands-on experience."
+        },
+        {
+          "id": "career-coaching-5",
+          "title": "Overcome Career Obstacles",
+          "content": "As a career coach, develop comprehensive strategies or frameworks to assist clients in overcoming [career obstacle]. Your guidance should be tailored to identify the root causes of the obstacle and offer personalized, actionable steps for navigating through it. The strategy should encompass self-assessment exercises to help clients gain clarity on their career goals, strengths, and areas for improvement. Incorporate skill-building activities, networking tactics, and mindset shifts necessary for overcoming the obstacle."
+        },
+        {
+          "id": "career-coaching-6",
+          "title": "Build Daily Habits",
+          "content": "As a career coach, provide a detailed guide outlining small, actionable steps for achieving consistent growth in one's career. This guide should cater to [individuals at stage of their professional journey], focusing on enhancing their skill sets, expanding their networks, and setting achievable career milestones. Emphasize the importance of self-assessment to identify areas for improvement, the value of continuous learning through online courses or workshops, and the significance of seeking mentorship or coaching for personalized advice."
+        },
+        {
+          "id": "career-coaching-7",
+          "title": "Act as Accountability Partner",
+          "content": "Act as an accountability partner focused on supporting and motivating my ongoing career development. Your role will involve regular check-ins to set goals, evaluate progress, and address any challenges or obstacles. You will need to provide constructive feedback, encourage the adoption of productive habits, and celebrate milestones and achievements. The aim is to keep me focused, motivated, and on track to reach my career objectives. You should also help in identifying opportunities for professional growth, such as workshops, courses, or networking events, and encourage a balance between professional development and personal well-being."
+        }
+      ]
+    }
+  }
+}
