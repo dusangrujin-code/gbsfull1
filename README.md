@@ -7,7 +7,7 @@ This project is a centralized portal for AI training programs, sourcing tools, a
 The project has been refactored to use a modern, scalable, and maintainable structure.
 
 - **`src/`**: This directory contains all the source code for the project.
-  - **`src/<module-name>/`**: Each learning module (e.g., `gbs-ai-workshop`, `daily-focus`) has its own directory.
+  - **`src/<module-name>/`**: Each learning module has its own directory.
     - **`index.html`**: The main HTML file for the module.
     - **`js/`**: Contains the JavaScript files for the module.
     - **`css/`**: Contains the CSS files for the module.
