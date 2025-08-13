@@ -1,0 +1,248 @@
+{
+    "prompts": [
+        { "id": "prebuilt-1", "category": "Email", "title": "Summarize Email Thread", "content": "Act as a GBS project manager. Below is a long email thread about the 'Q3 Financial Reporting' project. Please summarize the key decisions made, the outstanding questions, and the action items for my team. [Paste email thread here]" },
+        { "id": "prebuilt-2", "category": "Email", "title": "Draft Professional Email", "content": "Draft a professional but friendly email to a stakeholder, [Stakeholder Name], informing them that the 'Project Alpha' deliverable will be delayed by 2 days due to unforeseen data validation issues. Reassure them that the core timeline is not at risk and that we will provide the final report by EOD on [New Date]. Offer a brief call to answer any questions." },
+        { "id": "prebuilt-3", "category": "Email", "title": "Change Email Tone", "content": "Make the following email draft more concise and assertive, while remaining professional. [Paste your draft email here]" },
+        { "id": "prebuilt-4", "category": "Meetings", "title": "Generate Meeting Agenda", "content": "Generate a 30-minute meeting agenda for a kickoff call with the marketing team for a new 'Competitor Analysis' project. The goals are to align on scope, define deliverables, and agree on a timeline. Include time for introductions and Q&A." },
+        { "id": "prebuilt-5", "category": "Meetings", "title": "Summarize Meeting Notes", "content": "Act as an executive assistant. Review the following raw meeting notes and transform them into a clean summary. The summary should have three sections: 'Key Discussion Points', 'Decisions Made', and a table of 'Action Items' with columns for 'Task', 'Owner', and 'Due Date'. [Paste raw meeting notes here]" },
+        { "id": "prebuilt-6", "category": "Analysis", "title": "Extract Structured Data", "content": "I've pasted a project request email below. Please extract the key information and format it as a JSON object with the following keys: 'projectName', 'stakeholderName', 'requestedDueDate', 'keyDeliverables'. [Paste project request email here]" },
+        { "id": "prebuilt-7", "category": "Analysis", "title": "Brainstorm Report Content", "content": "I need to create a 5-slide PowerPoint presentation summarizing our team's Q2 performance. Our key achievements were: completed Project Phoenix on time, reduced ticket response time by 15%, and onboarded two new team members. Our main challenge was a data outage in May. Please generate a slide-by-slide outline for this presentation, including a title and 3-4 bullet points for each slide." },
+        { "id": "prebuilt-8", "category": "Team", "title": "Create Process Checklist", "content": "Our team needs to create a standard process for onboarding a new client into our system. The key steps involve: receiving the initial request, validating the data, creating the client profile in Salesforce, sending a welcome packet, and scheduling a kickoff call. Please turn this into a detailed checklist that a team member can follow." },
+        { "id": "prebuilt-9", "category": "Team", "title": "Explain a Complex Topic", "content": "Explain the concept of 'data integrity' as you would to a new team member who has no technical background. Use an analogy to make it easy to understand." }
+    ],
+    "scenarios": {
+        "General": [
+            {
+                "id": 1,
+                "title": "The Angry Stakeholder",
+                "problem": "You receive an email from a senior VP who is unhappy with a recent report from your team. The email is curt and demands an immediate explanation for perceived inaccuracies. You need to de-escalate the situation and provide a clear, professional response quickly.",
+                "prompts": [
+                    { "text": "Write an email to an angry VP.", "isCorrect": false, "feedback": "This prompt is too vague. It lacks the context and desired tone needed for such a sensitive task. The result will likely be generic and unhelpful." },
+                    { "text": "Summarize the attached email thread and draft a polite, professional, and non-defensive response. Explain that we are investigating the data and will provide a full report within 24 hours. Acknowledge their frustration.", "isCorrect": true, "feedback": "Correct! This prompt is excellent. It provides context (the email), specifies the persona and tone ('polite, professional, non-defensive'), and gives a clear action plan ('investigating... provide a report')." },
+                    { "text": "Tell me why the VP is wrong.", "isCorrect": false, "feedback": "This prompt is confrontational and assumes the stakeholder is incorrect without investigation. It will not help de-escalate the situation." }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "The 50-Page Document",
+                "problem": "You've just been handed a 50-page process document for a new system your team must adopt. You have a meeting about it in one hour and need to understand the key steps, requirements, and potential impacts on your team's workflow.",
+                "prompts": [
+                    { "text": "Act as a GBS process expert. Read the following document and provide a summary of the top 5 most critical changes for a team of data analysts. Format the output as bullet points. Then, list 3 potential risks or challenges for implementation.", "isCorrect": true, "feedback": "Perfect! This prompt uses persona crafting ('GBS process expert'), is highly specific about the desired output (top 5 changes, 3 risks), and specifies the format (bullet points), ensuring a concise and relevant summary." },
+                    { "text": "Read this and tell me what it says.", "isCorrect": false, "feedback": "This is a very low-effort prompt. While Gemini will provide a summary, it will be generic and may not focus on the aspects most critical to you as a leader (workflow changes, risks, etc.)." },
+                    { "text": "Make this document shorter.", "isCorrect": false, "feedback": "This is slightly better but still lacks specificity. 'Shorter' is subjective. The result will be a condensed version, but it might miss the key details you need for your meeting." }
+                ]
+            }
+        ],
+        "Sales Ops": [
+            {
+                "id": 3,
+                "title": "Cleaning Lead Data",
+                "problem": "You have a list of 100 new leads from a conference, but the data is messy. It's in a single block of text with inconsistent formatting. You need to extract the Name, Company, and Email for each lead and format it as a clean CSV for import into Salesforce.",
+                "prompts": [
+                    { "text": "Format this text.", "isCorrect": false, "feedback": "Too vague. 'Format' could mean anything. You need to specify the input, the desired output structure (CSV), and the specific data to extract." },
+                    { "text": "Below is a block of text containing lead data. Extract the Name, Company, and Email for each person. Format the output as a CSV with headers: 'Name', 'Company', 'Email'.", "isCorrect": true, "feedback": "Excellent! This prompt clearly defines the task, specifies the exact data points to find, and dictates the precise output format (CSV with headers), making it ready for system import." },
+                    { "text": "Find the emails in this text.", "isCorrect": false, "feedback": "This only solves part of the problem. You'll get the emails, but you'll miss the names and companies, requiring more manual work." }
+                ]
+            }
+        ],
+        "HR Support": [
+             {
+                "id": 4,
+                "title": "New Hire Onboarding",
+                "problem": "A new Financial Analyst is starting on your team next Monday. You need to create a comprehensive 30-day onboarding plan to get them up to speed quickly.",
+                "prompts": [
+                    { "text": "Act as an experienced HR onboarding specialist. Create a detailed 30-day onboarding plan for a new Financial Analyst. The plan should be broken down by week and include sections for company policies, system training (Excel, SAP), key introductions to team members, and initial project assignments.", "isCorrect": true, "feedback": "This is a great prompt. It uses a specific persona, clearly defines the role being onboarded, and outlines the key components and structure (weekly breakdown, specific sections) for the plan." },
+                    { "text": "Make an onboarding plan.", "isCorrect": false, "feedback": "This is too generic. It doesn't specify the role, the duration, or what topics the plan should cover, leading to a very high-level and likely unusable output." },
+                    { "text": "What should a new hire learn?", "isCorrect": false, "feedback": "This will give you a list of topics, but not a structured, actionable plan. It creates more work for you to organize the ideas." }
+                ]
+            }
+        ],
+        "IT Admin": [
+             {
+                "id": 5,
+                "title": "Explaining a New Policy",
+                "problem": "Your department is rolling out a new, mandatory multi-factor authentication (MFA) policy. You need to draft a clear, concise email to all GBS employees, many of whom are not technical, explaining what MFA is, why it's important, and what they need to do.",
+                "prompts": [
+                    { "text": "Explain MFA.", "isCorrect": false, "feedback": "This will give you a technical definition of MFA, which is likely too complex for a non-technical audience and won't include the 'call to action' part of your task." },
+                    { "text": "Write an email about the new security policy.", "isCorrect": false, "feedback": "This is better, but it lacks the crucial context of the audience. The tone might be too technical or the explanation not simple enough." },
+                    { "text": "Act as a helpful IT support specialist. Draft an email to all non-technical employees about a new MFA policy. Use a simple analogy to explain what MFA is and why it's important for security. Clearly state the deadline and provide a link to the setup instructions.", "isCorrect": true, "feedback": "Perfect. This prompt defines the persona, the audience (non-technical), the specific content to include (analogy, deadline, link), and the goal (to inform and guide action)." }
+                ]
+            }
+        ]
+    },
+    "caseStudies": {
+        "Project Management": [
+            {
+                "title": "The Raw Request",
+                "description": "It starts with a vague email from a stakeholder. It has a goal, but lacks structure and clear deliverables.",
+                "prompt": "<strong>From:</strong> VP of Sales<br><strong>Subject:</strong> Q3 sales data<br><br>Hi team, I need a better way to see our regional sales performance for Q3. The current reports are too dense. I want to see top performers, regional totals, and product line breakdowns. Need something for the board meeting next week."
+            },
+            {
+                "title": "Create a Project Brief",
+                "description": "Your first step is to bring clarity. Use Gemini to deconstruct the email and create a structured brief. This ensures you and the stakeholder are aligned.",
+                "prompt": "Act as a GBS project manager. Read the email below and transform it into a structured project brief. Extract the key stakeholder, the primary objective, the required data points (deliverables), and the deadline. Format this as a clean, easy-to-read summary.<br><br><span class=\"text-gray-500\">[Paste the email text from Step 1 here]</span>"
+            },
+            {
+                "title": "Draft a Project Plan",
+                "description": "Now that you have a clear brief (the output from Step 2), you can create a high-level project plan. This is another prompt chaining example.",
+                "prompt": "Using the project brief below, create a high-level project plan. The plan should include four phases: Data Gathering, Data Validation, Report Development, and Final Review. Suggest a 1-week timeline, assigning 2 days to each of the first three phases and 1 day to the final review.<br><br><span class=\"text-gray-500\">[Paste the project brief from Step 2 here]</span>"
+            },
+            {
+                "title": "Write the Kickoff Meeting Agenda",
+                "description": "With a plan in place, you're ready to meet with your team. Use the project plan from Step 3 to create a focused meeting agenda.",
+                "prompt": "Based on the project plan below, create a 30-minute kickoff meeting agenda. The goals are to align the team on the project scope, deliverables, and timeline. Include agenda items for reviewing the plan, assigning roles, and a Q&A session.<br><br><span class=\"text-gray-500\">[Paste the project plan from Step 3 here]</span>"
+            }
+        ],
+        "Sales Ops": [
+             {
+                "title": "Initial Request",
+                "description": "The Head of Sales wants a summary of Q2 performance, including key trends and a comparison to Q1, but provides no data.",
+                "prompt": "Hi, I need the Q2 sales performance summary for the leadership meeting. I want to see the key trends and how we did against Q1. Thanks."
+            },
+            {
+                "title": "Data Analysis",
+                "description": "After gathering the raw data, you use Gemini to perform the initial analysis.",
+                "prompt": "Act as a senior sales operations analyst. You have been given raw sales data for Q1 and Q2. Analyze the data to identify the top 3 performing regions, the bottom 3 performing regions, and the overall percentage growth or decline from Q1 to Q2. Present your findings as a concise summary."
+            },
+            {
+                "title": "Draft Summary Email",
+                "description": "Using the analysis from the previous step, draft a clear and concise email for the Head of Sales.",
+                "prompt": "Based on the sales analysis below, draft a professional email to the Head of Sales. Start with the overall performance summary, then list the top and bottom performing regions in bullet points. Conclude by noting that a full presentation is in progress.<br><br><span class=\"text-gray-500\">[Paste summary from Step 2 here]</span>"
+            },
+             {
+                "title": "Create Presentation Outline",
+                "description": "Finally, create a presentation outline based on the email summary for the leadership meeting.",
+                "prompt": "Using the email summary below, create a 5-slide presentation outline. The slides should be: 1. Title Slide. 2. Q2 Performance Overview. 3. Top & Bottom Performing Regions. 4. Key Trends & Insights. 5. Next Steps.<br><br><span class=\"text-gray-500\">[Paste email text from Step 3 here]</span>"
+            }
+        ],
+         "HR Support": [
+             {
+                "title": "The Problem",
+                "description": "The HR team has noticed a high volume of repetitive questions about the new remote work policy.",
+                "prompt": "Team, we are getting a lot of the same questions about the new remote work policy. We need a way to handle this more efficiently."
+            },
+            {
+                "title": "Categorize Questions",
+                "description": "First, use Gemini to group the raw list of questions into logical themes.",
+                "prompt": "Below is a list of questions we've received about the new remote work policy. Categorize these questions into logical groups (e.g., 'Eligibility', 'Equipment', 'Expectations').<br><br><span class=\"text-gray-500\">[Paste list of raw questions here]</span>"
+            },
+            {
+                "title": "Draft FAQ Answers",
+                "description": "Now, use the categories from Step 2 to draft clear answers for each group.",
+                "prompt": "You are an HR communications specialist. For each category of questions below, draft a clear, concise, and helpful answer. The tone should be supportive and professional.<br><br><span class=\"text-gray-500\">[Paste categorized questions from Step 2 here]</span>"
+            },
+            {
+                "title": "Announce the New FAQ",
+                "description": "Finally, draft a company-wide announcement introducing the new, helpful FAQ document.",
+                "prompt": "Draft a company-wide email announcing a new FAQ document for the remote work policy. Explain that this resource was created to provide quick answers to common questions. Include a link to the new FAQ page and encourage employees to review it."
+            }
+        ],
+         "IT Admin": [
+             {
+                "title": "The Audit Finding",
+                "description": "An audit reveals that several users have licenses for expensive software they rarely use, costing the company money.",
+                "prompt": "Audit complete for 'PowerDesign Suite'. Report shows 45 licenses are assigned to users who have not logged in for over 90 days. We need to reclaim these licenses to optimize our budget."
+            },
+            {
+                "title": "Draft User Email",
+                "description": "Use Gemini to draft a polite but clear email to the users with inactive licenses.",
+                "prompt": "Act as a courteous IT administrator. Draft a friendly but direct email to a list of users. Inform them that a software license audit for 'PowerDesign Suite' is underway. Ask them to confirm if they still require the license for their daily work by replying within 5 business days. Explain that unconfirmed licenses will be reclaimed to optimize costs."
+            },
+            {
+                "title": "Create a Tracking Sheet",
+                "description": "To manage the responses, ask Gemini to create a simple tracking table.",
+                "prompt": "Create a Markdown table to track the software license audit. The columns should be: 'User Name', 'Email', 'Responded (Y/N)', 'License Reclaimed (Y/N)', and 'Notes'."
+            },
+            {
+                "title": "Report to Management",
+                "description": "After the 5-day period, use the tracking sheet to create a summary report for your manager.",
+                "prompt": "Based on the tracking sheet data below, write a brief summary report for my manager. State the total number of licenses reviewed, how many were reclaimed, and the estimated annual cost savings (assume each license costs $500/year).<br><br><span class=\"text-gray-500\">[Paste final tracking data here]</span>"
+            }
+        ]
+    },
+    "myDayEvents": [
+        {
+            "time": "9:00 AM",
+            "task": "You arrive at your desk to find 50 unread emails. You need to quickly identify what's urgent and what can wait.",
+            "options": [
+                { "text": "Read all my emails.", "outcome": "This is inefficient. You'll spend an hour just reading, losing valuable time." },
+                { "text": "Summarize my unread emails. Create a table with columns for Sender, Subject, a 1-sentence summary, and a priority rating (High, Medium, Low).", "outcome": "Excellent choice! In seconds, you have a prioritized list. You see 3 high-priority items to tackle first and can ignore the rest for now." }
+            ]
+        },
+        {
+            "time": "10:30 AM",
+            "task": "A stakeholder sends a last-minute request: 'Can you get me the key takeaways from the attached 20-page Q2 performance report? I have a meeting in 30 minutes.'",
+             "options": [
+                { "text": "Summarize the attached document into 5 key bullet points, focusing on financial performance and project milestones. The audience is a senior executive.", "outcome": "Perfect! You provide a concise, relevant summary in minutes, making your stakeholder look prepared for their meeting." },
+                { "text": "Tell me what this document is about.", "outcome": "This will give you a general summary, but it might not be focused enough for a senior executive who needs specific, high-level takeaways." }
+            ]
+        },
+        {
+            "time": "2:00 PM",
+            "task": "You need to prepare for your 1-on-1 with a team member. You want to have a productive conversation about their recent project work and career goals.",
+             "options": [
+                { "text": "Brainstorm questions for a 1-on-1 meeting.", "outcome": "This is a good start, but it's generic. The questions might not be tailored to this specific situation." },
+                { "text": "Act as a supportive manager. Generate 3 open-ended questions for a 1-on-1 with a team member to discuss their recent work on 'Project Alpha' and their long-term career aspirations.", "outcome": "Great choice! This gives you specific, thoughtful questions that show you're engaged with their work and invested in their growth, leading to a much more productive conversation." }
+            ]
+        }
+    ],
+    "opportunityData": {
+        "labels": ["Repetitive", "Research-heavy", "Reactive", "Reporting"],
+        "datasets": [{
+            "label": "Team Task Distribution",
+            "data": [35, 25, 20, 20],
+            "backgroundColor": [
+                "rgba(74, 144, 226, 0.7)",
+                "rgba(80, 227, 194, 0.7)",
+                "rgba(245, 166, 35, 0.7)",
+                "rgba(126, 211, 33, 0.7)"
+            ],
+            "borderColor": [
+                "#4A90E2",
+                "#50E3C2",
+                "#F5A623",
+                "#7ED321"
+            ],
+            "borderWidth": 2,
+            "hoverOffset": 8
+        }]
+    },
+    "opportunityDetailsData": {
+        "Repetitive": {
+            "title": "Tackling Repetitive Tasks",
+            "description": "These are the routine, low-variability tasks that consume significant time but offer little strategic value. Gemini excels at automating these, freeing up your team for more complex problem-solving.",
+            "examples": [
+                "Drafting standard weekly status reports.",
+                "Compiling data from multiple sources into a single sheet.",
+                "Responding to common internal or external queries with a consistent message."
+            ]
+        },
+        "Research-heavy": {
+            "title": "Accelerating Research & Synthesis",
+            "description": "Tasks that require gathering, reading, and synthesizing large amounts of information are prime candidates for AI. Gemini can act as a research assistant, providing summaries and key insights in seconds.",
+            "examples": [
+                "Summarizing long documents or articles to prepare for a meeting.",
+                "Conducting initial market or competitor analysis.",
+                "Getting up to speed on a new internal process or project history."
+            ]
+        },
+        "Reactive": {
+            "title": "Improving Reactive Workflows",
+            "description": "This involves responding to ad-hoc requests and questions. Gemini can provide instant, accurate answers based on existing knowledge, reducing interruptions for your subject matter experts.",
+            "examples": [
+                "Answering team questions about a specific company policy or process.",
+                "Providing quick status updates to stakeholders based on project notes.",
+                "Drafting initial responses to stakeholder requests for information."
+            ]
+        },
+        "Reporting": {
+            "title": "Streamlining Reporting & Summarization",
+            "description": "The process of creating summaries, presentations, and reports is often time-consuming. Gemini can create first drafts, outlines, and summaries from raw data or notes, drastically cutting down preparation time.",
+            "examples": [
+                "Creating a PowerPoint outline from a long report.",
+                "Writing a summary paragraph of project progress from bullet points.",
+                "Transforming meeting notes into a formal summary for distribution."
+            ]
+        }
+    }
+}

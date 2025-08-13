@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dusangrujin-code/gbsfull1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dusangrujin-code/gbsfull1/issues"
+  },
+  "homepage": "https://github.com/dusangrujin-code/gbsfull1#readme",
+  "devDependencies": {
+    "vite": "^7.1.2"
+  }
+}
