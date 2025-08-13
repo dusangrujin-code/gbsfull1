@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dusangrujin-code/gbsfull1#readme",
   "devDependencies": {
+    "glob": "^11.0.3",
     "vite": "^7.1.2"
   }
 }
