@@ -1,4 +1,4 @@
-# Randstad GBS Learning Hub
+# Learning Hub
 
 This project is a centralized portal for AI training programs, sourcing tools, and interactive workshops for Randstad GBS.
 
